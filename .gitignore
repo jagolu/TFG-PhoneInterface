@@ -64,3 +64,9 @@ core/loader/
 core/www/
 .stencil/
 angular/build/
+
+# Cordova Resources
+resources/android/
+resources/ios/
+resources/icon.png
+resources/splash.png
