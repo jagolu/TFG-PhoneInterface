@@ -1,5 +1,7 @@
 {
-  "name": "TFG-PhoneInterface",
-  "integrations": {},
+  "name": "PhoneInterface",
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
