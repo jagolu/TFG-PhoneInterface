@@ -70,3 +70,8 @@ resources/android/
 resources/ios/
 resources/icon.png
 resources/splash.png
+
+# Cordova
+plugins/*
+platforms/*
+www/*
