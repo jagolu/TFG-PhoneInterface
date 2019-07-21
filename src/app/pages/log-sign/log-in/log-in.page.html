@@ -9,66 +9,63 @@
   </ion-toolbar>
 </ion-header>
   
-  <ion-content>
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>
-          <ion-row justify-content-center>
-            <ion-col size="6" align-self-center>
-              <div class="ion-text-center">Iniciar Sesión</div>
-            </ion-col>
-          </ion-row>   
-  
-        </ion-card-title>
-      </ion-card-header>
-  
-      <ion-card-content>
-        <form [formGroup]="logInForm" (ngSubmit)="logIn()">
-          <ion-item>
-            <ion-label position="floating">Correo electrónico</ion-label>
-            <ion-input type="email" formControlName="email"></ion-input>
-          </ion-item>
-          <ion-text color="danger">
-            <small *ngIf="logInForm.controls['email'].errors && 
-                    !logInForm.controls['email'].pristine && 
-                    logInForm.controls['email'].errors.required"
-            >Campo obligatorio</small>
-            <small *ngIf="logInForm.controls['email'].errors && 
-                    !logInForm.controls['email'].pristine && 
-                    logInForm.controls['email'].errors.email"
-            >Email no valido</small>
-          </ion-text>   
-              
-          <ion-item>
-            <ion-label position="floating">Contraseña</ion-label>
-            <ion-input type="password" formControlName="password"></ion-input>
-          </ion-item>
-          <ion-text color="danger">
-              <small *ngIf="logInForm.controls['password'].errors && 
-                    !logInForm.controls['password'].pristine && 
-                    logInForm.controls['password'].errors.minlength"
-              >Mínimo 8 caracteres<br></small>
-              <small *ngIf="logInForm.controls['password'].errors && 
-                      !logInForm.controls['password'].pristine && 
-                      logInForm.controls['password'].errors.maxlength"
-              ><br>Máximo de 50 caracteres<br></small>
-              <small *ngIf="logInForm.controls['password'].errors && 
-                      !logInForm.controls['password'].pristine && 
-                      logInForm.controls['password'].errors.pattern"
-              >La contraseña debe tener al menos una mayuscula, una minuscula y un número<br></small>
-          </ion-text> 
-  
-          <ion-button class="ion-margin-top" color="dark" expand="block" fill="outline" [disabled]="!logInForm.valid">Iniciar sesión</ion-button>
-        </form>       
-        <div class="hr"></div>
-        <app-social-button></app-social-button>
-        <div class="hr"></div>
-        <ion-text>
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        <ion-row justify-content-center>
+          <ion-col size="6" align-self-center>
+            <div class="ion-text-center">Iniciar Sesión</div>
+          </ion-col>
+        </ion-row>   
 
-        </ion-text>
-        <p class="ion-text-center">
-          <a [routerLink]="['/rememberPassword']" >¿Has olvidado la contraseña?</a>                        
-        </p>
-      </ion-card-content>
-    </ion-card>
-  </ion-content>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <form [formGroup]="logInForm" (ngSubmit)="logIn()">
+        <ion-item>
+          <ion-label position="floating">Correo electrónico</ion-label>
+          <ion-input type="email" formControlName="email"></ion-input>
+        </ion-item>
+        <ion-text color="danger">
+          <small *ngIf="logInForm.controls['email'].errors && 
+                  !logInForm.controls['email'].pristine && 
+                  logInForm.controls['email'].errors.required"
+          >Campo obligatorio</small>
+          <small *ngIf="logInForm.controls['email'].errors && 
+                  !logInForm.controls['email'].pristine && 
+                  logInForm.controls['email'].errors.email"
+          >Email no valido</small>
+        </ion-text>   
+            
+        <ion-item>
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+        <ion-text color="danger">
+            <small *ngIf="logInForm.controls['password'].errors && 
+                  !logInForm.controls['password'].pristine && 
+                  logInForm.controls['password'].errors.minlength"
+            >Mínimo 8 caracteres<br></small>
+            <small *ngIf="logInForm.controls['password'].errors && 
+                    !logInForm.controls['password'].pristine && 
+                    logInForm.controls['password'].errors.maxlength"
+            ><br>Máximo de 50 caracteres<br></small>
+            <small *ngIf="logInForm.controls['password'].errors && 
+                    !logInForm.controls['password'].pristine && 
+                    logInForm.controls['password'].errors.pattern"
+            >La contraseña debe tener al menos una mayuscula, una minuscula y un número<br></small>
+        </ion-text> 
+
+        <ion-button style="margin-top:30px" color="dark" expand="block" fill="outline" [disabled]="!logInForm.valid">Iniciar sesión</ion-button>
+      </form>       
+      <div class="hr"></div>
+      <app-social-button></app-social-button>
+      <div class="hr"></div>
+      <p class="ion-text-center">
+        <a [routerLink]="['/rememberPassword']" >¿Has olvidado la contraseña?</a>                        
+      </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
