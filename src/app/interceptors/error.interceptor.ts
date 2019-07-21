@@ -9,11 +9,12 @@ import { AlertInfoType } from '../models/models';
 import { LoadingService } from '../providers/visualServices/loading.service';
 import { SessionService } from '../providers/userServices/session.service';
 import { AuthenticationService } from '../providers/restServices/authentication.service';
+import { AlertService } from '../providers/visualServices/alert.service';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 
-    constructor(/*private alert:AlertService, */private loading:LoadingService,
+    constructor(private alert:AlertService, private loading:LoadingService,
                 private _router:Router, private _sessionS:SessionService,
                 private _authS:AuthenticationService) { }
 
@@ -40,34 +41,34 @@ export class ErrorInterceptor implements HttpInterceptor {
 
     private showErrorAlert(err:HttpErrorResponse){
         if(err.status == 400 && err.error){
-            // if(err.error == "notAllowed") this.alert.openAlertInfo(AlertInfoType.NOTVALIDROLE);
-            // else if(err.error["error"] == "EmailAlreadyExistsError") this.alert.openAlertInfo(AlertInfoType.EMAILTAKENERROR);
-            // else if(err.error["error"] == "WrongEmailOrPassword") this.alert.openAlertInfo(AlertInfoType.WRONGEMAILORPASSWORD);
-            // else if(err.error["error"] == "NotValidatedYet") this.alert.openAlertInfo(AlertInfoType.NOTVALIDATEDYET);
-            // else if(err.error["error"] == "InvalidSocialToken") this.alert.openAlertInfo(AlertInfoType.SOCIALERROR);
-            // else if(err.error["error"] == "CantDeleteAccount") this.alert.openAlertInfo(AlertInfoType.CANTDELETEACCOUNT);
-            // else if(err.error["error"] == "LimitationSpecificCreateGroup") this.alert.openAlertInfo(AlertInfoType.LIMITATIONSPECIFICCREATEGROUP);
-            // else if(err.error["error"] == "LimitationCreateGroup") this.alert.openAlertInfo(AlertInfoType.LIMITATIONCREATEGROUP);
-            // else if(err.error["error"] == "IncorrectOldPassword") this.alert.openAlertInfo(AlertInfoType.INCORRECTOLDPASSWORD);
-            // else if(err.error["error"] == "ErrorBuy") this.alert.openAlertInfo(AlertInfoType.ERRORBUY);
-            // else if(err.error["error"] == "IncorrectPasswordJoiningGroup") this.alert.openAlertInfo(AlertInfoType.INCORRECTPASSWORDJOININGGROUP);
-            // else if(err.error["error"] == "MaxGroupJoinsReached") this.alert.openAlertInfo(AlertInfoType.MAXGROUPJOINREACHED);
-            // else if(err.error["error"] == "EmailDontExist") this.alert.openAlertInfo(AlertInfoType.EMAILDONTEXIST);
-            // else if(err.error["error"] == "CantChangePasswordToday") this.alert.openAlertInfo(AlertInfoType.CANTCHANGEPASSTODAY);
-            // else if(err.error["error"] == "NotSocialSignYet") this.alert.openAlertInfo(AlertInfoType.NOTSOCIALSIGNYET);
-            // else if(err.error["error"] == "BetCancelled") this.alert.openAlertInfo(AlertInfoType.BETCANCELLED);
-            // else if(err.error["error"] == "BetEnded") this.alert.openAlertInfo(AlertInfoType.BETENDED);
-            // else if(err.error["error"] == "BetLastBetPassed") this.alert.openAlertInfo(AlertInfoType.BETLASTBETPASSED);
-            // else if(err.error["error"] == "CancelBetCancelled") this.alert.openAlertInfo(AlertInfoType.CANCELBETCANCELLED);
-            // else if(err.error["error"] == "CancelBetEnded") this.alert.openAlertInfo(AlertInfoType.CANCELBETENDED);
-            // else if(err.error["error"] == "CancelBetLastBetPassed") this.alert.openAlertInfo(AlertInfoType.CANCELBETLASTBETPASSED);
-            // else if(err.error["error"] == "YoureBanned") this.alert.openAlertInfo(AlertInfoType.YOUREBANNED);
-            // else if(err.error["error"] == "GroupBanned") this.alert.openAlertInfo(AlertInfoType.GROUPBANNED);
+            if(err.error == "notAllowed") this.alert.openAlertInfo(AlertInfoType.NOTVALIDROLE);
+            else if(err.error["error"] == "EmailAlreadyExistsError") this.alert.openAlertInfo(AlertInfoType.EMAILTAKENERROR);
+            else if(err.error["error"] == "WrongEmailOrPassword") this.alert.openAlertInfo(AlertInfoType.WRONGEMAILORPASSWORD);
+            else if(err.error["error"] == "NotValidatedYet") this.alert.openAlertInfo(AlertInfoType.NOTVALIDATEDYET);
+            else if(err.error["error"] == "InvalidSocialToken") this.alert.openAlertInfo(AlertInfoType.SOCIALERROR);
+            else if(err.error["error"] == "CantDeleteAccount") this.alert.openAlertInfo(AlertInfoType.CANTDELETEACCOUNT);
+            else if(err.error["error"] == "LimitationSpecificCreateGroup") this.alert.openAlertInfo(AlertInfoType.LIMITATIONSPECIFICCREATEGROUP);
+            else if(err.error["error"] == "LimitationCreateGroup") this.alert.openAlertInfo(AlertInfoType.LIMITATIONCREATEGROUP);
+            else if(err.error["error"] == "IncorrectOldPassword") this.alert.openAlertInfo(AlertInfoType.INCORRECTOLDPASSWORD);
+            else if(err.error["error"] == "ErrorBuy") this.alert.openAlertInfo(AlertInfoType.ERRORBUY);
+            else if(err.error["error"] == "IncorrectPasswordJoiningGroup") this.alert.openAlertInfo(AlertInfoType.INCORRECTPASSWORDJOININGGROUP);
+            else if(err.error["error"] == "MaxGroupJoinsReached") this.alert.openAlertInfo(AlertInfoType.MAXGROUPJOINREACHED);
+            else if(err.error["error"] == "EmailDontExist") this.alert.openAlertInfo(AlertInfoType.EMAILDONTEXIST);
+            else if(err.error["error"] == "CantChangePasswordToday") this.alert.openAlertInfo(AlertInfoType.CANTCHANGEPASSTODAY);
+            else if(err.error["error"] == "NotSocialSignYet") this.alert.openAlertInfo(AlertInfoType.NOTSOCIALSIGNYET);
+            else if(err.error["error"] == "BetCancelled") this.alert.openAlertInfo(AlertInfoType.BETCANCELLED);
+            else if(err.error["error"] == "BetEnded") this.alert.openAlertInfo(AlertInfoType.BETENDED);
+            else if(err.error["error"] == "BetLastBetPassed") this.alert.openAlertInfo(AlertInfoType.BETLASTBETPASSED);
+            else if(err.error["error"] == "CancelBetCancelled") this.alert.openAlertInfo(AlertInfoType.CANCELBETCANCELLED);
+            else if(err.error["error"] == "CancelBetEnded") this.alert.openAlertInfo(AlertInfoType.CANCELBETENDED);
+            else if(err.error["error"] == "CancelBetLastBetPassed") this.alert.openAlertInfo(AlertInfoType.CANCELBETLASTBETPASSED);
+            else if(err.error["error"] == "YoureBanned") this.alert.openAlertInfo(AlertInfoType.YOUREBANNED);
+            else if(err.error["error"] == "GroupBanned") this.alert.openAlertInfo(AlertInfoType.GROUPBANNED);
         }
-        // else if(err.status == 400 && !err.error) this.alert.openAlertInfo(AlertInfoType.VALIDATINGUSERERROR);
-        // else if(err.status == 500) this.alert.openAlertInfo(AlertInfoType.SERVERERROR);
-        // else if(err.status == 0) this.alert.openAlertInfo(AlertInfoType.LOSTCONNECTIONERROR);
-        // else if(err.status == 401) this.alert.openAlertInfo(AlertInfoType.SESSIONEXPIRED);
+        else if(err.status == 400 && !err.error) this.alert.openAlertInfo(AlertInfoType.VALIDATINGUSERERROR);
+        else if(err.status == 500) this.alert.openAlertInfo(AlertInfoType.SERVERERROR);
+        else if(err.status == 0) this.alert.openAlertInfo(AlertInfoType.LOSTCONNECTIONERROR);
+        else if(err.status == 401) this.alert.openAlertInfo(AlertInfoType.SESSIONEXPIRED);
     }
 
 /*------------------------------------ REDIRECT------------------------------ */
