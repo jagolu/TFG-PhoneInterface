@@ -1,3 +1,17 @@
+//Funcionality modules
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouteReuseStrategy } from '@angular/router';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { AppRoutingModule } from './app-routing.module';
+import { ReactiveFormsModule} from '@angular/forms';
+import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
+import { provideConfig } from 'src/environments/secret';
+
+
+//Providers
 import { ChatService } from './providers/userServices/Hub/chat.service';
 import { UserInfoService } from './providers/userServices/user-info.service';
 import { SessionService } from './providers/userServices/session.service';
@@ -9,21 +23,16 @@ import { BetService } from './providers/restServices/bet.service';
 import { AuthenticationService } from './providers/restServices/authentication.service';
 import { AliveService } from './providers/restServices/alive.service';
 import { AdminService } from './providers/restServices/admin.service';
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy } from '@angular/router';
-
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
-
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
-import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
-import { provideConfig } from 'src/environments/secret';
 import { DirectMessagesService } from './providers/restServices/direct-messages.service';
 import { NotificationsService } from './providers/userServices/Hub/notifications.service';
 import { GroupInfoService } from './providers/userServices/group-info.service';
+
+
+// Main Component
+import { AppComponent } from './app.component';
+
+
+//Pages
 
 
 @NgModule({
@@ -33,6 +42,7 @@ import { GroupInfoService } from './providers/userServices/group-info.service';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    ReactiveFormsModule,
     SocialLoginModule
   ],
   providers: [
