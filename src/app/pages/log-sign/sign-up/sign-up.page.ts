@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from 'src/app/providers/restServices/authentication.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { IconModel, Icons } from 'src/app/models/models';
 
 @Component({
   selector: 'app-sign-up',
@@ -13,7 +14,7 @@ export class SignUpPage{
   passwordType: string;
   passwordsAreEqual: boolean;
 
-  // public icon_eye:IconModel = Icons.EYE_OPEN_CLOSE;
+  public icon_eye:IconModel = Icons.EYE_OPEN_CLOSE;
 
   constructor(private _authentication:AuthenticationService) {
     this.passwordType = "password"

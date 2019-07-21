@@ -18,7 +18,6 @@
             <div class="ion-text-center">Registro</div>
           </ion-col>
         </ion-row>   
-
       </ion-card-title>
     </ion-card-header>
 
@@ -61,11 +60,7 @@
             
         <ion-item>
           <ion-label position="floating">Contraseña</ion-label>
-          <ion-input type="password" formControlName="password"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="floating">Repetir contraseña</ion-label>
-          <ion-input type="password" formControlName="repeatPassword"></ion-input>
+          <ion-input type="{{passwordType}}" (keyup)="equalPassword()" formControlName="password"></ion-input>
         </ion-item>
         <ion-text color="danger">
             <small *ngIf="signUpForm.controls['password'].errors && 
@@ -75,7 +70,7 @@
             <small *ngIf="signUpForm.controls['password'].errors && 
                         !signUpForm.controls['password'].pristine && 
                         signUpForm.controls['password'].errors.maxlength"
-            ><br>Máximo de 50 caracteres<br></small>
+            >Máximo de 50 caracteres<br></small>
             <small *ngIf="signUpForm.controls['password'].errors && 
                         !signUpForm.controls['password'].pristine && 
                         signUpForm.controls['password'].errors.pattern"
@@ -83,6 +78,14 @@
             <small *ngIf=" !signUpForm.controls['password'].pristine && 
                         !passwordsAreEqual"
             >Las contraseñas no coinciden</small>
+        </ion-text> 
+        <ion-item>
+          <ion-label position="floating">Repetir contraseña </ion-label>
+          <ion-input type="{{passwordType}}" formControlName="repeatPassword"></ion-input>
+        </ion-item>
+        <ion-text color="secondary">
+          <br>
+          <small>Ver contraseñas <app-icon [Icon]="icon_eye" (click)="watchPassword()"></app-icon></small>
         </ion-text> 
 
         <ion-button style="margin-top:30px" color="dark" expand="block" fill="outline" [disabled]="!signUpForm.valid || !passwordsAreEqual">Registrarse</ion-button>

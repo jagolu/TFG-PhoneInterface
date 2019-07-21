@@ -41,7 +41,7 @@
             
         <ion-item>
           <ion-label position="floating">Contraseña</ion-label>
-          <ion-input type="password" formControlName="password"></ion-input>
+          <ion-input type="{{passwordType}}" formControlName="password"></ion-input>
         </ion-item>
         <ion-text color="danger">
             <small *ngIf="logInForm.controls['password'].errors && 
@@ -56,6 +56,10 @@
                     !logInForm.controls['password'].pristine && 
                     logInForm.controls['password'].errors.pattern"
             >La contraseña debe tener al menos una mayuscula, una minuscula y un número<br></small>
+        </ion-text>         
+        <ion-text color="secondary">
+          <br>
+          <small>Ver contraseña <app-icon [Icon]="eye_icon" (click)="watchPassword()"></app-icon></small>
         </ion-text> 
 
         <ion-button style="margin-top:30px" color="dark" expand="block" fill="outline" [disabled]="!logInForm.valid">Iniciar sesión</ion-button>

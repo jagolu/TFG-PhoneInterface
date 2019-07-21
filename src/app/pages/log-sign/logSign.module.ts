@@ -9,6 +9,7 @@ import { LogInPage } from './log-in/log-in.page';
 import { SocialLoginModule } from 'angularx-social-login';
 import { SocialButtonComponent } from './social-button/social-button.component';
 import { SignUpPage } from './sign-up/sign-up.page';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { SignUpPage } from './sign-up/sign-up.page';
     IonicModule,
     SocialLoginModule,
     ReactiveFormsModule,
+    SharedModule,
     RouterModule.forChild([
       {
         path: 'logIn',
