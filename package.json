@@ -1,11 +1,11 @@
 {
-  "name": "PhoneInterface",
+  "name": "phone-interface",
   "version": "0.0.1",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ionic serve -p 4200 --ssl true --ssl-cert \"C:\\Users\\Javi\\Documentos\\sslCert\\example.crt\" --ssl-key \"C:\\Users\\Javi\\Documentos\\sslCert\\example.key\"",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
