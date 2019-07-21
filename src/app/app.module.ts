@@ -1,3 +1,14 @@
+import { ChatService } from './providers/userServices/Hub/chat.service';
+import { UserInfoService } from './providers/userServices/user-info.service';
+import { SessionService } from './providers/userServices/session.service';
+import { UserService } from './providers/restServices/user.service';
+import { ShopService } from './providers/restServices/shop.service';
+import { HomeService } from './providers/restServices/home.service';
+import { GroupService } from './providers/restServices/group.service';
+import { BetService } from './providers/restServices/bet.service';
+import { AuthenticationService } from './providers/restServices/authentication.service';
+import { AliveService } from './providers/restServices/alive.service';
+import { AdminService } from './providers/restServices/admin.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -10,6 +21,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { provideConfig } from 'src/environments/secret';
+import { DirectMessagesService } from './providers/restServices/direct-messages.service';
+import { NotificationsService } from './providers/userServices/Hub/notifications.service';
+import { GroupInfoService } from './providers/userServices/group-info.service';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +39,21 @@ import { provideConfig } from 'src/environments/secret';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    { provide: AuthServiceConfig, useFactory: provideConfig}
+    { provide: AuthServiceConfig, useFactory: provideConfig},
+    AdminService,
+    AliveService,
+    AuthenticationService,
+    BetService,
+    DirectMessagesService,
+    GroupService,
+    HomeService,
+    ShopService,
+    UserService,
+    GroupInfoService,
+    SessionService,
+    UserInfoService,
+    ChatService,
+    NotificationsService
   ],
   bootstrap: [AppComponent]
 })
