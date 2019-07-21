@@ -5,7 +5,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthServiceConfig } from 'angularx-social-login';
 import { provideConfig } from 'src/environments/secret';
 
@@ -26,6 +26,12 @@ import { DirectMessagesService } from './providers/restServices/direct-messages.
 import { NotificationsService } from './providers/userServices/Hub/notifications.service';
 import { GroupInfoService } from './providers/userServices/group-info.service';
 import { LoadingService } from './providers/visualServices/loading.service';
+
+
+// Interceptors
+import { ErrorInterceptor } from './interceptors/error.interceptor';
+import { HeaderInterceptor } from './interceptors/header.interceptor';
+import { SuccessInterceptor } from './interceptors/success.interceptor';
 
 
 // Main Component
@@ -57,6 +63,9 @@ import { AppRoutingModule } from './app-routing.module';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: AuthServiceConfig, useFactory: provideConfig},
+    { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: SuccessInterceptor, multi: true },
     AdminService,
     AliveService,
     AuthenticationService,
