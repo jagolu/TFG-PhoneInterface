@@ -6,9 +6,6 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
-import { ReactiveFormsModule} from '@angular/forms';
-import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
-import { provideConfig } from 'src/environments/secret';
 
 
 //Providers
@@ -33,6 +30,10 @@ import { AppComponent } from './app.component';
 
 
 //Pages
+import { LogSignModule } from './pages/log-sign/logSign.module';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthServiceConfig } from 'angularx-social-login';
+import { provideConfig } from 'src/environments/secret';
 
 
 @NgModule({
@@ -42,8 +43,8 @@ import { AppComponent } from './app.component';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    ReactiveFormsModule,
-    SocialLoginModule
+    LogSignModule,
+    HttpClientModule
   ],
   providers: [
     StatusBar,
