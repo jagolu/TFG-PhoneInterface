@@ -5,7 +5,7 @@
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
-    "start": "ionic serve -p 4200 --ssl true --ssl-cert \"C:\\Users\\Javi\\Documentos\\sslCert\\example.crt\" --ssl-key \"C:\\Users\\Javi\\Documentos\\sslCert\\example.key\"",
+    "start": "ionic serve -p 4200 --devapp --ssl true --ssl-cert \"C:\\Users\\Javi\\Documentos\\sslCert\\example.crt\" --ssl-key \"C:\\Users\\Javi\\Documentos\\sslCert\\example.key\"",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
