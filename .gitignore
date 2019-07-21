@@ -75,3 +75,6 @@ resources/splash.png
 plugins/*
 platforms/*
 www/*
+
+# Secret
+src/environments/secret.ts
