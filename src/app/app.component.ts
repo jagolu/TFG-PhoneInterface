@@ -17,12 +17,12 @@ export class AppComponent {
     },
     {
       title: 'Iniciar sesión',
-      url: '/logIn',
+      url: '/logSign/logIn',
       icon: 'person'
     },
     {
       title: 'Registrarse',
-      url: '/list',
+      url: '/logSign/signUp',
       icon: 'person-add'
     }
   ];

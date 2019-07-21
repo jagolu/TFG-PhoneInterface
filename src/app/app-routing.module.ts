@@ -16,7 +16,7 @@ const routes: Routes = [
     loadChildren: './list/list.module#ListPageModule'
   },
   {
-    path: 'logIn',
+    path: 'logSign',
     loadChildren: './pages/log-sign/logSign.module#LogSignModule'
   }
 ];
