@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { SessionService } from '../userServices/session.service';
 import { GroupInfoService } from '../userServices/group-info.service';
 import { GroupPage, JoinGroup, MakeUnmake_admin_block, KickUser, ManagePassword, RemoveGroup } from 'src/app/models/models';
+import { LoadingService } from '../visualServices/loading.service';
 
 @Injectable({
   providedIn: 'root'
@@ -44,9 +45,9 @@ export class GroupService extends Rest{
    * @param {LoadingService} loading For RestService constructor 
    * @param {SessionService} sessionS To get the user groups
    */
-  constructor(http: HttpClient/*, loading: LoadingService*/, 
+  constructor(http: HttpClient, loading: LoadingService, 
               private sessionS:SessionService, private groupInfoS:GroupInfoService) { 
-    super(http/*, loading*/);
+    super(http, loading);
   }
 
   

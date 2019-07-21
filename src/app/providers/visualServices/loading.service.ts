@@ -1,34 +1,24 @@
 import { Injectable } from '@angular/core';
-import { Rest } from './Rest';
-import { HttpClient } from '@angular/common/http';
-import { BuyInfo } from 'src/app/models/models';
-import { LoadingService } from '../visualServices/loading.service';
+import { LoadingController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
 })
-/**
- * Service to do the shop requests
- * 
- * @class
- * @extends Rest
- */
-export class ShopService extends Rest{
+export class LoadingService{
 
   //
   // ──────────────────────────────────────────────────────────────────────
   //   :::::: C L A S S   V A R S : :  :   :    :     :        :          :
   // ──────────────────────────────────────────────────────────────────────
   //
-  
+
   /**
-   * The path to the shop requests
+   * Var to save if loading animation is visible or not
    * 
    * @access private
-   * @readonly
-   * @var {string} _shopPath
+   * @var {boolean} isLoading
    */
-  private readonly _shopPath : string = "Shop/";
+  private isLoading:boolean;
 
 
   //
@@ -39,14 +29,12 @@ export class ShopService extends Rest{
   
   /**
    * @constructor
-   * @param {HttpClient} http For RestService constructor 
-   * @param {LoadingService} loading For RestService constructor 
    */
-  constructor(http:HttpClient, loading:LoadingService) { 
-    super(http, loading);
+  constructor(private loadingC:LoadingController) { 
+    this.isLoading = false;
   }
 
-  
+
   //
   // ──────────────────────────────────────────────────────────────────────────────────
   //   :::::: P U B L I C   F U N C T I O N S : :  :   :    :     :        :          :
@@ -54,23 +42,26 @@ export class ShopService extends Rest{
   //
   
   /**
-   * Function to do a buy
+   * Start the loading animation
    * 
    * @access public
-   * @param {BuyInfo} item The info of the item to buy
-   * @return {Observable} The result of the request 
    */
-  public doABuy(item:BuyInfo){
-    return this.postRequest(item, this._shopPath+"Buy");
+  public startLoading(){
+    if(this.isLoading) return;
+    this.loadingC.create({
+      message: "Espera un momento..."
+    }).then(loading=> loading.present());
+    this.isLoading = true;
   }
 
   /**
-   * Function to get all the offers which exists
+   * Stops the loading animation
    * 
    * @access public
-   * @return {Observable} The result of the request
    */
-  public getAllOffers(){
-    return this.getRequest(this._shopPath+"GetAllOffers");
+  public stopLoading(){
+    if(!this.isLoading) return;
+    this.loadingC.dismiss();
+    this.isLoading = false;
   }
 }

@@ -25,6 +25,7 @@ import { AdminService } from './providers/restServices/admin.service';
 import { DirectMessagesService } from './providers/restServices/direct-messages.service';
 import { NotificationsService } from './providers/userServices/Hub/notifications.service';
 import { GroupInfoService } from './providers/userServices/group-info.service';
+import { LoadingService } from './providers/visualServices/loading.service';
 
 
 // Main Component
@@ -69,7 +70,8 @@ import { AppRoutingModule } from './app-routing.module';
     SessionService,
     UserInfoService,
     ChatService,
-    NotificationsService
+    NotificationsService,
+    LoadingService
   ],
   bootstrap: [AppComponent]
 })

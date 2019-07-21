@@ -1,6 +1,7 @@
 // import { LoadingService } from 'src/app/services/visualServices/loading.service';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { URL } from 'src/environments/secret';
+import { LoadingService } from '../visualServices/loading.service';
 
 /**
  * Class to define the basic request
@@ -36,7 +37,7 @@ export class Rest {
    * @param {HttpClient} __http 
    * @param {LoadingService} __loading 
    */
-  constructor(private __http:HttpClient/*, private __loading:LoadingService*/) { }
+  constructor(private __http:HttpClient, private __loading:LoadingService) { }
   
 
   //
@@ -55,7 +56,7 @@ export class Rest {
    * @return {Observable} The result of the request
    */
   public postRequest(body:any, path:string, notStartLoad?:boolean){
-    // if(!notStartLoad) this.__loading.startLoading();
+    if(!notStartLoad) this.__loading.startLoading();
     return this.__http.post(this.__baseURL+path, body, {
       headers: this.basicHeaders()
     });
@@ -71,7 +72,7 @@ export class Rest {
    * @return {Observable} The result of the request
    */
   public getRequest(path:string ,params?:paramValue[], notStartLoad?:boolean){
-    // if(!notStartLoad) this.__loading.startLoading();
+    if(!notStartLoad) this.__loading.startLoading();
     let options = params ? 
       {
         params: this.params(params),

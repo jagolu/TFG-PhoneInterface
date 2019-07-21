@@ -10,6 +10,7 @@ import { GroupInfoService } from '../userServices/group-info.service';
 import { UserInfoService } from '../userServices/user-info.service';
 import { ChatService } from '../userServices/Hub/chat.service';
 import { NotificationsService } from '../userServices/Hub/notifications.service';
+import { LoadingService } from '../visualServices/loading.service';
 
 @Injectable({
   providedIn: 'root'
@@ -56,9 +57,9 @@ export class AuthenticationService extends Rest {
    * @param {ChatService} _chatS To reset the service info on logout
    * @param {NotificationsService} _notS To reset the service info on logout
    */
-  constructor(_http:HttpClient/*,  _loading:LoadingService*/, private _authS:AuthService, private _sessionS:SessionService, private _router:Router, 
+  constructor(_http:HttpClient,  _loading:LoadingService, private _authS:AuthService, private _sessionS:SessionService, private _router:Router, 
               private _groupInfoS:GroupInfoService, private _userInfoS:UserInfoService, private _chatS:ChatService, private _notS:NotificationsService){
-    super(_http/*, _loading*/);
+    super(_http, _loading);
   }
 
 

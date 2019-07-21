@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Rest } from './Rest';
 import { HttpClient } from '@angular/common/http';
 import { BanGroup, BanUser } from 'src/app/models/models';
+import { LoadingService } from '../visualServices/loading.service';
 
 @Injectable({
   providedIn: 'root'
@@ -40,8 +41,8 @@ export class AdminService extends Rest{
    * @param {HttpClient} http For the Rest constructor 
    * @param {LoadingService} loading For the Rest constructor
    */
-  constructor(http: HttpClient/*, loading: LoadingService*/) {
-    super(http/*, loading*/);
+  constructor(http: HttpClient, loading: LoadingService) {
+    super(http, loading);
   }
 
 

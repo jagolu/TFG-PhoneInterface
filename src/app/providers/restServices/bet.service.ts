@@ -3,6 +3,7 @@ import { Rest } from './Rest';
 import { GroupInfoService } from '../userServices/group-info.service';
 import { HttpClient } from '@angular/common/http';
 import { LaunchFootballBet, UserFootballBet, GroupPage, CancelUserFootballBet } from 'src/app/models/models';
+import { LoadingService } from '../visualServices/loading.service';
 
 @Injectable({
   providedIn: 'root'
@@ -43,8 +44,8 @@ export class BetService extends Rest{
    * @param {LoadingService} loading For RestService constructor
    * @param {GroupInfoService} groupPageS For update the group page info
    */
-  constructor(http: HttpClient, /*loading: LoadingService,*/ private groupPageS:GroupInfoService) { 
-    super(http/*, loading*/);
+  constructor(http: HttpClient, loading: LoadingService, private groupPageS:GroupInfoService) { 
+    super(http, loading);
   }
 
 

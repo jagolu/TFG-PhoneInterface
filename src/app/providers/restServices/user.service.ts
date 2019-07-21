@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Rest } from './Rest';
 import { HttpClient } from '@angular/common/http';
 import { ChangeUserInfo, DeleteUser } from 'src/app/models/models';
+import { LoadingService } from '../visualServices/loading.service';
 
 @Injectable({
   providedIn: 'root'
@@ -41,8 +42,8 @@ export class UserService extends Rest{
    * @param {HttpClient} _http For RestService constructor 
    * @param {LoadingService} _loading For RestService constructor 
    */
-  constructor(_http:HttpClient/*, _loading:LoadingService*/) { 
-    super(_http/*, _loading*/);
+  constructor(_http:HttpClient, _loading:LoadingService) { 
+    super(_http, _loading);
   }
 
 
