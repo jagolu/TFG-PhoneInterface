@@ -5,7 +5,9 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthServiceConfig } from 'angularx-social-login';
+import { provideConfig } from 'src/environments/secret';
 
 
 //Providers
@@ -31,9 +33,11 @@ import { AppComponent } from './app.component';
 
 //Pages
 import { LogSignModule } from './pages/log-sign/logSign.module';
-import { HttpClientModule } from '@angular/common/http';
-import { AuthServiceConfig } from 'angularx-social-login';
-import { provideConfig } from 'src/environments/secret';
+import { SharedModule } from './pages/shared/shared.module';
+
+
+//Routes
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
@@ -44,7 +48,8 @@ import { provideConfig } from 'src/environments/secret';
     IonicModule.forRoot(),
     AppRoutingModule,
     LogSignModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   providers: [
     StatusBar,
