@@ -23,17 +23,17 @@ export class HomePage {
    * The News to show
    * 
    * @access public
-   * @var {NewMessage[]} _news
+   * @var {NewMessage[]} news
    */
-  public _news: NewMessage[] = [];
+  public news: NewMessage[] = [];
 
   /**
    * The form to launch a New
    * 
    * @access public
-   * @var {FormGroup} _publishNewForm
+   * @var {FormGroup} publishNewForm
    */
-  public _publishNewForm :FormGroup;
+  public publishNewForm :FormGroup;
 
   //
   // ──────────────────────────────────────────────────────────────────────────
@@ -52,7 +52,7 @@ export class HomePage {
               private __sessionS:SessionService, private __adminS: AdminService) {
     let isAuth = this.__authS.IsAuthenticated();
     let isAdmin = this.__sessionS.isAdmin();
-    this.__homeS.getNews(isAuth && !isAdmin).subscribe((news:any)=> this._news = news);
+    this.__homeS.getNews(isAuth && !isAdmin).subscribe((news:any)=> this.news = news);
     this.initializeForm();
   }
 
@@ -69,8 +69,8 @@ export class HomePage {
    * @access public
    */
   public launchNew(){
-    let message = this._publishNewForm.controls["message"].value;
-    this.__adminS.publishNew(message).subscribe((news:any)=>this._news = news);
+    let message = this.publishNewForm.controls["message"].value;
+    this.__adminS.publishNew(message).subscribe((news:any)=>this.news = news);
     this.resetForm();
   }
 
@@ -100,7 +100,7 @@ export class HomePage {
    * @access private
    */
   private initializeForm(){
-    this._publishNewForm = new FormGroup({
+    this.publishNewForm = new FormGroup({
       "message": new FormControl(
         '',
         [
@@ -118,6 +118,6 @@ export class HomePage {
    * @access private
    */
   private resetForm(){
-    this._publishNewForm.reset({"message": ""});
+    this.publishNewForm.reset({"message": ""});
   }
 }
