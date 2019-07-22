@@ -6,6 +6,7 @@ import { CreateGroupAlertComponent } from './alerts/create-group-alert/create-gr
 import { IonicModule } from '@ionic/angular';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteAccountAlertComponent } from './alerts/delete-account-alert/delete-account-alert.component';
+import { JoinPasswordGroupComponent } from './alerts/join-password-group/join-password-group.component';
 import { DeleteGroupAlertComponent } from './alerts/delete-group-alert/delete-group-alert.component';
 
 @NgModule({
@@ -29,6 +30,7 @@ import { DeleteGroupAlertComponent } from './alerts/delete-group-alert/delete-gr
     AlertComponent, 
     CreateGroupAlertComponent, 
     DeleteAccountAlertComponent, 
+    JoinPasswordGroupComponent,
     DeleteGroupAlertComponent
   ],
   entryComponents: 
@@ -36,6 +38,7 @@ import { DeleteGroupAlertComponent } from './alerts/delete-group-alert/delete-gr
     AlertComponent, 
     CreateGroupAlertComponent, 
     DeleteAccountAlertComponent, 
+    JoinPasswordGroupComponent,
     DeleteGroupAlertComponent
   ]
 })

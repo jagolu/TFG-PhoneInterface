@@ -146,6 +146,26 @@ export class AlertService {
     this.modalOpened = true;
   }
 
+  /**
+   * Open the alert showing the join group alert
+   * with or without the form
+   * 
+   * @access public
+   * @param {boolean} needPass Filter to show the form or not 
+   * @param {string} groupName The name of the group to join in
+   */
+  public joinGroup(needPass:boolean, groupName:string){
+    this.prepareAlerts();
+    this.modalC.create({
+      component: AlertComponent,
+      componentProps:{
+        'mode': AlertMode.JOINGROUP,
+        'title': "Vas a unirte al grupo "+groupName,
+        "target": groupName,
+        "needPassword": needPass
+      }
+    }).then(modal => modal.present());
+    this.modalOpened = true;
   }
   
   /**
