@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteAccountAlertComponent } from './alerts/delete-account-alert/delete-account-alert.component';
 import { JoinPasswordGroupComponent } from './alerts/join-password-group/join-password-group.component';
 import { DeleteGroupAlertComponent } from './alerts/delete-group-alert/delete-group-alert.component';
+import { SocialSignPasswordComponent } from './alerts/social-sign-password/social-sign-password.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { DeleteGroupAlertComponent } from './alerts/delete-group-alert/delete-gr
     CreateGroupAlertComponent, 
     DeleteAccountAlertComponent, 
     JoinPasswordGroupComponent,
-    DeleteGroupAlertComponent
+    DeleteGroupAlertComponent,
+    SocialSignPasswordComponent
   ],
   exports: 
   [
@@ -31,7 +33,8 @@ import { DeleteGroupAlertComponent } from './alerts/delete-group-alert/delete-gr
     CreateGroupAlertComponent, 
     DeleteAccountAlertComponent, 
     JoinPasswordGroupComponent,
-    DeleteGroupAlertComponent
+    DeleteGroupAlertComponent,
+    SocialSignPasswordComponent
   ],
   entryComponents: 
   [
@@ -39,7 +42,8 @@ import { DeleteGroupAlertComponent } from './alerts/delete-group-alert/delete-gr
     CreateGroupAlertComponent, 
     DeleteAccountAlertComponent, 
     JoinPasswordGroupComponent,
-    DeleteGroupAlertComponent
+    DeleteGroupAlertComponent,
+    SocialSignPasswordComponent
   ]
 })
 export class SharedModule { }

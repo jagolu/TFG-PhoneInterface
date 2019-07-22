@@ -11,6 +11,7 @@
             <app-delete-account-alert *ngIf="mode == 'DELETEACCOUNT'" [email]="target"></app-delete-account-alert>
             <app-join-password-group *ngIf="mode == 'JOINGROUP'" [groupName]="target" [hasPassword]="needPassword"></app-join-password-group>
             <app-delete-group-alert *ngIf="mode == 'DELETEGROUP'" [name]="target"></app-delete-group-alert>
+            <app-social-sign-password *ngIf="mode == 'SOCIALPASSWORD'" [providerId]="target"></app-social-sign-password>
 
     </ion-card-content>
 </ion-card>

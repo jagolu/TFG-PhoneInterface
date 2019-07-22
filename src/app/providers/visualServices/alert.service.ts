@@ -125,6 +125,32 @@ export class AlertService {
     }).then(modal => modal.present());
     this.modalOpened = true;
   }
+
+  /**
+   * Open the alert showing the set a social password form
+   * alert 
+   * 
+   * @access public
+   * @param {string} type The type of social log (Facebook or Google)
+   */
+  public socialPasswordForm(type:string){
+    // this.setTitle("Choose a password");
+    // // this.changeAlertMode(AlertMode.SOCIALPASSWORD);
+    // this.setTarget(type);
+    // this.prepareAlerts();
+
+    this.prepareAlerts();
+    this.modalC.create({
+      component: AlertComponent,
+      componentProps:{
+        'mode': AlertMode.SOCIALPASSWORD,
+        'title': `Establece una contraseña`,
+        "target": type
+      }
+    }).then(modal => modal.present());
+    this.modalOpened = true;
+  }
+
   /**
    * Open the alert showing the delete group 
    * alert 
