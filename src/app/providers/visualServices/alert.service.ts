@@ -125,6 +125,27 @@ export class AlertService {
     }).then(modal => modal.present());
     this.modalOpened = true;
   }
+  /**
+   * Open the alert showing the delete group 
+   * alert 
+   * 
+   * @access public
+   * @param {string} GroupName The email of the account
+   * to delete
+   */
+  public deleteGroup(groupName:string){
+    this.prepareAlerts();
+    this.modalC.create({
+      component: AlertComponent,
+      componentProps:{
+        'mode': AlertMode.DELETEGROUP,
+        'title': `Vas a eliminar el grupo ${groupName}. ¿Estás seguro?`,
+        "target": groupName
+      }
+    }).then(modal => modal.present());
+    this.modalOpened = true;
+  }
+
   }
   
   /**

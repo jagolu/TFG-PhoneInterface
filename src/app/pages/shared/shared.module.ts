@@ -6,6 +6,7 @@ import { CreateGroupAlertComponent } from './alerts/create-group-alert/create-gr
 import { IonicModule } from '@ionic/angular';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteAccountAlertComponent } from './alerts/delete-account-alert/delete-account-alert.component';
+import { DeleteGroupAlertComponent } from './alerts/delete-group-alert/delete-group-alert.component';
 
 @NgModule({
   imports: [
@@ -28,12 +29,14 @@ import { DeleteAccountAlertComponent } from './alerts/delete-account-alert/delet
     AlertComponent, 
     CreateGroupAlertComponent, 
     DeleteAccountAlertComponent, 
+    DeleteGroupAlertComponent
   ],
   entryComponents: 
   [
     AlertComponent, 
     CreateGroupAlertComponent, 
     DeleteAccountAlertComponent, 
+    DeleteGroupAlertComponent
   ]
 })
 export class SharedModule { }
