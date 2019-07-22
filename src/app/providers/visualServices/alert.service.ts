@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AlertInfoType, AlertMode, GroupBet, UserInGroupSearch, GroupMemberAdmin } from 'src/app/models/models';
 import { BehaviorSubject } from 'rxjs';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { getMessage } from './alertInfoMessages';
+import { AlertComponent } from 'src/app/pages/shared/alerts/alert.component';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,44 @@ import { getMessage } from './alertInfoMessages';
 export class AlertService {
 
   //
+  // ──────────────────────────────────────────────────────────────────────
+  //   :::::: C L A S S   V A R S : :  :   :    :     :        :          :
+  // ──────────────────────────────────────────────────────────────────────
+  //
+  
+  /**
+   * The behaviour of the trigger to reset the form of the alerts
+   * 
+   * @access private
+   * @var {BehaviorSubject<boolean>} resetForm
+   */
+  private resetForm = new BehaviorSubject<boolean>(false);
+
+  /**
+   * The filter to reset the form of the alerts
+   * at which the other components will subscribe at
+   * 
+   * @access public
+   * @var {Observable} reset
+   */
+  public reset = this.resetForm.asObservable();
+  /**
+   * Says if the alert is launched or not
+   * 
+   * @access private
+   * @var {Boolean} alertOpened
+   */
+  private alertOpened:Boolean = false;
+
+  /**
+   * Says if the modal is launched or not
+   * 
+   * @access private
+   * @var {Boolean} modalOpened
+   */
+  private modalOpened:Boolean = false;
+
+  //
   // ──────────────────────────────────────────────────────────────────────────
   //   :::::: C O N S T R U C T O R S : :  :   :    :     :        :          :
   // ──────────────────────────────────────────────────────────────────────────
@@ -23,7 +62,7 @@ export class AlertService {
   /**
    * @constructor
    */
-  constructor(public alertC:AlertController) { }
+  constructor(private alertC:AlertController, private modalC:ModalController) { }
 
 
   //
@@ -48,10 +87,39 @@ export class AlertService {
   }
   
   /**
-   * Close the alert clicking a hide button
+   * Close the alert 
    * 
    * @access public
    */
   public hideAlert(){
-    this.alertC.dismiss();
+    if(this.modalOpened){
+      this.modalC.dismiss().then(_=> this.modalC.dismiss()).catch(Error);
+      this.modalOpened = false;
+    }
+    if(this.alertOpened){
+      this.alertC.dismiss().then(_=> this.alertC.dismiss()).catch(Error);
+      this.alertOpened = false;
+    }
   }
+
+  //
+  // ────────────────────────────────────────────────────────────────────────────────────
+  //   :::::: P R I V A T E   F U N C T I O N S : :  :   :    :     :        :          :
+  // ────────────────────────────────────────────────────────────────────────────────────
+  //
+
+  /**
+   * Open the alert clicking a hide button
+   * 
+   * @access private
+   */
+  private prepareAlerts(){
+    //First set true the rest form. The components which are
+    //subscribed will catch the 'true' and will reset the form.
+    this.resetForm.next(true);
+
+    //When all the form will be reseted (aprox 0.5 seconds) change
+    // the value to false for not being reseting all the time
+    setTimeout(()=>{ this.resetForm.next(false); }, 500);
+  }
+}
