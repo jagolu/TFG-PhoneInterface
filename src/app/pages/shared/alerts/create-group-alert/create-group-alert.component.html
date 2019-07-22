@@ -1,0 +1,24 @@
+<form [formGroup]="createGroupForm" (ngSubmit)="createGroup()">
+  <ion-item>
+    <ion-label position="floating">Nombre del grupo</ion-label>
+    <ion-input type="text" formControlName="name"></ion-input>
+  </ion-item>
+  <ion-text color="danger">
+      <small *ngIf="createGroupForm.controls['name'].errors && 
+            !createGroupForm.controls['name'].pristine && 
+            createGroupForm.controls['name'].errors.required"
+      >Campo obligatorio</small>
+      <small *ngIf="createGroupForm.controls['name'].errors && 
+                  !createGroupForm.controls['name'].pristine && 
+                  createGroupForm.controls['name'].errors.minlength"
+      >Mínimo de 4 caracteres</small>
+      <small *ngIf="createGroupForm.controls['name'].errors && 
+                  !createGroupForm.controls['name'].pristine && 
+                  createGroupForm.controls['name'].errors.maxlength"
+      >Máximo de 20 caracteres</small>
+      <small *ngIf="createGroupForm.controls['name'].errors &&
+                  createGroupForm.controls['name'].errors.groupNameTaken"
+      >Nombre no disponible</small>
+  </ion-text>   
+  <ion-button type="submit" style="margin-top:30px" color="dark" expand="block" fill="outline" [disabled]="!createGroupForm.valid">Crear grupo</ion-button>
+</form>

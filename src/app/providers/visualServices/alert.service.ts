@@ -84,6 +84,26 @@ export class AlertService {
       message: getMessage(AlertType),
       buttons: ['OK']
     }).then(alert => alert.present());
+    this.alertOpened = true;
+  }
+
+  /**
+   * Open the alert showing the form to create
+   * a new group
+   * 
+   * @access public
+   */
+  public openCreateGroup(){
+    this.prepareAlerts();
+    this.modalC.create({
+      component: AlertComponent,
+      componentProps:{
+        'mode': AlertMode.CREATEGROUP,
+        'title': "Crear grupo"
+      }
+    }).then(modal => modal.present());
+    this.modalOpened = true;
+  }
   }
   
   /**
