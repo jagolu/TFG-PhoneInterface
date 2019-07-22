@@ -104,6 +104,27 @@ export class AlertService {
     }).then(modal => modal.present());
     this.modalOpened = true;
   }
+
+  /**
+   * Open the alert showing the delete account 
+   * alert with or without the form
+   * 
+   * @access public
+   * @param {string} email The email of the account
+   * to delete
+   */
+  public deleteAccount(email:string){
+    this.prepareAlerts();
+    this.modalC.create({
+      component: AlertComponent,
+      componentProps:{
+        'mode': AlertMode.DELETEACCOUNT,
+        'title': "Vas a eliminar tu cuenta de usuario. ¿Estás seguro?",
+        "target": email
+      }
+    }).then(modal => modal.present());
+    this.modalOpened = true;
+  }
   }
   
   /**

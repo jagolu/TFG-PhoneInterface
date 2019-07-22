@@ -8,6 +8,7 @@
     <ion-card-content>
 
             <app-create-group-alert *ngIf="mode == 'CREATEGROUP'"></app-create-group-alert>
+            <app-delete-account-alert *ngIf="mode == 'DELETEACCOUNT'" [email]="target"></app-delete-account-alert>
 
     </ion-card-content>
 </ion-card>
