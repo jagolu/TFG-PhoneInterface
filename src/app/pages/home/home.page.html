@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        <h2>Virtual Bet</h2>
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+    <form [formGroup]="_publishNewForm" (ngSubmit)="launchNew()" *ngIf="isAdmin()" class="ion-margin-bottom">
+        <ion-item>
+          <ion-label position="floating">Nueva noticia</ion-label>
+          <ion-input type="text" formControlName="message"></ion-input>
+        </ion-item>
+
+        <ion-button style="margin-top:30px" color="dark" expand="block" fill="outline" type="submit"
+              [disabled]="!_publishNewForm.valid">Publicar</ion-button>
+      </form>    
+</ion-content>

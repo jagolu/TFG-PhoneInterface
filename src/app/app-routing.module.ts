@@ -7,14 +7,9 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
-  {
-    path: 'home',
-    loadChildren: './home/home.module#HomePageModule'
-  },
-  {
-    path: 'logSign',
-    loadChildren: './pages/log-sign/logSign.module#LogSignModule'
-  }
+  { path: 'home', loadChildren: './pages/home/home.module#HomePageModule' },
+  { path: 'logSign', loadChildren: './pages/log-sign/logSign.module#LogSignModule'}
+
 ];
 
 @NgModule({

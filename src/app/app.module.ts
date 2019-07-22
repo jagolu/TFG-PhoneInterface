@@ -41,6 +41,7 @@ import { AppComponent } from './app.component';
 //Pages
 import { LogSignModule } from './pages/log-sign/logSign.module';
 import { SharedModule } from './pages/shared/shared.module';
+import { HomePageModule } from './pages/home/home.module';
 
 
 //Routes
@@ -56,7 +57,8 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule,
     LogSignModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    HomePageModule
   ],
   providers: [
     StatusBar,
