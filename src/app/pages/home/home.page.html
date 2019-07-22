@@ -11,12 +11,13 @@
 
 <ion-content>
     <form [formGroup]="_publishNewForm" (ngSubmit)="launchNew()" *ngIf="isAdmin()" class="ion-margin-bottom">
-        <ion-item>
-          <ion-label position="floating">Nueva noticia</ion-label>
-          <ion-input type="text" formControlName="message"></ion-input>
-        </ion-item>
+      <ion-item>
+        <ion-label position="floating">Nueva noticia</ion-label>
+        <ion-input type="text" formControlName="message"></ion-input>
+      </ion-item>
 
-        <ion-button style="margin-top:30px" color="dark" expand="block" fill="outline" type="submit"
-              [disabled]="!_publishNewForm.valid">Publicar</ion-button>
-      </form>    
+      <ion-button style="margin-top:30px" color="dark" expand="block" fill="outline" type="submit"
+            [disabled]="!_publishNewForm.valid">Publicar</ion-button>
+    </form>    
+    <app-home-viewer [_news]="_news"></app-home-viewer>
 </ion-content>

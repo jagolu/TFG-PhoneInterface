@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NewMessage } from 'src/app/models/models';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HomeService } from 'src/app/providers/restServices/home.service';
@@ -43,16 +43,16 @@ export class HomePage {
   
   /**
    * @constructor
-   * @param {HomeService} __homeS To get the _news
+   * @param {HomeService} __homeS To get the news
    * @param {AuthenticationService} __authS To know if the user is authenticated
    * @param {AdminService} __sessionS To know if the user is an admin
-   * @param {SessionService} __adminS To launch _news
+   * @param {SessionService} __adminS To launch news
    */
   constructor(private __homeS:HomeService, private __authS:AuthenticationService, 
               private __sessionS:SessionService, private __adminS: AdminService) {
     let isAuth = this.__authS.IsAuthenticated();
     let isAdmin = this.__sessionS.isAdmin();
-    this.__homeS.getNews(isAuth && !isAdmin).subscribe((_news:any)=> this._news = _news);
+    this.__homeS.getNews(isAuth && !isAdmin).subscribe((news:any)=> this._news = news);
     this.initializeForm();
   }
 
@@ -70,7 +70,7 @@ export class HomePage {
    */
   public launchNew(){
     let message = this._publishNewForm.controls["message"].value;
-    this.__adminS.publishNew(message).subscribe((_news:any)=>this._news = _news);
+    this.__adminS.publishNew(message).subscribe((news:any)=>this._news = news);
     this.resetForm();
   }
 

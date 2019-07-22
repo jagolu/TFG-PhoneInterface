@@ -6,6 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { HomePage } from './home.page';
+import { HomeViewerComponent } from './home-viewer/home-viewer.component';
+import { ChatTimePipe } from 'src/app/pipes/chat-time.pipe';
 
 const routes: Routes = [
   {
@@ -22,6 +24,6 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [HomePage]
+  declarations: [HomePage, HomeViewerComponent, ChatTimePipe]
 })
 export class HomePageModule {}
