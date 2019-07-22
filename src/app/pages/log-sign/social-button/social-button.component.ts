@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Input } from '@angular/core';
 import { AuthService, FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-login';
 import { AuthenticationService } from 'src/app/providers/restServices/authentication.service';
-import { SocialType } from 'src/app/models/models';
+import { SocialType, AlertInfoType } from 'src/app/models/models';
+import { AlertService } from 'src/app/providers/visualServices/alert.service';
 
 @Component({
   selector: 'app-social-button',
@@ -22,13 +22,14 @@ export class SocialButtonComponent{
   //   :::::: C L A S S   V A R S : :  :   :    :     :        :          :
   // ──────────────────────────────────────────────────────────────────────
   //
-  
+
   /**
-   * To know if we are in the signUp or LogIn Form
+   * To know if is a button to signup or login
    * 
-   * @var {string} path
+   * @access public
+   * @var {Boolean} log
    */
-  private path:string;
+  @Input() log:Boolean = false;
 
 
   //
@@ -42,13 +43,9 @@ export class SocialButtonComponent{
    * @param {AlertService} _alert To launch the social password alert if it is necessary
    * @param {AuthenticationService} _authenticationS To do the request to set the password 
    * @param {AuthService} _authS To do the request to Google or Facebook
-   * @param {ActivatedRoute} aR To know if we are in the LogIn or SignUp Form
    */
-  constructor(/*private _alert:AlertService,*/ private aR:ActivatedRoute,
-        private _authS:AuthService, private _authenticationS:AuthenticationService) { 
-    this.path = "";
-    // this.path = this.aR.snapshot.url[0].path;
-  }
+  constructor(private _alert:AlertService,
+        private _authS:AuthService, private _authenticationS:AuthenticationService) { }
 
 
   //
@@ -67,8 +64,8 @@ export class SocialButtonComponent{
     let providerId = type == SocialType.FACEBOOK ?
       FacebookLoginProvider.PROVIDER_ID : GoogleLoginProvider.PROVIDER_ID;
       
-    if(this.path == "signUp"){
-      //this._alert.socialPasswordForm(providerId);
+    if(!this.log){
+      this._alert.socialPasswordForm(providerId);
     }
     else{
       this._authS.signIn(providerId).then(user=>{
@@ -80,9 +77,10 @@ export class SocialButtonComponent{
           "id": user.id,
           "socialProvider": type,
           "urlImage":user.photoUrl,
-          "password": null
+          "password": null,
+          "provider": true
         });
-      })//.catch(_=> this._alert.openAlertInfo(AlertInfoType.SOCIALERROR));
+      }).catch(_=> this._alert.openAlertInfo(AlertInfoType.SOCIALERROR));
     }
   }
 }

@@ -44,7 +44,8 @@ export class LogInPage {
   public logIn(){
     this._authentication.logIn({
       'email' : this.logInForm.controls['email'].value,
-      'password': this.logInForm.controls['password'].value
+      'password': this.logInForm.controls['password'].value,
+      "provider": true
     }).subscribe(
       _=>{},
       _=> this.resetForm(false)

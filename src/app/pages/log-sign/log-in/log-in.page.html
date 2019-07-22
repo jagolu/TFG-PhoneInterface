@@ -14,7 +14,7 @@
     <ion-card-header>
       <ion-card-title>
         <ion-row justify-content-center>
-          <ion-col size="6" align-self-center>
+          <ion-col size="12" align-self-center>
             <div class="ion-text-center">Iniciar Sesión</div>
           </ion-col>
         </ion-row>   
@@ -62,13 +62,14 @@
           <small>Ver contraseña <app-icon [Icon]="eye_icon" (click)="watchPassword()"></app-icon></small>
         </ion-text> 
 
-        <ion-button style="margin-top:30px" color="dark" expand="block" fill="outline" [disabled]="!logInForm.valid">Iniciar sesión</ion-button>
+        <ion-button style="margin-top:30px" color="dark" expand="block" fill="outline" type="submit"
+              [disabled]="!logInForm.valid">Iniciar sesión</ion-button>
       </form>       
       <div class="hr"></div>
-      <app-social-button></app-social-button>
+      <app-social-button [log]="true"></app-social-button>
       <div class="hr"></div>
       <p class="ion-text-center">
-        <a [routerLink]="['/rememberPassword']" >¿Has olvidado la contraseña?</a>                        
+        <a [routerLink]="['/logSign/rememberPassword']" >¿Has olvidado la contraseña?</a>                        
       </p>
     </ion-card-content>
   </ion-card>

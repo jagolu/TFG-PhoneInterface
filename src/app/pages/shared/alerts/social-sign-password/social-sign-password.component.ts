@@ -174,7 +174,8 @@ export class SocialSignPasswordComponent {
         "id": user.id,
         "socialProvider": type,
         "urlImage":user.photoUrl,
-        "password": pass
+        "password": pass,
+        "provider": true
       });
     });
   }
