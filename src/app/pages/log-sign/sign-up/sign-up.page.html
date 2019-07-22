@@ -81,14 +81,15 @@
         </ion-text> 
         <ion-item>
           <ion-label position="floating">Repetir contraseña </ion-label>
-          <ion-input type="{{passwordType}}" formControlName="repeatPassword"></ion-input>
+          <ion-input type="{{passwordType}}" formControlName="repeatPassword" (keyup)="equalPassword()"></ion-input>
         </ion-item>
         <ion-text color="secondary">
           <br>
           <small>Ver contraseñas <app-icon [Icon]="icon_eye" (click)="watchPassword()"></app-icon></small>
         </ion-text> 
 
-        <ion-button style="margin-top:30px" color="dark" expand="block" fill="outline" [disabled]="!signUpForm.valid || !passwordsAreEqual">Registrarse</ion-button>
+        <ion-button style="margin-top:30px" color="dark" expand="block" fill="outline" type="submit"
+                  [disabled]="!signUpForm.valid || !passwordsAreEqual">Registrarse</ion-button>
       </form>       
       <div class="hr"></div>
       <app-social-button [log]="false"></app-social-button>

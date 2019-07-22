@@ -62,7 +62,8 @@
           <small>Ver contraseña <app-icon [Icon]="eye_icon" (click)="watchPassword()"></app-icon></small>
         </ion-text> 
 
-        <ion-button style="margin-top:30px" color="dark" expand="block" fill="outline" [disabled]="!logInForm.valid">Iniciar sesión</ion-button>
+        <ion-button style="margin-top:30px" color="dark" expand="block" fill="outline" type="submit"
+              [disabled]="!logInForm.valid">Iniciar sesión</ion-button>
       </form>       
       <div class="hr"></div>
       <app-social-button [log]="true"></app-social-button>
