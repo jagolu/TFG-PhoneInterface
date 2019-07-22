@@ -65,7 +65,8 @@ export class SignUpPage{
     this._authentication.signUp({
       'email' : this.signUpForm.controls['email'].value,
       'username': this.signUpForm.controls['username'].value,
-      'password': this.signUpForm.controls['password'].value
+      'password': this.signUpForm.controls['password'].value,
+      "provider": true
     }).subscribe(
       _=> this.resetForm(true),
       _=> this.resetForm(false)

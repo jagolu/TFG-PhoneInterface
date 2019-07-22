@@ -80,7 +80,8 @@ export class SocialButtonComponent{
           "id": user.id,
           "socialProvider": type,
           "urlImage":user.photoUrl,
-          "password": null
+          "password": null,
+          "provider": true
         });
       })//.catch(_=> this._alert.openAlertInfo(AlertInfoType.SOCIALERROR));
     }

@@ -174,7 +174,8 @@ export class AuthenticationService extends Rest {
    */
   public refreshToken():Observable<any>{
     return this.postRequest({
-      "token": this._sessionS.getAPIToken()
+      "token": this._sessionS.getAPIToken(),
+      "provider": true
     }, this._authPath+"Refresh");
   }
 
