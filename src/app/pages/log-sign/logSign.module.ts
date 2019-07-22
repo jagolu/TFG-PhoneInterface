@@ -10,6 +10,7 @@ import { SocialLoginModule } from 'angularx-social-login';
 import { SocialButtonComponent } from './social-button/social-button.component';
 import { SignUpPage } from './sign-up/sign-up.page';
 import { SharedModule } from '../shared/shared.module';
+import { RememberPasswordPage } from './remember-password/remember-password.page';
 
 
 @NgModule({
@@ -28,10 +29,14 @@ import { SharedModule } from '../shared/shared.module';
       {
         path: 'signUp',
         component: SignUpPage
+      },
+      {
+        path: 'rememberPassword',
+        component: RememberPasswordPage
       }
     ])
   ],
-  declarations: [SocialButtonComponent, LogInPage, SignUpPage],
+  declarations: [SocialButtonComponent, LogInPage, SignUpPage, RememberPasswordPage],
   exports: [RouterModule]
 })
 export class LogSignModule {}
