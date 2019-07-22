@@ -37,6 +37,24 @@ export class AlertService {
    * @var {Observable} reset
    */
   public reset = this.resetForm.asObservable();
+  
+  /**
+   * The behaviour to fill the alert with an object info
+   * 
+   * @access private
+   * @var {BehaviorSubject<DoAFootballBet>} objectInfo
+   */
+  // private objectInfo = new BehaviorSubject<any>(null);
+
+  /**
+   * The data to fill the alerts when they need extra info
+   * at which the other components will subscribe at
+   * 
+   * @access public
+   * @var {Observable} reset
+   */
+  // public oInfo = this.objectInfo.asObservable();
+  
   /**
    * Says if the alert is launched or not
    * 
@@ -193,6 +211,83 @@ export class AlertService {
     }).then(modal => modal.present());
     this.modalOpened = true;
   }
+
+  /**
+   * Open the alert showing a form to do a
+   * user football bet
+   * 
+   * @param {GroupBet} bet The info of the bet 
+   * @param {number} coins The actual coins of the user
+   */
+  // public doAFootballBet(bet:GroupBet, coins:number){
+  //   this.setTitle(bet.betName);
+  //   // this.changeAlertMode(AlertMode.FOOTBALLBET);
+  //   this.objectInfo.next({
+  //     "bet":bet,
+  //     "userCoins": coins
+  //   });
+  //   this.prepareAlerts();
+  // }
+
+  /**
+   * Open the alert showing the info and button
+   * to cancel a user football bet
+   * 
+   * @param {GroupBet} bet The info of the bet
+   * @param {number} user_coins The coins bet by the user
+   * @param {string} userFootballBet The id of the userFootballBet
+   */
+  // public cancelUserFootballBet(bet:GroupBet, user_coins:number, userFootballBet:string){
+  //   this.setTitle("You are going to cancel your bet!");
+  //   // this.changeAlertMode(AlertMode.CANCELUSERFOOTBALLBET);
+  //   this.objectInfo.next({
+  //     "bet":bet,
+  //     "userCoins": user_coins
+  //   });
+  //   this.setTarget(userFootballBet);
+  //   this.prepareAlerts();
+  // }
+
+  /**
+   * Open the alert showing the message when a user wants to
+   * cancel a football bet
+   * 
+   * @param {string} betId The id of the football bet
+   */
+  // public cancelFootballBet(betId:string){
+  //   this.setTitle("Estas a punto de cancelar el evento de apuesta!");
+  //   // this.changeAlertMode(AlertMode.CANCELFOOTBALLBET);
+  //   this.setTarget(betId);
+  //   this.prepareAlerts();
+  // }
+
+  /**
+   * Open the alert showing the groups of an
+   * user and their info
+   * 
+   * @param {UserInGroupSearch[]} groups The info of the groups
+   * @param {username} string The username of the user
+   */
+  // public seeUserGroups(groups:UserInGroupSearch[], username:string){
+  //   this.setTitle(`${username} groups`);
+  //   // this.changeAlertMode(AlertMode.SEEUSERGROUPS_ADMIN);
+  //   this.objectInfo.next(groups);
+  //   this.prepareAlerts();
+  // }
+
+  /**
+   * Open the alert showing the members of an
+   * group and their info
+   * 
+   * @param {GroupMemberAdmin[]} members The info of the members
+   * @param {groupName} string The name of the group
+   */
+  // public seeGroupMembers(members:GroupMemberAdmin[], groupName:string){
+  //   this.setTitle(`${groupName} members`);
+  //   // this.changeAlertMode(AlertMode.SEEGROUPMEMBERS_ADMIN);
+  //   this.objectInfo.next(members);
+  //   this.prepareAlerts();
+  // }
   
   /**
    * Close the alert 
