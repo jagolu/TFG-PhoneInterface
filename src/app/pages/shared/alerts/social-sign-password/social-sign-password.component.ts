@@ -79,18 +79,6 @@ export class SocialSignPasswordComponent {
    * @param {AlertService} _alertS To get the data to rightly do the alert
    */
   constructor(private _authenticationS:AuthenticationService, private _authS:AuthService, private _alertS:AlertService) { 
-    // this._alertS.target.subscribe(target =>{
-    //   if(this.passwordType != "password"){
-    //     this.eye.eR.nativeElement.click();
-    //     this.eye.icon.style.color = "black"
-    //     this.passwordType = "password";
-    //   }
-    //   this.providerId = target;
-    //   this.equalPasswords = false;
-    //   this.initializeForm();
-    // });
-
-    
     this.initializeForm();
     this._alertS.reset.subscribe(reset=>{ 
       if(reset) this.resetForm();
@@ -99,7 +87,7 @@ export class SocialSignPasswordComponent {
         this.eye.icon.style.color = "black"
         this.passwordType = "password";
       }
-      // this.providerId = target;
+      
       this.equalPasswords = false;
     });
   }
@@ -120,9 +108,6 @@ export class SocialSignPasswordComponent {
   public setPassword(){
     this._alertS.hideAlert();
     
-    //Bootstrap modal close on form submit. So, I have to
-    //show 2 modals, so first hide that and in 0.35 seconds
-    //send the petition and show the modal of the response
     setTimeout(this.setPasswordRequest.bind(this), 350);
   }
 
