@@ -8,7 +8,8 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   { path: 'home', loadChildren: './pages/home/home.module#HomePageModule' },
-  { path: 'logSign', loadChildren: './pages/log-sign/logSign.module#LogSignModule'}
+  { path: 'logSign', loadChildren: './pages/log-sign/logSign.module#LogSignModule'},  { path: 'user', loadChildren: './pages/user/user.module#UserPageModule' }
+
 
 ];
 
