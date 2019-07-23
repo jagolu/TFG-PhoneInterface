@@ -61,7 +61,7 @@ export class LoadingService{
    */
   public stopLoading(){
     if(!this.isLoading) return;
-    this.loadingC.dismiss();
+    this.loadingC.dismiss().then(_=> this.loadingC.dismiss()).catch(Error);
     this.isLoading = false;
   }
 }
