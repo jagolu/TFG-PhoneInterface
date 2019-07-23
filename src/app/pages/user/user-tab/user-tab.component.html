@@ -9,15 +9,9 @@
       <ion-icon name="contact"></ion-icon>
     </ion-tab-button>
 
-    <ion-tab-button tab="groups">
+    <ion-tab-button tab="groups" *ngIf="!isAdmin() && hasGroups">
       <ion-icon name="people"></ion-icon>
       <ion-label>Grupos</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>
-
-<!-- <ion-tabs>
-  <ion-tab [root]="userOptionsTab" tabTitle="Opciones" tabIcon="information-circle-outline"></ion-tab>
-  <ion-tab [root]="userInfoTab" tabTitle="About" tabIcon="contact"></ion-tab>
-  <ion-tab [root]="userGroupsTab" tabTitle="Grupos" tabIcon="people"></ion-tab>
-</ion-tabs> -->
