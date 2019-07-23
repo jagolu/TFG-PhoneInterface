@@ -25,9 +25,9 @@ export class AlertService {
    * The behaviour of the trigger to reset the form of the alerts
    * 
    * @access private
-   * @var {BehaviorSubject<boolean>} resetForm
+   * @var {BehaviorSubject<boolean>} __resetForm
    */
-  private resetForm = new BehaviorSubject<boolean>(false);
+  private __resetForm = new BehaviorSubject<boolean>(false);
 
   /**
    * The filter to reset the form of the alerts
@@ -36,7 +36,7 @@ export class AlertService {
    * @access public
    * @var {Observable} reset
    */
-  public reset = this.resetForm.asObservable();
+  public reset = this.__resetForm.asObservable();
   
   /**
    * The behaviour to fill the alert with an object info
@@ -59,17 +59,17 @@ export class AlertService {
    * Says if the alert is launched or not
    * 
    * @access private
-   * @var {Boolean} alertOpened
+   * @var {Boolean} __alertOpened
    */
-  private alertOpened:Boolean = false;
+  private __alertOpened:Boolean = false;
 
   /**
    * Says if the modal is launched or not
    * 
    * @access private
-   * @var {Boolean} modalOpened
+   * @var {Boolean} __modalOpened
    */
-  private modalOpened:Boolean = false;
+  private __modalOpened:Boolean = false;
 
   //
   // ──────────────────────────────────────────────────────────────────────────
@@ -79,8 +79,10 @@ export class AlertService {
 
   /**
    * @constructor
+   * @param {AlertController} __alertC To control the ionic alert view
+   * @param {ModalController} __modalC To control the ionic modal view
    */
-  constructor(private alertC:AlertController, private modalC:ModalController) { }
+  constructor(private __alertC:AlertController, private __modalC:ModalController) { }
 
 
   //
@@ -97,12 +99,12 @@ export class AlertService {
    * the info alert to show the correct message
    */
   public openAlertInfo(AlertType:AlertInfoType){
-    this.alertC.create({
+    this.__alertC.create({
       header: 'Atención!',
       message: getMessage(AlertType),
       buttons: ['OK']
     }).then(alert => alert.present());
-    this.alertOpened = true;
+    this.__alertOpened = true;
   }
 
   /**
@@ -113,14 +115,14 @@ export class AlertService {
    */
   public openCreateGroup(){
     this.prepareAlerts();
-    this.modalC.create({
+    this.__modalC.create({
       component: AlertComponent,
       componentProps:{
         'mode': AlertMode.CREATEGROUP,
         'title': "Crear grupo"
       }
     }).then(modal => modal.present());
-    this.modalOpened = true;
+    this.__modalOpened = true;
   }
 
   /**
@@ -133,7 +135,7 @@ export class AlertService {
    */
   public deleteAccount(email:string){
     this.prepareAlerts();
-    this.modalC.create({
+    this.__modalC.create({
       component: AlertComponent,
       componentProps:{
         'mode': AlertMode.DELETEACCOUNT,
@@ -141,7 +143,7 @@ export class AlertService {
         "target": email
       }
     }).then(modal => modal.present());
-    this.modalOpened = true;
+    this.__modalOpened = true;
   }
 
   /**
@@ -158,7 +160,7 @@ export class AlertService {
     // this.prepareAlerts();
 
     this.prepareAlerts();
-    this.modalC.create({
+    this.__modalC.create({
       component: AlertComponent,
       componentProps:{
         'mode': AlertMode.SOCIALPASSWORD,
@@ -166,7 +168,7 @@ export class AlertService {
         "target": type
       }
     }).then(modal => modal.present());
-    this.modalOpened = true;
+    this.__modalOpened = true;
   }
 
   /**
@@ -179,7 +181,7 @@ export class AlertService {
    */
   public deleteGroup(groupName:string){
     this.prepareAlerts();
-    this.modalC.create({
+    this.__modalC.create({
       component: AlertComponent,
       componentProps:{
         'mode': AlertMode.DELETEGROUP,
@@ -187,7 +189,7 @@ export class AlertService {
         "target": groupName
       }
     }).then(modal => modal.present());
-    this.modalOpened = true;
+    this.__modalOpened = true;
   }
 
   /**
@@ -200,7 +202,7 @@ export class AlertService {
    */
   public joinGroup(needPass:boolean, groupName:string){
     this.prepareAlerts();
-    this.modalC.create({
+    this.__modalC.create({
       component: AlertComponent,
       componentProps:{
         'mode': AlertMode.JOINGROUP,
@@ -209,7 +211,7 @@ export class AlertService {
         "needPassword": needPass
       }
     }).then(modal => modal.present());
-    this.modalOpened = true;
+    this.__modalOpened = true;
   }
 
   /**
@@ -295,13 +297,13 @@ export class AlertService {
    * @access public
    */
   public hideAlert(){
-    if(this.modalOpened){
-      this.modalC.dismiss().then(_=> this.modalC.dismiss()).catch(Error);
-      this.modalOpened = false;
+    if(this.__modalOpened){
+      this.__modalC.dismiss().then(_=> this.__modalC.dismiss()).catch(Error);
+      this.__modalOpened = false;
     }
-    if(this.alertOpened){
-      this.alertC.dismiss().then(_=> this.alertC.dismiss()).catch(Error);
-      this.alertOpened = false;
+    if(this.__alertOpened){
+      this.__alertC.dismiss().then(_=> this.__alertC.dismiss()).catch(Error);
+      this.__alertOpened = false;
     }
   }
 
@@ -319,10 +321,10 @@ export class AlertService {
   private prepareAlerts(){
     //First set true the rest form. The components which are
     //subscribed will catch the 'true' and will reset the form.
-    this.resetForm.next(true);
+    this.__resetForm.next(true);
 
     //When all the form will be reseted (aprox 0.5 seconds) change
     // the value to false for not being reseting all the time
-    setTimeout(()=>{ this.resetForm.next(false); }, 500);
+    setTimeout(()=>{ this.__resetForm.next(false); }, 500);
   }
 }

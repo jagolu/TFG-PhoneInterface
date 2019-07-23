@@ -18,7 +18,7 @@ export class LoadingService{
    * @access private
    * @var {boolean} isLoading
    */
-  private isLoading:boolean;
+  private __isLoading:boolean;
 
 
   //
@@ -29,9 +29,10 @@ export class LoadingService{
   
   /**
    * @constructor
+   * @param {LoadingController} __loadingC To control the ionic loading view
    */
-  constructor(private loadingC:LoadingController) { 
-    this.isLoading = false;
+  constructor(private __loadingC:LoadingController) { 
+    this.__isLoading = false;
   }
 
 
@@ -47,11 +48,11 @@ export class LoadingService{
    * @access public
    */
   public startLoading(){
-    if(this.isLoading) return;
-    this.loadingC.create({
+    if(this.__isLoading) return;
+    this.__loadingC.create({
       message: "Espera un momento..."
     }).then(loading=> loading.present());
-    this.isLoading = true;
+    this.__isLoading = true;
   }
 
   /**
@@ -60,8 +61,8 @@ export class LoadingService{
    * @access public
    */
   public stopLoading(){
-    if(!this.isLoading) return;
-    this.loadingC.dismiss().then(_=> this.loadingC.dismiss()).catch(Error);
-    this.isLoading = false;
+    if(!this.__isLoading) return;
+    this.__loadingC.dismiss().then(_=> this.__loadingC.dismiss()).catch(Error);
+    this.__isLoading = false;
   }
 }

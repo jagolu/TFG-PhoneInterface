@@ -24,17 +24,17 @@ export class SessionService {
    * 
    * @access private
    * @readonly
-   * @var {string} sessionStorageKey
+   * @var {string} __sessionStorageKey
    */
-  private readonly sessionStorageKey = "session";
+  private readonly __sessionStorageKey = "session";
 
   /**
    * The var to save the sessionStorage info
    * 
    * @access private
-   * @var {BehaviorSubject<Session>} user
+   * @var {BehaviorSubject<Session>} __user
    */
-  private user = new BehaviorSubject<Session>(null);
+  private __user = new BehaviorSubject<Session>(null);
 
   /**
    * The var at which other components will subscribe to
@@ -43,7 +43,7 @@ export class SessionService {
    * @access public
    * @var {Observable} User
    */
-  public User = this.user.asObservable();
+  public User = this.__user.asObservable();
 
 
   //
@@ -133,7 +133,7 @@ export class SessionService {
    */
   public setSession(user: SessionStorage):void{
     sessionStorage.setItem(
-      this.sessionStorageKey, JSON.stringify({
+      this.__sessionStorageKey, JSON.stringify({
         "api_token":user.api_token,
         "role":user.role,
         "username": user.username,
@@ -171,7 +171,7 @@ export class SessionService {
    * @access public
    */
   public removeSession():void{
-    sessionStorage.removeItem(this.sessionStorageKey);
+    sessionStorage.removeItem(this.__sessionStorageKey);
     this.updateUser(null);
   }
 
@@ -243,7 +243,7 @@ export class SessionService {
    * @return {Object} The session info
    */
   private getSession():SessionStorage{
-    return JSON.parse(sessionStorage.getItem(this.sessionStorageKey));
+    return JSON.parse(sessionStorage.getItem(this.__sessionStorageKey));
   }
 
   /**
@@ -269,7 +269,7 @@ export class SessionService {
    * @param {Session} user The session info to update 
    */
   private updateUser(user:Session):void{
-    this.user.next(user);
+    this.__user.next(user);
   }
   
   /**
