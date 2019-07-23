@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -10,24 +10,8 @@ import { SessionService } from './providers/userServices/session.service';
   selector: 'app-root',
   templateUrl: 'app.component.html'
 })
-export class AppComponent {
-  public appPages = [
-    {
-      title: 'Inicio',
-      url: '/home',
-      icon: 'home'
-    },
-    {
-      title: 'Iniciar sesión',
-      url: '/logSign/logIn',
-      icon: 'person'
-    },
-    {
-      title: 'Registrarse',
-      url: '/logSign/signUp',
-      icon: 'person-add'
-    }
-  ];
+export class AppComponent implements OnInit{
+  public username = "";
 
   constructor(
     private platform: Platform,
@@ -39,6 +23,13 @@ export class AppComponent {
     this.initializeApp();
   }
 
+  ngOnInit(){
+    this._sessioS.User.subscribe(u=>{
+      try{this.username = u.username}
+      catch(Exception){this.username = ""}
+    });
+  }
+
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
@@ -46,16 +37,8 @@ export class AppComponent {
     });
   }
 
-  public show(title:string){
-    let isAuth = this._authS.IsAuthenticated();
-    if(title=="Iniciar sesión" || title=="Registrarse") return !isAuth;
-    else if(title=="Inicio") return true;
-    else if(title=="logOut") return isAuth;
-    return isAuth;
-  }
-
-  public isAdmin(){
-    return this._sessioS.isAdmin();
+  public isAuthenticated(){
+    return this._authS.IsAuthenticated();
   }
 
   public logOut(){

@@ -10,20 +10,50 @@
 
 
       <ion-content>
-        <ion-list>
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]" *ngIf="show(p.title)">
-              <ion-icon slot="start" [name]="p.icon"></ion-icon>
-              <ion-label>
-                {{p.title}}
-              </ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
+
+        <ion-menu-toggle auto-hide="false">
+          <ion-item [routerDirection]="'root'" [routerLink]="'/home'">
+            <ion-icon slot="start" [name]="'home'"></ion-icon>
+            <ion-label>Home</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle auto-hide="false" *ngIf="isAuthenticated()">
+          <ion-item [routerDirection]="'root'" [routerLink]="'/home'">
+            <ion-icon slot="start" [name]="'person'"></ion-icon>
+            <ion-label>{{username}}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+
+
+
+
+
+
+
+
+
+
+
+        <ion-menu-toggle auto-hide="false">
+          <ion-item [routerDirection]="'root'" [routerLink]="'/logSign/logIn'" *ngIf="!isAuthenticated()">
+            <ion-icon slot="start" [name]="'person'"></ion-icon>
+            <ion-label>Iniciar sesión</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle auto-hide="false">
+          <ion-item [routerDirection]="'root'" [routerLink]="'/logSign/signUp'" *ngIf="!isAuthenticated()">
+            <ion-icon slot="start" [name]="'person-add'"></ion-icon>
+            <ion-label>Iniciar sesión</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
       </ion-content>
 
 
-      <ion-footer no-shadow  *ngIf="show('logOut')">
+      <ion-footer no-shadow *ngIf="isAuthenticated()">
           <ion-toolbar position="bottom">
             <ion-menu-toggle>
               <ion-item [routerDirection]="'root'" [routerLink]="['/logSign/logIn']" (click)="logOut()">
