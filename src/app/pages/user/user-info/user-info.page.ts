@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { UserInfo } from 'src/app/models/models';
 import { UserService } from 'src/app/providers/restServices/user.service';
 import { UserInfoService } from 'src/app/providers/userServices/user-info.service';
 import { SessionService } from 'src/app/providers/userServices/session.service';
+import { UserInfo } from 'src/app/models/models';
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.page.html',
+  selector: 'app-user-info',
+  templateUrl: './user-info.page.html',
   styles: [
     '.img{max-height: 500px; width: auto; padding:0.5em;display: block;margin-left: auto;margin-right: auto;}'
   ],
 })
-export class UserPage implements OnInit {
+export class UserInfoPage implements OnInit {
 
   //
   // ──────────────────────────────────────────────────────────────────────
