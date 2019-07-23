@@ -11,6 +11,7 @@ import { UserTabComponent } from './user-tab/user-tab.component';
 import { UserInfoPage } from './user-info/user-info.page';
 import { UserGroupsPage } from './user-groups/user-groups.page';
 import { UserOptionsPage } from './user-options/user-options.page';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { UserOptionsPage } from './user-options/user-options.page';
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
+    SharedModule,
     RouterModule.forChild([
       {
         path: 'main',
