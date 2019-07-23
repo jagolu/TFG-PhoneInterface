@@ -210,6 +210,12 @@ export function getMessage(type:AlertInfoType){
         msg = "Grupo desbloqueado con exito.";
         break;
       }
+      case AlertInfoType.DELETEREQUEST:{
+        msg = "Hace poco nos pediste eliminar la cuenta.\n"+
+          "Como aun no se han borrado los datos completamente, puedes iniciar sesión con normalidad.\n"+ 
+          "Al hacerlo cancelaremos el proceso de eliminación de cuenta.";
+        break;
+      }
       default:{
         msg = "";
         break;
