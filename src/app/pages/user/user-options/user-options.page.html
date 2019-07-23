@@ -1,4 +1,91 @@
-<p>
-  user-groups works!
-</p>
-  
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <h2>Opciones de usuario</h2>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="nicknameForm" (ngSubmit)="changeNickname()" *ngIf="!isAdmin()">
+        <ion-item>
+          <ion-label position="floating">Nombre de usuario</ion-label>
+          <ion-input type="text" formControlName="nickname"></ion-input>
+        </ion-item>
+        <ion-text color="danger">
+            <small *ngIf="nicknameForm.controls['nickname'].errors && 
+                  !nicknameForm.controls['nickname'].pristine && 
+                  nicknameForm.controls['nickname'].errors.required"
+              >Campo obligatorio.</small>
+              <small *ngIf="nicknameForm.controls['nickname'].errors && 
+                  !nicknameForm.controls['nickname'].pristine && 
+                  nicknameForm.controls['nickname'].errors.minlength"
+              >Mínimo de 4 caracteres.</small>
+              <small *ngIf="nicknameForm.controls['nickname'].errors && 
+                  !nicknameForm.controls['nickname'].pristine && 
+                  nicknameForm.controls['nickname'].errors.maxlength"
+              >Máximo de 20 caracteres.</small>
+        </ion-text>   
+    
+        <ion-button style="margin-top:30px" color="dark" expand="block" fill="outline" type="submit"
+                  [disabled]="!nicknameForm.valid || !passwordsAreEqual">Cambiar nombre de usuario</ion-button>
+    </form>    
+
+    <div class="hr" style="margin-top: 40px" *ngIf="!isAdmin()"></div>
+
+
+    <form [formGroup]="passwordForm" (ngSubmit)="changePassword()">
+        <ion-item>
+            <ion-label position="floating">Antigua contraseña</ion-label>
+            <ion-input type="password" formControlName="oldPassword"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Nueva contraseña contraseña </ion-label>
+            <ion-input type="password" formControlName="newPassword" (keyup)="equalPassword()"></ion-input>
+          </ion-item>
+          <ion-text color="danger">
+              <small *ngIf="passwordForm.controls['newPassword'].errors && 
+                  !passwordForm.controls['newPassword'].pristine && 
+                  passwordForm.controls['newPassword'].errors.minlength"
+              >Mínimo de 8 caracteres.<br></small>
+              <small *ngIf="passwordForm.controls['newPassword'].errors && 
+                  !passwordForm.controls['newPassword'].pristine && 
+                  passwordForm.controls['newPassword'].errors.maxlength"
+              ><br>Máximo de 50 caracteres<br></small>
+              <small *ngIf="passwordForm.controls['newPassword'].errors && 
+                  !passwordForm.controls['newPassword'].pristine && 
+                  passwordForm.controls['newPassword'].errors.pattern"
+              >Debe tener almenos una mayúscula, una minúscula y un número.<br></small>
+              <small *ngIf=" !passwordForm.controls['newPassword'].pristine && 
+                  !equalPasswords"
+              >Las contraseñas no coinciden.<br></small>
+          </ion-text> 
+          <ion-item>
+            <ion-label position="floating">Repetir contraseña </ion-label>
+            <ion-input type="password" formControlName="repeatPassword" (keyup)="equalPassword()"></ion-input>
+          </ion-item>
+    
+        <ion-button style="margin-top:30px" color="dark" expand="block" fill="outline" type="submit"
+                  [disabled]="!passwordForm.valid || !equalPasswords">Cambiar contraseña</ion-button>
+    </form>    
+
+    <div class="hr" style="margin-top: 40px" *ngIf="!isAdmin()"></div>
+
+    <form [formGroup]="imageForm" (ngSubmit)="changeImg()" *ngIf="!isAdmin()">
+        <ion-item>
+          <ion-input type="file" formControlName="userImage" (change)="loadFile($event)" id="newUserFileInput"></ion-input>
+        </ion-item>
+    
+        <ion-button style="margin-top:30px" color="dark" expand="block" fill="outline" type="submit"
+                  [disabled]="!imageForm.valid || isAdmin()">Cambiar foto de perfil</ion-button>
+    </form>   
+
+    <div class="hr" style="margin-top: 40px" *ngIf="!isAdmin()"></div>
+
+    <ion-button style="margin-top:30px" color="danger" expand="block" type="submit" *ngIf="!isAdmin()"
+               (click)="openAlert()"   [disabled]="isAdmin()">Eliminar cuenta</ion-button>
+</ion-content>
+      
