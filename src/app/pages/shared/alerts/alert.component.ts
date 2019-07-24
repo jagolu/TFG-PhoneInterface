@@ -79,9 +79,22 @@ export class AlertComponent{
   
   /**
    * @constructor
+   * @param {ModalController} __modalC To close the modal
    */
   constructor(private __modalC:ModalController) { }
 
+
+  //
+  // ──────────────────────────────────────────────────────────────────────────────────
+  //   :::::: P U B L I C   F U N C T I O N S : :  :   :    :     :        :          :
+  // ──────────────────────────────────────────────────────────────────────────────────
+  //
+
+  /**
+   * Hides them modal
+   * 
+   * @access public
+   */
   public hide(){
     this.__modalC.dismiss();
   }
