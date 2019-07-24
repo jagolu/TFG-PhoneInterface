@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <h2 *ngIf="joinGroups">Unirse a un grupo</h2>
+      <h2 *ngIf="!joinGroups">Grupos</h2>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-searchbar #groupname (keyup)="search(groupname.value)"></ion-searchbar>
+    
+    <ion-list>
+        <ion-item>
+          <ion-label>
+            <ion-row>
+              <ion-col size=5 size-lg=5 class="ion-text-center" *ngIf="!isAdmin()">Nombre</ion-col>
+              <ion-col size=5 size-lg=4 class="ion-text-center" *ngIf="isAdmin()">Nombre</ion-col>
+
+
+              <ion-col class="ion-text-center" size=3 size-lg=1 *ngIf="isAdmin()">Aforo</ion-col>
+              <ion-col class="ion-text-center" size=3 size-lg=2 *ngIf="!isAdmin()">Aforo</ion-col>
+
+
+              <ion-col size=4 size-lg=2 class="ion-text-center">Fecha de creación</ion-col>
+            </ion-row>
+
+          </ion-label>
+        </ion-item>
+        
+      <div *ngFor="let group of groups">
+          <ion-item *ngIf="!isJoinedInGroup(group.name)">
+            <ion-label>
+              <ion-row>
+                <ion-col size=5 size-lg=5 class="ion-text-center" *ngIf="!isAdmin()">
+                  {{group.name}}  <app-icon [Icon]="icon_key" *ngIf="group.password"></app-icon>
+                </ion-col>
+                <ion-col size=5 size-lg=4 class="ion-text-center" *ngIf="isAdmin()">
+                  {{group.name}}  <app-icon [Icon]="icon_key" *ngIf="group.password"></app-icon>
+                </ion-col>
+
+
+
+                <ion-col class="ion-text-center" size=3 size-lg=1 *ngIf="isAdmin()">{{ group.placesOcupped }}/{{ group.totalPlaces }}</ion-col>
+                <ion-col class="ion-text-center" size=3 size-lg=2 *ngIf="!isAdmin()">{{ group.placesOcupped }}/{{ group.totalPlaces }}</ion-col>
+
+
+                <ion-col size=4 size-lg=2 class="ion-text-center">{{ group.dateCreate | onlyDatePipe }}</ion-col>
+
+
+                <ion-col size-lg=3 size=12>
+                      <ion-button color="dark" expand="block" fill="outline" 
+                      *ngIf="joinGroups && group.placesOcupped<group.totalPlaces"
+                      (click)="joinGroup(group.name, group.password)">Unirse</ion-button>
+
+                      <ion-button color="dark" expand="block" disabled
+                      *ngIf="joinGroups && group.placesOcupped>=group.totalPlaces">Completo!</ion-button>
+
+                      <ion-button color="dark" expand="block" fill="outline" *ngIf="!joinGroups"
+                          (click)="watchUsers(group.members, group.name)">Usuarios</ion-button>
+                </ion-col>
+
+                <ion-col size-lg=2 size=12 *ngIf="isAdmin()">
+                    <ion-button color="danger" expand="block"
+                    *ngIf="group.open" (click)="banGroup(group.name, true)">Bloquear</ion-button>
+
+                    <ion-button color="danger" expand="block" fill="outline"
+                    *ngIf="!group.open" (click)="banGroup(group.name, false)">Desbloquear</ion-button>
+
+                </ion-col>
+              </ion-row>
+
+            </ion-label>
+          </ion-item>
+      </div>
+
+
+
+    </ion-list>
+</ion-content>

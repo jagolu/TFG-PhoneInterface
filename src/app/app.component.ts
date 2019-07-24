@@ -41,6 +41,10 @@ export class AppComponent implements OnInit{
     return this._authS.IsAuthenticated();
   }
 
+  public isAdmin(){
+    return this._sessioS.isAdmin();
+  }
+
   public logOut(){
     this._authS.logOut();
   }

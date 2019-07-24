@@ -25,6 +25,21 @@
           </ion-item>
         </ion-menu-toggle>
 
+        <ion-menu-toggle auto-hide="false" *ngIf="isAuthenticated() && !isAdmin()">
+          <ion-item [routerDirection]="'root'" [routerLink]="'/search-group'">
+            <ion-icon slot="start" [name]="'people'"></ion-icon>
+            <ion-label>Unirse a un grupo</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+
+        <ion-menu-toggle auto-hide="false" *ngIf="isAuthenticated() && isAdmin()">
+          <ion-item [routerDirection]="'root'" [routerLink]="'/search-group'">
+            <ion-icon slot="start" [name]="'people'"></ion-icon>
+            <ion-label>Grupos</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
 
 
 
