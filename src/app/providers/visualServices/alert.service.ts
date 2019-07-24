@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AlertInfoType, AlertMode, GroupBet, UserInGroupSearch, GroupMemberAdmin } from 'src/app/models/models';
+import { AlertInfoType, AlertMode, GroupMemberAdmin } from 'src/app/models/models';
 import { BehaviorSubject } from 'rxjs';
 import { AlertController, ModalController } from '@ionic/angular';
 import { getMessage } from './alertInfoMessages';
@@ -44,16 +44,6 @@ export class AlertService {
    * @access private
    * @var {BehaviorSubject<DoAFootballBet>} objectInfo
    */
-  // private objectInfo = new BehaviorSubject<any>(null);
-
-  /**
-   * The data to fill the alerts when they need extra info
-   * at which the other components will subscribe at
-   * 
-   * @access public
-   * @var {Observable} reset
-   */
-  // public oInfo = this.objectInfo.asObservable();
   
   /**
    * Says if the alert is launched or not
@@ -154,11 +144,6 @@ export class AlertService {
    * @param {string} type The type of social log (Facebook or Google)
    */
   public socialPasswordForm(type:string){
-    // this.setTitle("Choose a password");
-    // // this.changeAlertMode(AlertMode.SOCIALPASSWORD);
-    // this.setTarget(type);
-    // this.prepareAlerts();
-
     this.prepareAlerts();
     this.__modalC.create({
       component: AlertComponent,
