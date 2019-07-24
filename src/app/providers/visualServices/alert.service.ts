@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AlertInfoType, AlertMode, GroupMemberAdmin } from 'src/app/models/models';
+import { AlertInfoType, AlertMode, GroupMemberAdmin, UserInGroupSearch } from 'src/app/models/models';
 import { BehaviorSubject } from 'rxjs';
 import { AlertController, ModalController } from '@ionic/angular';
 import { getMessage } from './alertInfoMessages';
@@ -255,12 +255,18 @@ export class AlertService {
    * @param {UserInGroupSearch[]} groups The info of the groups
    * @param {username} string The username of the user
    */
-  // public seeUserGroups(groups:UserInGroupSearch[], username:string){
-  //   this.setTitle(`${username} groups`);
-  //   // this.changeAlertMode(AlertMode.SEEUSERGROUPS_ADMIN);
-  //   this.objectInfo.next(groups);
-  //   this.prepareAlerts();
-  // }
+  public seeUserGroups(groups:UserInGroupSearch[], username:string){
+    this.prepareAlerts();
+    this.__modalC.create({
+      component: AlertComponent,
+      componentProps:{
+        'mode': AlertMode.SEEUSERGROUPS_ADMIN,
+        'title': `Grupos de "${username}"`,
+        "object": groups
+      }
+    }).then(modal => modal.present());
+    this.__modalOpened = true;
+  }
 
   /**
    * Open the alert showing the members of an

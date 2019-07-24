@@ -1,0 +1,30 @@
+<ion-list style="overflow-y: auto; max-height:500px">
+    <ion-item *ngIf="groups!=null && groups.length==0">Sin grupos</ion-item>
+    <ion-item *ngIf="groups!=null && groups.length>0">
+      <ion-label>
+        <ion-row>
+            <ion-col size=12 size-lg=6 class="ion-text-center">Nombre</ion-col>
+            <ion-col size=6 size-lg=4 class="ion-text-center">Rol y fecha</ion-col>
+            <ion-col size=6 size-lg=2 class="ion-text-center">Unión</ion-col>
+        </ion-row>
+      </ion-label>
+    </ion-item>
+
+    <ion-item *ngFor="let group of groups">
+      <ion-label>
+        <ion-row>
+            <ion-col size=12 class="ion-text-left" *ngIf="group.blocked">
+              <ion-text color=danger><h5>Bloqueado</h5></ion-text></ion-col>
+            <ion-col size=12 size-lg=6 class="ion-text-center">{{group.groupName}}</ion-col>
+            <ion-col size=6 size-lg=4 class="ion-text-center">
+                <app-icon [Icon]="icon_user" *ngIf="group.role == 'GROUP_NORMAL'"></app-icon>
+                <app-icon [Icon]="icon_crown" *ngIf="group.role=='GROUP_MAKER'"></app-icon>
+                <app-icon [Icon]="icon_wizard" *ngIf="group.role=='GROUP_ADMIN'"></app-icon>
+                &nbsp;&nbsp;{{group.roleTime | onlyDatePipe}}
+            </ion-col>
+            <ion-col size=6 size-lg=2 class="ion-text-center">{{group.joinTime | onlyDatePipe}}</ion-col>
+        </ion-row>
+      </ion-label>
+    </ion-item>
+
+</ion-list>
