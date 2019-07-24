@@ -5,25 +5,25 @@
           <ion-row>
 
             <ion-col size=12 class="ion-text-left ion-margin-bottom" *ngIf="user.blocked">
-              <ion-text color="danger"><h5>Bloqueado</h5></ion-text>
+              <ion-text color="danger"><h2>Bloqueado</h2></ion-text>
             </ion-col>
 
             <ion-col size=12>
               <ion-row>
                 <ion-col size=9 class="ion-text-left"><h5 style="display:inline-block">{{user.username}}</h5>&nbsp;&nbsp;<small>{{user.email}}</small></ion-col>
-                <ion-col size=3 class="ion-text-right">{{user.coins}} <app-icon [Icon]="icon_coin"></app-icon></ion-col>
+                <ion-col size=3 class="ion-text-right"><small>{{user.coins}} <app-icon [Icon]="icon_coin"></app-icon></small></ion-col>
               </ion-row>
             </ion-col>
 
-            <ion-col size=6 class="ion-text-left">
+            <ion-col size=5 class="ion-text-left">
                 <app-icon [Icon]="icon_crown" *ngIf="user.role=='GROUP_MAKER'"></app-icon>
                 <app-icon [Icon]="icon_wizard" *ngIf="user.role=='GROUP_ADMIN'"></app-icon>
                 <app-icon [Icon]="icon_normal" *ngIf="user.role!='GROUP_ADMIN' && user.role!='GROUP_MAKER'"></app-icon>
                 &nbsp;&nbsp;{{user.dateRole | onlyDatePipe}}
             </ion-col>
 
-            <ion-col size=6 class="ion-text-right">
-                En el grupo desde {{user.dateJoin | onlyDatePipe}}
+            <ion-col size=7 class="ion-text-right">
+                <small>En el grupo desde {{user.dateJoin | onlyDatePipe}}</small>
             </ion-col>
             
           </ion-row>

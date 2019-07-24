@@ -14,7 +14,7 @@
       <ion-label>
         <ion-row>
             <ion-col size=12 class="ion-text-left" *ngIf="group.blocked">
-              <ion-text color=danger><h5>Bloqueado</h5></ion-text></ion-col>
+              <ion-text color=danger><h2>Bloqueado</h2></ion-text></ion-col>
             <ion-col size=12 size-lg=6 class="ion-text-center">{{group.groupName}}</ion-col>
             <ion-col size=6 size-lg=4 class="ion-text-center">
                 <app-icon [Icon]="icon_user" *ngIf="group.role == 'GROUP_NORMAL'"></app-icon>
