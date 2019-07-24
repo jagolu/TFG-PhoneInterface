@@ -1,66 +1,59 @@
-import { Component, Input } from '@angular/core';
-import { AlertMode } from 'src/app/models/models';
+import { Component, OnInit, Input } from '@angular/core';
+import { GroupMemberAdmin, IconModel, Icons } from 'src/app/models/models';
 
 @Component({
-  selector: 'app-alert',
-  templateUrl: './alert.component.html',
-  styles: []
+  selector: 'app-see-group-members-admin',
+  templateUrl: './see-group-members-admin.component.html',
+  styleUrls: [],
 })
-/**
- * Class to standard view for all modals
- * 
- * @class
- * @implements AfterViewInit
- */
-export class AlertComponent{
+export class SeeGroupMembersAdminComponent {
 
   //
   // ──────────────────────────────────────────────────────────────────────
   //   :::::: C L A S S   V A R S : :  :   :    :     :        :          :
   // ──────────────────────────────────────────────────────────────────────
   //
-
+  
   /**
-   * The mode of the alert to show the
-   * correct alert
+   * The info of the members
    * 
    * @access public
-   * @var {AlertMode} mode
+   * @var {GroupMemberAdmin[]} members
    */
-  @Input() mode:AlertMode;
+  @Input() members:GroupMemberAdmin[] = [];
 
+    
   /**
-   * The title of the alert
+   * The icon of a a crown
    * 
    * @access public
-   * @var {string} title
+   * @var {IconModel} icon_crown
    */
-  @Input() title:string;
-
+  public icon_crown:IconModel = Icons.CROWN;
+  
   /**
-   * The target of the alert
+   * The icon of a wizard hat
    * 
    * @access public
-   * @var {string} target
+   * @var {IconModel} icon_wizard
    */
-  @Input() target:string;
+  public icon_wizard:IconModel = Icons.WIZARD;
 
   /**
-   * To know if the form needs password
-   * or not
+   * The icon of a coin
    * 
    * @access public
-   * @var {Boolean} needPassword
+   * @var {IconModel} icon_coin
    */
-  @Input() needPassword:Boolean;
+  public icon_coin:IconModel = Icons.COIN;
 
   /**
-   * Other object that we could need
+   * The icon of a normal user
    * 
    * @access public
-   * @var {any} object
+   * @var {IconModel} icon_normal
    */
-  @Input() object:any;
+  public icon_normal:IconModel = Icons.USER;
 
 
   //

@@ -147,7 +147,7 @@ export class SearchGroupPage {
    * @param {string} name The name of the group
    */
   public watchUsers(members:GroupMemberAdmin[], name:string){
-    // this.alertS.seeGroupMembers(members, name);
+    this.__alertS.seeGroupMembers(members, name);
   }
 
   /**

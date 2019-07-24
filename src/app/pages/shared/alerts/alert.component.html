@@ -16,7 +16,7 @@
             <!-- <app-cancell-user-football-bet *ngIf="mode == 'CANCELUSERFOOTBALLBET'"></app-cancell-user-football-bet> -->
             <!-- <app-cancel-football-bet *ngIf="mode == 'CANCELFOOTBALLBET'"></app-cancel-football-bet> -->
             <!-- <app-see-user-groups-admin *ngIf="mode == 'SEEUSERGROUPS_ADMIN'"></app-see-user-groups-admin> -->
-            <!-- <app-see-group-members-admin *ngIf="mode == 'SEEGROUPMEMBERS_ADMIN'"></app-see-group-members-admin> -->
+            <app-see-group-members-admin *ngIf="mode == 'SEEGROUPMEMBERS_ADMIN'" [members]="object"></app-see-group-members-admin>
 
     </ion-card-content>
 </ion-card>

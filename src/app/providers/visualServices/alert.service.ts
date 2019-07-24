@@ -206,7 +206,7 @@ export class AlertService {
       component: AlertComponent,
       componentProps:{
         'mode': AlertMode.JOINGROUP,
-        'title': "Vas a unirte al grupo "+groupName,
+        'title': `Vas a unirte al grupo "${groupName}"`,
         "target": groupName,
         "needPassword": needPass
       }
@@ -284,12 +284,18 @@ export class AlertService {
    * @param {GroupMemberAdmin[]} members The info of the members
    * @param {groupName} string The name of the group
    */
-  // public seeGroupMembers(members:GroupMemberAdmin[], groupName:string){
-  //   this.setTitle(`${groupName} members`);
-  //   // this.changeAlertMode(AlertMode.SEEGROUPMEMBERS_ADMIN);
-  //   this.objectInfo.next(members);
-  //   this.prepareAlerts();
-  // }
+  public seeGroupMembers(members:GroupMemberAdmin[], groupName:string){
+    this.prepareAlerts();
+    this.__modalC.create({
+      component: AlertComponent,
+      componentProps:{
+        'mode': AlertMode.SEEGROUPMEMBERS_ADMIN,
+        'title': `Miembros de "${groupName}"`,
+        "object": members
+      }
+    }).then(modal => modal.present());
+    this.__modalOpened = true;
+  }
   
   /**
    * Close the alert 

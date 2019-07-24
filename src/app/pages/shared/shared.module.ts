@@ -12,6 +12,7 @@ import { SocialSignPasswordComponent } from './alerts/social-sign-password/socia
 import { OnlyDatePipe } from 'src/app/pages/shared/pipes/only-date.pipe';
 import { Base64ImagePipe } from 'src/app/pages/shared/pipes/base64-image.pipe';
 import { ChatTimePipe } from 'src/app/pages/shared/pipes/chat-time.pipe';
+import { SeeGroupMembersAdminComponent } from './alerts/see-group-members-admin/see-group-members-admin.component';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { ChatTimePipe } from 'src/app/pages/shared/pipes/chat-time.pipe';
     JoinPasswordGroupComponent,
     DeleteGroupAlertComponent,
     SocialSignPasswordComponent,
+    SeeGroupMembersAdminComponent,
     OnlyDatePipe,
     Base64ImagePipe,
     ChatTimePipe
@@ -41,6 +43,7 @@ import { ChatTimePipe } from 'src/app/pages/shared/pipes/chat-time.pipe';
     JoinPasswordGroupComponent,
     DeleteGroupAlertComponent,
     SocialSignPasswordComponent,
+    SeeGroupMembersAdminComponent,
     OnlyDatePipe,
     Base64ImagePipe,
     ChatTimePipe
@@ -52,7 +55,8 @@ import { ChatTimePipe } from 'src/app/pages/shared/pipes/chat-time.pipe';
     DeleteAccountAlertComponent, 
     JoinPasswordGroupComponent,
     DeleteGroupAlertComponent,
-    SocialSignPasswordComponent
+    SocialSignPasswordComponent,
+    SeeGroupMembersAdminComponent
   ]
 })
 export class SharedModule { }

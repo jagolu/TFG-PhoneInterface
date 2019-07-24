@@ -75,9 +75,6 @@ export class JoinPasswordGroupComponent {
   public joinGroup(){
     this._alertS.hideAlert();
     
-    //Bootstrap modal close on form submit. So, I have to
-    //show 2 modals, so first hide that and in 0.35 seconds
-    //send the petition and show the modal of the response
     setTimeout(this.join.bind(this), 350);
   }
 
