@@ -60,12 +60,7 @@ export class UserGroupsPage {
    */
   constructor(private __sessionS:SessionService) { 
     this.__sessionS.User.subscribe(u=>{
-      try{
-        this.groups = u.groups;
-        u.groups.forEach(uu=> this.groups.push(uu));
-        u.groups.forEach(uu=> this.groups.push(uu));
-        u.groups.forEach(uu=> this.groups.push(uu));
-      }
+      try{ this.groups = u.groups; }
       catch(Exception){this.groups = [];}
     });
   }
