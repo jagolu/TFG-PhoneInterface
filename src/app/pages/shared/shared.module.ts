@@ -9,6 +9,9 @@ import { DeleteAccountAlertComponent } from './alerts/delete-account-alert/delet
 import { JoinPasswordGroupComponent } from './alerts/join-password-group/join-password-group.component';
 import { DeleteGroupAlertComponent } from './alerts/delete-group-alert/delete-group-alert.component';
 import { SocialSignPasswordComponent } from './alerts/social-sign-password/social-sign-password.component';
+import { OnlyDatePipe } from 'src/app/pages/shared/pipes/only-date.pipe';
+import { Base64ImagePipe } from 'src/app/pages/shared/pipes/base64-image.pipe';
+import { ChatTimePipe } from 'src/app/pages/shared/pipes/chat-time.pipe';
 
 @NgModule({
   imports: [
@@ -24,7 +27,10 @@ import { SocialSignPasswordComponent } from './alerts/social-sign-password/socia
     DeleteAccountAlertComponent, 
     JoinPasswordGroupComponent,
     DeleteGroupAlertComponent,
-    SocialSignPasswordComponent
+    SocialSignPasswordComponent,
+    OnlyDatePipe,
+    Base64ImagePipe,
+    ChatTimePipe
   ],
   exports: 
   [
@@ -34,7 +40,10 @@ import { SocialSignPasswordComponent } from './alerts/social-sign-password/socia
     DeleteAccountAlertComponent, 
     JoinPasswordGroupComponent,
     DeleteGroupAlertComponent,
-    SocialSignPasswordComponent
+    SocialSignPasswordComponent,
+    OnlyDatePipe,
+    Base64ImagePipe,
+    ChatTimePipe
   ],
   entryComponents: 
   [

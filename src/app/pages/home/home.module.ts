@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { HomePage } from './home.page';
 import { HomeViewerComponent } from './home-viewer/home-viewer.component';
-import { ChatTimePipe } from 'src/app/pipes/chat-time.pipe';
+import { SharedModule } from '../shared/shared.module';
 
 const routes: Routes = [
   {
@@ -22,8 +22,9 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
+    SharedModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [HomePage, HomeViewerComponent, ChatTimePipe]
+  declarations: [HomePage, HomeViewerComponent]
 })
 export class HomePageModule {}

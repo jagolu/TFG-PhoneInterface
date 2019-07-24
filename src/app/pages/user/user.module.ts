@@ -5,8 +5,6 @@ import { RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { Base64ImagePipe } from 'src/app/pipes/base64-image.pipe';
-import { OnlyDatePipe } from 'src/app/pipes/only-date.pipe';
 import { UserTabComponent } from './user-tab/user-tab.component';
 import { UserInfoPage } from './user-info/user-info.page';
 import { UserGroupsPage } from './user-groups/user-groups.page';
@@ -42,7 +40,7 @@ import { SharedModule } from '../shared/shared.module';
       }
     ])
   ],
-  declarations: [UserTabComponent, Base64ImagePipe, OnlyDatePipe, UserInfoPage, UserGroupsPage, UserOptionsPage],
+  declarations: [UserTabComponent, UserInfoPage, UserGroupsPage, UserOptionsPage],
   entryComponents:[UserInfoPage, UserGroupsPage, UserOptionsPage]
 })
 export class UserPageModule {}
