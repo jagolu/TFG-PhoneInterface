@@ -12,7 +12,10 @@
 
 <ion-content>
 
-    <ion-searchbar #groupname (keyup)="search(groupname.value)"></ion-searchbar>
+    <ion-searchbar #groupname 
+                  (keyup)="search(groupname.value)"
+                  (ionCancel)="search('')" [showCancelButton]="true"
+                  ></ion-searchbar>
     
     <ion-list>
         <ion-item>

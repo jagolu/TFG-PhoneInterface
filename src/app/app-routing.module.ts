@@ -9,7 +9,8 @@ const routes: Routes = [
   },
   { path: 'home', loadChildren: './pages/home/home.module#HomePageModule' },
   { path: 'logSign', loadChildren: './pages/log-sign/logSign.module#LogSignModule'},  { path: 'user', loadChildren: './pages/user/user.module#UserPageModule' },
-  { path: 'search-group', loadChildren: './pages/search-group/search-group.module#SearchGroupPageModule' }
+  { path: 'search-group', loadChildren: './pages/search-group/search-group.module#SearchGroupPageModule' },
+  { path: 'search-user', loadChildren: './pages/search-user/search-user.module#SearchUserPageModule' }
 
 
 ];
