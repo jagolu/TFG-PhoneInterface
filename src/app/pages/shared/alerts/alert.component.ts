@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { AlertMode } from 'src/app/models/models';
+import { AlertMode, Icons, IconModel } from 'src/app/models/models';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-alert',
@@ -62,6 +63,13 @@ export class AlertComponent{
    */
   @Input() object:any;
 
+  /**
+   * The icon of red cross
+   * 
+   * @access public
+   * @var {IconModel} icon_cross
+   */
+  public icon_cross:IconModel = Icons.CROSS;
 
   //
   // ──────────────────────────────────────────────────────────────────────────
@@ -72,5 +80,9 @@ export class AlertComponent{
   /**
    * @constructor
    */
-  constructor() { }
+  constructor(private __modalC:ModalController) { }
+
+  public hide(){
+    this.__modalC.dismiss();
+  }
 }

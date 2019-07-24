@@ -2,7 +2,14 @@
 
 <ion-card>
     <ion-card-header>
-        <ion-card-title><h4>{{title}}</h4></ion-card-title>
+        <ion-card-title>
+            <ion-row>
+                <ion-col size=10><h4>{{title}}</h4></ion-col>
+                <ion-col size=2 class="ion-text-right" (click)="hide()"> 
+                    <app-icon [Icon]="icon_cross" style="font-size:210%" ></app-icon>
+                </ion-col>
+            </ion-row>
+        </ion-card-title>
     </ion-card-header>
     
     <ion-card-content>
