@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { AllConversationsComponent } from './all-conversations/all-conversations.component';
 import { SharedModule } from '../shared/shared.module';
+import { DirectConversationComponent } from './direct-conversation/direct-conversation.component';
 
 
 
@@ -20,10 +21,14 @@ import { SharedModule } from '../shared/shared.module';
       {
         path: 'allConversations',
         component: AllConversationsComponent
+      },
+      {
+        path: 'directConversation/:id',
+        component: DirectConversationComponent
       }
     ])
   ],
-  declarations: [AllConversationsComponent],
+  declarations: [AllConversationsComponent, DirectConversationComponent],
   exports: [RouterModule]
 })
 export class DirectMessagesPageModule {}

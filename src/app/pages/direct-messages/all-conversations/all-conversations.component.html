@@ -57,6 +57,7 @@
         <ion-row>
           <ion-col size=12 size-lg=4>
             <ion-text color=danger *ngIf="dm.closed"><h4>Cerrada</h4></ion-text>
+            <ion-button color="dark" expand="block" fill="outline" [routerLink]="['/direct-messages/directConversation/'+dm.id]" >Ver</ion-button>
           </ion-col>
         </ion-row>
     </ion-card-content>

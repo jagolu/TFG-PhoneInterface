@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <h2>Conversación privada</h2>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="room!=null">
+      <ion-card-header>
+          <ion-card-title>
+              <ion-row>
+                <ion-col size=12><h3>{{room.title}}</h3></ion-col>
+                <ion-col size=12 size-lg=9>
+                  <h5 style="display:inline-block">{{room.receiver}}</h5>
+                  &nbsp;&nbsp;<small *ngIf="room.emailReceiver!=null">({{room.emailReceiver}})</small>  
+                </ion-col>
+                <ion-col size=12 size-lg=3 *ngIf="!room.closed && thisIsAdmin">
+                    <ion-button style="margin-top:30px" color="danger" expand="block" fill="outline" 
+                              (click)="closeConversation()">Cerrar conversación</ion-button>
+                </ion-col>
+                <ion-col size=12 size-lg=3 *ngIf="room.closed && thisIsAdmin">
+                    <ion-button style="margin-top:30px" color="danger" expand="block"
+                              (click)="openConversation()">Abrir conversación</ion-button>
+                </ion-col>
+              </ion-row>
+          </ion-card-title>
+      </ion-card-header>
+      
+      <ion-card-content>
+            <ion-list no-lines>
+              <!-- <ion-item > -->
+            <ion-card style="width:75%" *ngFor="let cluster of clusters; let i = index"
+                        [ngClass]="{
+                          'ion-text-right float-right': cluster.isAdmin==thisIsAdmin,
+                          'ion-text-left float-left': cluster.isAdmin!=thisIsAdmin}">
+            
+                
+                <ion-card-content [ngClass]="{'closedMsg': room.closed}">
+                    <ion-row *ngFor="let msg of cluster.messages">
+                      <ion-col size=12>{{msg.message}}</ion-col>
+                      <ion-col size=12 [ngClass]="{'ion-text-left float-right': cluster.isAdmin==thisIsAdmin,
+                                                    'ion-text-right float-left': cluster.isAdmin!=thisIsAdmin}">
+                            <small>{{msg.time | chatTime}}</small>
+                      </ion-col>
+                    </ion-row>
+
+                </ion-card-content>
+            
+            </ion-card>
+              <!-- </ion-item> -->
+            </ion-list>
+
+      </ion-card-content>
+  </ion-card>
+
+
+  <ion-card *ngIf="clusters.length == 0">
+      <ion-row>
+        <ion-col size=12 size-lg=9><h4 class="ion-text-center">No hay mensajes en esta conversación</h4></ion-col>
+        <ion-col size=12 size-lg=3 *ngIf="thisIsAdmin">
+            <ion-button style="margin-top:30px" color="danger" expand="block"
+                        (click)="closeConversation()">Cerrar conversación</ion-button>
+        </ion-col>
+      </ion-row>
+  </ion-card>
+
+  <form [formGroup]="sendDMMessageForm" *ngIf="room!=null && !room.closed" (ngSubmit)="sendMessage()" position="bottom">
+      <ion-item>
+        <ion-label position="floating">Mensaje</ion-label>
+        <ion-input formControlName="message" type="text"></ion-input>
+      </ion-item>
+
+      
+    <ion-button style="margin-top:30px" color="dark" expand="block" fill="outline" type="submit"
+                [disabled]="!sendDMMessageForm.valid">Enviar mensaje</ion-button>
+  </form>
+  
+</ion-content>
