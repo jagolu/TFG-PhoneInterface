@@ -47,6 +47,13 @@
           </ion-item>
         </ion-menu-toggle>
 
+        <ion-menu-toggle auto-hide="false" *ngIf="isAuthenticated()">
+          <ion-item [routerDirection]="'root'" [routerLink]="'/direct-messages/allConversations'">
+            <ion-icon slot="start" [name]="'document'"></ion-icon>
+            <ion-label>Mensajes Directos</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
 
 
 

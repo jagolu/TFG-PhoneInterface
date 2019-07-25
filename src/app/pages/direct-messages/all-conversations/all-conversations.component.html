@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <h2>Mensajes privados</h2>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="createDMForm" (ngSubmit)="createDMTitle()" >
+    <ion-item *ngIf="isAdmin()">
+      <ion-label position="floating">Nombre de usuario o correo electrónico</ion-label>
+      <ion-input *ngIf="isAdmin()" type="text" (change)="findDM()" (keyup)="findDM()" id="findUserDMId"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="isAdmin()">
+      <ion-label>Usuarios</ion-label>
+      <ion-select value="invalid" okText="Ok" cancelText="Atrás" id="selectSuggsUserIdDMSearch" (ionChange)="changeInputSelect()">
+        <ion-select-option value="invalid">Selecciona un usuario</ion-select-option>
+        <ion-select-option *ngFor="let sug of suggestions" value="{{sug.email}}">{{sug.username}}&nbsp;&nbsp;{{sug.email}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Título para la disputa</ion-label>
+      <ion-input type="text" formControlName="title"></ion-input>
+    </ion-item>
+
+    <ion-button style="margin-top:30px" color="dark" expand="block" fill="outline" type="submit"
+          [disabled]="!createDMForm.valid || !validSelect">Crear disputa</ion-button>
+  </form>    
+
+  
+  <ion-card *ngFor="let dm of dmTitles" [ngClass]="{'closedConv': dm.closed}">
+
+    <ion-card-header>
+      <ion-card-title>
+          <ion-row>
+            <ion-col size-lg=10 size=12><h3 style="margin:0; display:inline-block">{{dm.receiver}}</h3>&nbsp;&nbsp;<small>{{dm.emailReceiver}}</small></ion-col>
+            <ion-col size=12 size-lg=2 class="ion-text-right"><small>{{dm.lastUpdate | chatTime}}</small></ion-col>
+          </ion-row>
+      </ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+        <ion-row>
+            <ion-col size=1 *ngIf="dm.unreadMessages != 0">
+              <ion-badge color="primary">{{dm.unreadMessages}}</ion-badge>
+            </ion-col>
+  
+            <ion-col size=11 *ngIf="dm.unreadMessages != 0">{{dm.title}}</ion-col>
+            <ion-col size=12 *ngIf="dm.unreadMessages == 0">{{dm.title}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size=12 size-lg=4>
+            <ion-text color=danger *ngIf="dm.closed"><h4>Cerrada</h4></ion-text>
+          </ion-col>
+        </ion-row>
+    </ion-card-content>
+
+  </ion-card>
+  
+</ion-content>
