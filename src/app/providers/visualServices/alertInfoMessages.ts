@@ -216,6 +216,10 @@ export function getMessage(type:AlertInfoType){
           "Al hacerlo cancelaremos el proceso de eliminación de cuenta.";
         break;
       }
+      case AlertInfoType.RECVNOTEXIST:{
+        msg = "El usuario con el que intentas crear una conversación directa no existe.";
+        break;
+      }
       default:{
         msg = "";
         break;
