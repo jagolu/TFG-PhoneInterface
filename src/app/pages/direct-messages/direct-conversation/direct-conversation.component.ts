@@ -217,6 +217,6 @@ export class DirectConversationComponent implements AfterViewChecked {
    * @access private
    */
   private scrollDown(){
-    setTimeout(() => { this.content.scrollToBottom(400); }, 300);
+    setTimeout(_ => this.content.scrollToBottom(400), 300);
   }
 }
