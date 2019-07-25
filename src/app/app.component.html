@@ -32,6 +32,13 @@
           </ion-item>
         </ion-menu-toggle>
 
+        <ion-menu-toggle auto-hide="false" *ngIf="isAuthenticated() && !isAdmin()">
+          <ion-item [routerDirection]="'root'" (click)="createGroup()">
+            <ion-icon slot="start" [name]="'contacts'"></ion-icon>
+            <ion-label>Crear grupo</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
 
         <ion-menu-toggle auto-hide="false" *ngIf="isAuthenticated() && isAdmin()">
           <ion-item [routerDirection]="'root'" [routerLink]="'/search-group'">

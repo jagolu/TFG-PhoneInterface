@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AuthenticationService } from './providers/restServices/authentication.service';
 import { SessionService } from './providers/userServices/session.service';
+import { AlertService } from './providers/visualServices/alert.service';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,8 @@ export class AppComponent implements OnInit{
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private _authS:AuthenticationService,
-    private _sessioS:SessionService
+    private _sessioS:SessionService,
+    private __alertS:AlertService
   ) {
     this.initializeApp();
   }
@@ -35,6 +37,10 @@ export class AppComponent implements OnInit{
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  public createGroup(){
+    this.__alertS.openCreateGroup();
   }
 
   public isAuthenticated(){
