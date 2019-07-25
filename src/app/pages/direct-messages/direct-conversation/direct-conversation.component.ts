@@ -1,9 +1,10 @@
-import { Component, AfterViewChecked } from '@angular/core';
+import { Component, AfterViewChecked, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DMTitle, DMMessageCluster, DMRoom } from 'src/app/models/models';
 import { ActivatedRoute } from '@angular/router';
 import { DirectMessagesService } from 'src/app/providers/restServices/direct-messages.service';
 import { SessionService } from 'src/app/providers/userServices/session.service';
+import { IonContent } from '@ionic/angular';
 
 @Component({
   selector: 'app-direct-conversation',
@@ -70,6 +71,23 @@ export class DirectConversationComponent implements AfterViewChecked {
    */
   public thisIsAdmin :Boolean = false;
 
+  /**
+   * The window content, to do the scroll down
+   * correctly
+   * 
+   * @access public
+   * @var {IonContent} content
+   */
+  @ViewChild(IonContent) content:IonContent;
+
+  /**
+   * The margin to see the conversation 
+   * correctly
+   * 
+   * @access public
+   * @var {number} marginBottom
+   */
+  public marginBottom:number = 0;
 
   //
   // ──────────────────────────────────────────────────────────────────────────
@@ -101,6 +119,9 @@ export class DirectConversationComponent implements AfterViewChecked {
       });
     }
     this._loading = true;
+    
+    let div = (document.querySelector("#sendDMMessageFormId") as HTMLElement);
+    if(div!=null) this.marginBottom = div.scrollHeight; 
   }
 
 
@@ -196,7 +217,6 @@ export class DirectConversationComponent implements AfterViewChecked {
    * @access private
    */
   private scrollDown(){
-    let div = (document.querySelector("#DMMessagesScroll") as HTMLElement);
-    if(div!=null) setTimeout(_=> div.scrollTop = div.scrollHeight, 20); 
+    setTimeout(() => { this.content.scrollToBottom(400); }, 300);
   }
 }

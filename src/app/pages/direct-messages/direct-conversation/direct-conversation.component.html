@@ -10,14 +10,14 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngIf="room!=null">
+  <ion-card *ngIf="room!=null" [style.margin-bottom.px]="126">
       <ion-card-header>
           <ion-card-title>
               <ion-row>
-                <ion-col size=12><h3>{{room.title}}</h3></ion-col>
+                <ion-col size=12><h3>Conversación <i>"{{room.title}}"</i></h3></ion-col>
                 <ion-col size=12 size-lg=9>
-                  <h5 style="display:inline-block">{{room.receiver}}</h5>
-                  &nbsp;&nbsp;<small *ngIf="room.emailReceiver!=null">({{room.emailReceiver}})</small>  
+                  <h5 style="display:inline-block">Con <i>"{{room.receiver}}"</i></h5>
+                  &nbsp;&nbsp;<small *ngIf="room.emailReceiver!=null"><i>({{room.emailReceiver}})</i></small>  
                 </ion-col>
                 <ion-col size=12 size-lg=3 *ngIf="!room.closed && thisIsAdmin">
                     <ion-button style="margin-top:30px" color="danger" expand="block" fill="outline" 
@@ -32,34 +32,30 @@
       </ion-card-header>
       
       <ion-card-content>
-            <ion-list no-lines>
-              <!-- <ion-item > -->
-            <ion-card style="width:75%" *ngFor="let cluster of clusters; let i = index"
-                        [ngClass]="{
-                          'ion-text-right float-right': cluster.isAdmin==thisIsAdmin,
-                          'ion-text-left float-left': cluster.isAdmin!=thisIsAdmin}">
-            
+                <ion-card style="width:75%" *ngFor="let cluster of clusters; let i = index"
+                            [ngClass]="{
+                              'ion-text-right float-right': cluster.isAdmin==thisIsAdmin,
+                              'ion-text-left float-left': cluster.isAdmin!=thisIsAdmin}">
                 
-                <ion-card-content [ngClass]="{'closedMsg': room.closed}">
-                    <ion-row *ngFor="let msg of cluster.messages">
-                      <ion-col size=12>{{msg.message}}</ion-col>
-                      <ion-col size=12 [ngClass]="{'ion-text-left float-right': cluster.isAdmin==thisIsAdmin,
-                                                    'ion-text-right float-left': cluster.isAdmin!=thisIsAdmin}">
-                            <small>{{msg.time | chatTime}}</small>
-                      </ion-col>
-                    </ion-row>
+                    
+                    <ion-card-content [ngClass]="{'closedMsg': room.closed}">
+                        <ion-row *ngFor="let msg of cluster.messages">
+                          <ion-col size=12>{{msg.message}}</ion-col>
+                          <ion-col size=12 [ngClass]="{'ion-text-left float-right': cluster.isAdmin==thisIsAdmin,
+                                                        'ion-text-right float-left': cluster.isAdmin!=thisIsAdmin}">
+                                <small>{{msg.time | chatTime}}</small>
+                          </ion-col>
+                        </ion-row>
 
-                </ion-card-content>
-            
-            </ion-card>
-              <!-- </ion-item> -->
-            </ion-list>
+                    </ion-card-content>
+                
+                </ion-card>
 
       </ion-card-content>
   </ion-card>
 
 
-  <ion-card *ngIf="clusters.length == 0">
+  <ion-card *ngIf="clusters.length == 0" [style.margin-bottom.px]="126">
       <ion-row>
         <ion-col size=12 size-lg=9><h4 class="ion-text-center">No hay mensajes en esta conversación</h4></ion-col>
         <ion-col size=12 size-lg=3 *ngIf="thisIsAdmin">
@@ -69,7 +65,8 @@
       </ion-row>
   </ion-card>
 
-  <form [formGroup]="sendDMMessageForm" *ngIf="room!=null && !room.closed" (ngSubmit)="sendMessage()" position="bottom">
+  <form [formGroup]="sendDMMessageForm" *ngIf="room!=null && !room.closed" 
+          (ngSubmit)="sendMessage()" class="fixed-bottom" id="sendDMMessageFormId">
       <ion-item>
         <ion-label position="floating">Mensaje</ion-label>
         <ion-input formControlName="message" type="text"></ion-input>
