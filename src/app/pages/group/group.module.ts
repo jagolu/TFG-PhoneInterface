@@ -13,6 +13,7 @@ import { GroupHistoryComponent } from './group-history/group-history.component';
 import { GroupOptionsComponent } from './group-options/group-options.component';
 import { GroupInfoComponent } from './group-info/group-info.component';
 import { SharedModule } from '../shared/shared.module';
+import { GroupHeaderComponent } from './group-header/group-header.component';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { SharedModule } from '../shared/shared.module';
     GroupMangeBetsComponent,
     GroupHistoryComponent,
     GroupOptionsComponent,
-    GroupInfoComponent
+    GroupInfoComponent,
+    GroupHeaderComponent
   ],
   entryComponents:[
     GroupNewsComponent,
