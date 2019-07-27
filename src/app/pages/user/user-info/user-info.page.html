@@ -21,7 +21,7 @@
           <ion-card-title>
             <ion-row>
               <ion-col size="9">{{username}}</ion-col>
-              <ion-col size="3" class="ion-text-right">ADMIN</ion-col>
+              <ion-col size="3" class="ion-text-right" *ngIf="isAdmin()">ADMIN</ion-col>
             </ion-row>
           </ion-card-title>
         </ion-card-header>
