@@ -13,7 +13,9 @@ const routes: Routes = [
   { path: 'search-group', loadChildren: './pages/search-group/search-group.module#SearchGroupPageModule' },
   { path: 'search-user', loadChildren: './pages/search-user/search-user.module#SearchUserPageModule' },
   { path: 'direct-messages', loadChildren: './pages/direct-messages/direct-messages.module#DirectMessagesPageModule' },
-  { path: 'main-user-groups', loadChildren: './pages/main-user-groups/main-user-groups.module#MainUserGroupsPageModule' }
+  { path: 'main-user-groups', loadChildren: './pages/main-user-groups/main-user-groups.module#MainUserGroupsPageModule' },
+  { path: 'group/:group', loadChildren: './pages/group/group.module#GroupPageModule' }
+
 
 
 

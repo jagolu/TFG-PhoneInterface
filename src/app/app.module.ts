@@ -43,7 +43,7 @@ import { LogSignModule } from './pages/log-sign/logSign.module';
 import { SharedModule } from './pages/shared/shared.module';
 import { HomePageModule } from './pages/home/home.module';
 import { MainUserGroupsPageModule } from './pages/main-user-groups/main-user-groups.module';
-
+import { GroupPageModule } from './pages/group/group.module';
 
 //Routes
 import { AppRoutingModule } from './app-routing.module';
@@ -60,7 +60,8 @@ import { AppRoutingModule } from './app-routing.module';
     HttpClientModule,
     SharedModule,
     HomePageModule,
-    MainUserGroupsPageModule
+    MainUserGroupsPageModule,
+    GroupPageModule
   ],
   providers: [
     StatusBar,

@@ -11,8 +11,8 @@
 
 <ion-content>
 
-    <ion-card *ngFor="let group of groups">
-        <ion-card-header >
+    <ion-card *ngFor="let group of groups" >
+        <ion-card-header [routerLink]="[ '/group', group, 'main', 'news' ]">
             <ion-card-title class="ion-text-center">
               {{group}} <app-icon [Icon]="icon_ball"></app-icon>
             </ion-card-title>
