@@ -14,6 +14,7 @@ import { GroupOptionsComponent } from './group-options/group-options.component';
 import { GroupInfoComponent } from './group-info/group-info.component';
 import { SharedModule } from '../shared/shared.module';
 import { GroupHeaderComponent } from './group-header/group-header.component';
+import { GroupMembersComponent } from './group-members/group-members.component';
 
 
 @NgModule({
@@ -48,6 +49,10 @@ import { GroupHeaderComponent } from './group-header/group-header.component';
             component: GroupHistoryComponent
           },
           {
+            path: 'members',
+            component: GroupMembersComponent
+          },
+          {
             path: 'options',
             component: GroupOptionsComponent
           },
@@ -68,7 +73,8 @@ import { GroupHeaderComponent } from './group-header/group-header.component';
     GroupHistoryComponent,
     GroupOptionsComponent,
     GroupInfoComponent,
-    GroupHeaderComponent
+    GroupHeaderComponent,
+    GroupMembersComponent
   ],
   entryComponents:[
     GroupNewsComponent,
@@ -77,7 +83,8 @@ import { GroupHeaderComponent } from './group-header/group-header.component';
     GroupMangeBetsComponent,
     GroupHistoryComponent,
     GroupOptionsComponent,
-    GroupInfoComponent
+    GroupInfoComponent,
+    GroupMembersComponent
   ]
 })
 export class GroupPageModule {}
