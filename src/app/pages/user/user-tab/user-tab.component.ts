@@ -18,27 +18,6 @@ export class UserTabComponent implements OnInit{
   //
 
   /**
-   * The user info tab
-   * 
-   * @access public
-   */
-  public userInfoTab = UserInfoPage;
-
-  /**
-   * The user options tab
-   * 
-   * @access public
-   */
-  public userOptionsTab = UserOptionsPage;
-
-  /**
-   * The user groups tab
-   * 
-   * @access public
-   */
-  public userGroupsTab = UserGroupsPage; 
-
-  /**
    * Says if the actual is joined in any
    * group
    * 

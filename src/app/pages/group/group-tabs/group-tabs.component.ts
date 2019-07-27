@@ -17,69 +17,6 @@ import { GroupService } from 'src/app/providers/restServices/group.service';
 })
 export class GroupTabsComponent {
 
-  //
-  // ──────────────────────────────────────────────────────────────────────
-  //   :::::: C L A S S   V A R S : :  :   :    :     :        :          :
-  // ──────────────────────────────────────────────────────────────────────
-  //
-
-  /**
-   * The news tab
-   * 
-   * @access public
-   */
-  public groupNewsTab = GroupNewsComponent;
-
-  /**
-   * The new bets tab
-   * 
-   * @access public
-   */
-  public groupNewBetsTab = GroupNewBetComponent;
-
-  /**
-   * The active bets tab
-   * 
-   * @access public
-   */
-  public groupActiveBetsTab = GroupActiveBetsComponent;
-
-  /**
-   * The manage bets tab 
-   * 
-   * @access public
-   */
-  public groupManageBetsTab = GroupMangeBetsComponent;
-
-  /**
-   * The history tab
-   * 
-   * @access public
-   */
-  public groupHistoryTab = GroupHistoryComponent;
-
-  /**
-   * The group members tab
-   * 
-   * @access public
-   */
-  public groupMembersTab = GroupMembersComponent;
-
-  /**
-   * The group options tab
-   * 
-   * @access public
-   */
-  public groupOptionsTab = GroupOptionsComponent;
-
-  /**
-   * The group info tab
-   * 
-   * @access public
-   */
-  public groupInfoTab = GroupInfoComponent;
-
-
   /**
    * @constructor
    * @param {ActivatedRoute} __aR To get the name of group 
