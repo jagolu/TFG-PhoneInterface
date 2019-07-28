@@ -224,6 +224,10 @@ export function getMessage(type:AlertInfoType){
         msg = "Pagos semanales cambiados correctamente.";
         break;
       }
+      case AlertInfoType.SUCCESSFULLMANAGEPASSWORD:{
+        msg = "Contraseña del grupo cambiada correctamente";
+        break;
+      }
       default:{
         msg = "";
         break;
