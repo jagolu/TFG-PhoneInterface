@@ -3,7 +3,7 @@ import { Rest } from './Rest';
 import { HttpClient } from '@angular/common/http';
 import { SessionService } from '../userServices/session.service';
 import { GroupInfoService } from '../userServices/group-info.service';
-import { GroupPage, JoinGroup, MakeUnmake_admin_block, KickUser, ManagePassword, RemoveGroup } from 'src/app/models/models';
+import { GroupPage, JoinGroup, MakeUnmake_admin_block, KickUser, ManagePassword, RemoveGroup, ManageWeeklyPay } from 'src/app/models/models';
 import { LoadingService } from '../visualServices/loading.service';
 
 @Injectable({
