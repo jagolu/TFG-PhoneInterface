@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
-import { GroupTabsComponent } from './group-tabs/group-tabs.component';
 import { GroupNewsComponent } from './group-news/group-news.component';
 import { GroupNewBetComponent } from './group-new-bet/group-new-bet.component';
 import { GroupActiveBetsComponent } from './group-active-bets/group-active-bets.component';
@@ -15,6 +14,7 @@ import { GroupInfoComponent } from './group-info/group-info.component';
 import { SharedModule } from '../shared/shared.module';
 import { GroupHeaderComponent } from './group-header/group-header.component';
 import { GroupMembersComponent } from './group-members/group-members.component';
+import { GroupPopOverComponent } from './group-pop-over/group-pop-over.component';
 
 
 @NgModule({
@@ -25,47 +25,40 @@ import { GroupMembersComponent } from './group-members/group-members.component';
     SharedModule,
     RouterModule.forChild([
       {
-        path: 'main',
-        component: GroupTabsComponent,
-        children:[
-          {
-            path: 'news',
-            component: GroupNewsComponent
-          },
-          {
-            path: 'newBet',
-            component: GroupNewBetComponent
-          },
-          {
-            path: 'activeBets',
-            component: GroupActiveBetsComponent
-          },
-          {
-            path: 'manageBets',
-            component: GroupMangeBetsComponent
-          },
-          {
-            path: 'history',
-            component: GroupHistoryComponent
-          },
-          {
-            path: 'members',
-            component: GroupMembersComponent
-          },
-          {
-            path: 'options',
-            component: GroupOptionsComponent
-          },
-          {
-            path: 'info',
-            component: GroupInfoComponent
-          }
-        ]
+        path: 'news',
+        component: GroupNewsComponent
+      },
+      {
+        path: 'newBet',
+        component: GroupNewBetComponent
+      },
+      {
+        path: 'activeBets',
+        component: GroupActiveBetsComponent
+      },
+      {
+        path: 'manageBets',
+        component: GroupMangeBetsComponent
+      },
+      {
+        path: 'history',
+        component: GroupHistoryComponent
+      },
+      {
+        path: 'members',
+        component: GroupMembersComponent
+      },
+      {
+        path: 'options',
+        component: GroupOptionsComponent
+      },
+      {
+        path: 'info',
+        component: GroupInfoComponent
       }
     ])
   ],
   declarations: [
-    GroupTabsComponent,
     GroupNewsComponent,
     GroupNewBetComponent,
     GroupActiveBetsComponent,
@@ -74,17 +67,9 @@ import { GroupMembersComponent } from './group-members/group-members.component';
     GroupOptionsComponent,
     GroupInfoComponent,
     GroupHeaderComponent,
-    GroupMembersComponent
+    GroupMembersComponent,
+    GroupPopOverComponent
   ],
-  entryComponents:[
-    GroupNewsComponent,
-    GroupNewBetComponent,
-    GroupActiveBetsComponent,
-    GroupMangeBetsComponent,
-    GroupHistoryComponent,
-    GroupOptionsComponent,
-    GroupInfoComponent,
-    GroupMembersComponent
-  ]
+  entryComponents:[GroupPopOverComponent]
 })
 export class GroupPageModule {}

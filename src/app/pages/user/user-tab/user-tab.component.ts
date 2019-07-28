@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UserOptionsPage } from '../user-options/user-options.page';
-import { UserGroupsPage } from '../user-groups/user-groups.page';
-import { UserInfoPage } from '../user-info/user-info.page';
 import { SessionService } from 'src/app/providers/userServices/session.service';
 
 @Component({
