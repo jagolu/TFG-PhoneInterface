@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
@@ -15,6 +15,7 @@ import { SharedModule } from '../shared/shared.module';
 import { GroupHeaderComponent } from './group-header/group-header.component';
 import { GroupMembersComponent } from './group-members/group-members.component';
 import { GroupPopOverComponent } from './group-pop-over/group-pop-over.component';
+import { PasswordFormComponent } from './group-options/password-form/password-form.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { GroupPopOverComponent } from './group-pop-over/group-pop-over.component
     FormsModule,
     IonicModule,
     SharedModule,
+    ReactiveFormsModule,
     RouterModule.forChild([
       {
         path: 'news',
@@ -68,7 +70,8 @@ import { GroupPopOverComponent } from './group-pop-over/group-pop-over.component
     GroupInfoComponent,
     GroupHeaderComponent,
     GroupMembersComponent,
-    GroupPopOverComponent
+    GroupPopOverComponent,
+    PasswordFormComponent
   ],
   entryComponents:[GroupPopOverComponent]
 })
