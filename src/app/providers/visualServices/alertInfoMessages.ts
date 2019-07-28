@@ -220,6 +220,10 @@ export function getMessage(type:AlertInfoType){
         msg = "El usuario con el que intentas crear una conversación directa no existe.";
         break;
       }
+      case AlertInfoType.SUCCESSFULLWEEKLYPAYCHANGE:{
+        msg = "Pagos semanales cambiados correctamente.";
+        break;
+      }
       default:{
         msg = "";
         break;
