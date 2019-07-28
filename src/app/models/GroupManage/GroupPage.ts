@@ -12,6 +12,7 @@ export interface GroupPage{
     maxCapacity : number;
     actualCapacity: number;
     createDate:string;
+    weeklyPay:number;
     bets:GroupBet[];
     manageBets:BetsManager[];
     myBets:EndedFootballBet[];

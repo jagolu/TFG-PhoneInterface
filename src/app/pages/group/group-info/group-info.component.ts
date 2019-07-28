@@ -50,6 +50,14 @@ export class GroupInfoComponent implements OnInit {
   public maxCapacity:number;
 
   /**
+   * The weekly pay of the group
+   * 
+   * @access public
+   * @var {number} weeklyPay
+   */
+  public weeklyPay:number;
+
+  /**
    * The actual capacity of the group
    * 
    * @access public
@@ -97,6 +105,14 @@ export class GroupInfoComponent implements OnInit {
    */
   public icon_user:IconModel = Icons.USER;
 
+  /**
+   * A icon of a coin
+   * 
+   * @access public
+   * @var {IconModel} icon_coin
+   */
+  public icon_coin:IconModel = Icons.COIN;
+
 
   //
   // ──────────────────────────────────────────────────────────────────────────
@@ -126,6 +142,7 @@ export class GroupInfoComponent implements OnInit {
         this.maxCapacity = page.maxCapacity;
         this.actualCapacity = page.actualCapacity;
         this.createDate = page.createDate;
+        this.weeklyPay = page.weeklyPay;
       }catch(Error){}
     });
   }

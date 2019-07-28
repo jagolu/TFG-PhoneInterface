@@ -7,6 +7,8 @@
                 <i>Aforo: {{actualCapacity}}/{{maxCapacity}}</i>
                 <br>
                 <i>Creado: {{createDate | onlyDatePipe}}</i>
+                <br>
+                <i>Pago mensual: {{weeklyPay}} <app-icon [Icon]="icon_coin"></app-icon></i>
             </ion-text>
         </ion-col>
     </ion-row>

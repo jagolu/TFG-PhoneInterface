@@ -94,6 +94,7 @@ export class GroupInfoService {
       "betsHistory": [],
       "bets":[],
       "createDate": "",
+      "weeklyPay": 0,
       "dateJoin": "",
       "dateRole": "",
       "hasPassword": false,
