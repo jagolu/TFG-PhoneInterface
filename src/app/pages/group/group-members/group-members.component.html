@@ -15,7 +15,7 @@
                     <app-icon [Icon]="icon_crown" *ngIf="member.role=='GROUP_MAKER'"></app-icon>
                     <app-icon [Icon]="icon_wizard" *ngIf="member.role=='GROUP_ADMIN'"></app-icon>
 
-                    <app-icon [Icon]="icon_info" style="margin-left:4px" class="float-right" 
+                    <app-icon [Icon]="icon_info" style="margin-left:4px" class="float-right" (click)="openInfo(member)"
                                     *ngIf="i != (members.length-1)" 
                                 ></app-icon>
                     <app-icon [Icon]="icon_cog" class="float-right" (click)="openOptions(member)" 

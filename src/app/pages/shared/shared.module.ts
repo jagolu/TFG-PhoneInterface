@@ -16,6 +16,7 @@ import { SeeGroupMembersAdminComponent } from './alerts/see-group-members-admin/
 import { SeeUserGroupsAdminComponent } from './alerts/see-user-groups-admin/see-user-groups-admin.component';
 import { NewsViewerComponent } from './news-viewer/news-viewer.component';
 import { GroupMemberOptionsComponent } from './alerts/group-member-options/group-member-options.component';
+import { GroupMemberInfoComponent } from './alerts/group-member-info/group-member-info.component';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { GroupMemberOptionsComponent } from './alerts/group-member-options/group
     OnlyDatePipe,
     Base64ImagePipe,
     ChatTimePipe,
-    GroupMemberOptionsComponent
+    GroupMemberOptionsComponent,
+    GroupMemberInfoComponent
   ],
   exports: 
   [
@@ -55,7 +57,8 @@ import { GroupMemberOptionsComponent } from './alerts/group-member-options/group
     OnlyDatePipe,
     Base64ImagePipe,
     ChatTimePipe,
-    GroupMemberOptionsComponent
+    GroupMemberOptionsComponent,
+    GroupMemberInfoComponent
   ],
   entryComponents: 
   [
@@ -68,7 +71,8 @@ import { GroupMemberOptionsComponent } from './alerts/group-member-options/group
     SeeGroupMembersAdminComponent,
     NewsViewerComponent,
     SeeUserGroupsAdminComponent,
-    GroupMemberOptionsComponent
+    GroupMemberOptionsComponent,
+    GroupMemberInfoComponent
   ]
 })
 export class SharedModule { }

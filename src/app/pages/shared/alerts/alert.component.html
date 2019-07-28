@@ -25,6 +25,7 @@
             <app-see-user-groups-admin *ngIf="mode == 'SEEUSERGROUPS_ADMIN'" [groups]="object"></app-see-user-groups-admin>
             <app-see-group-members-admin *ngIf="mode == 'SEEGROUPMEMBERS_ADMIN'" [members]="object"></app-see-group-members-admin>
             <app-group-member-options *ngIf="mode == 'GROUPMEMBEROPTIONS'" [memberInfo]="object" [user_role]="target"></app-group-member-options>
+            <app-group-member-info *ngIf="mode == 'GROUPMEMBERINFO'" [user]="object"></app-group-member-info>
 
     </ion-card-content>
 </ion-card>

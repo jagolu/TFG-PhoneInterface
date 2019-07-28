@@ -125,10 +125,28 @@ export class GroupMembersComponent implements OnInit {
   // ──────────────────────────────────────────────────────────────────────────────────
   //
 
+  /**
+   * Launch the group-member-options alert
+   * 
+   * @access public
+   * @param {GroupUser} user The group member to 
+   * manage 
+   */
   public openOptions(user:GroupUser){
     this.__alertS.seeGroupMemberOptions({
       groupName: this._groupName,
       user: user
     }, this.user_role);
+  }
+
+  /**
+   * Open the group-member-info alert
+   * 
+   * @access public
+   * @param {GroupUser} user The info of the 
+   * group member that the caller want to see
+   */
+  public openInfo(user:GroupUser){
+    this.__alertS.seeGroupMemberInfo(user);
   }
 }

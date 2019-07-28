@@ -68,5 +68,11 @@ export enum AlertMode{
      * @summary Alert when the group maker wants to 
      * see the options of a member
      */
-    GROUPMEMBEROPTIONS = "GROUPMEMBEROPTIONS"
+    GROUPMEMBEROPTIONS = "GROUPMEMBEROPTIONS",
+
+    /**
+     * @summary Alert when the group maker wants to 
+     * see the info of a member
+     */
+    GROUPMEMBERINFO = "GROUPMEMBERINFO"
 }

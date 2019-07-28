@@ -1,0 +1,18 @@
+<ion-card>
+    <div>
+      <img [src]="'assets/imgs/defaultUser.png'" *ngIf="user.img==null" class="img">
+      <img *ngIf="user.img!=null" [src]="user.img | base64Image" class="img">
+    </div>
+    <ion-card-header>
+      <ion-card-title> {{user.userName}} </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-text>En el grupo desde {{user.dateJoin | onlyDatePipe}}</ion-text>
+      <ion-text><br>
+        <app-icon [Icon]="icon_crown" *ngIf="user.role=='GROUP_MAKER'"></app-icon>
+        <app-icon [Icon]="icon_wizard" *ngIf="user.role=='GROUP_ADMIN'"></app-icon>
+        <app-icon [Icon]="icon_user" *ngIf="user.role=='GROUP_NORMAL'"></app-icon>
+        desde {{user.dateRole | onlyDatePipe}}
+    </ion-text>
+    </ion-card-content>
+</ion-card>

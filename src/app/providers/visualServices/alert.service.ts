@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AlertInfoType, AlertMode, GroupMemberAdmin, UserInGroupSearch, GroupMemberOptions } from 'src/app/models/models';
+import { AlertInfoType, AlertMode, GroupMemberAdmin, UserInGroupSearch, GroupMemberOptions, GroupUser } from 'src/app/models/models';
 import { BehaviorSubject } from 'rxjs';
 import { AlertController, ModalController } from '@ionic/angular';
 import { getMessage } from './alertInfoMessages';
@@ -293,7 +293,7 @@ export class AlertService {
    * a group member
    * 
    * @access public
-   * @param {GroupMemberAdmin[]} members The info of the members
+   * @param {GroupMemberOptions} memberInfo The info of the member
    * @param {string} user_role The role of the actual user
    */
   public seeGroupMemberOptions(memberInfo:GroupMemberOptions, user_role:string){
@@ -305,6 +305,26 @@ export class AlertService {
         'title': `Opciones de ${memberInfo.user.userName}`,
         'target': user_role,
         "object": memberInfo
+      }
+    }).then(modal => modal.present());
+    this.__modalOpened = true;
+  }
+
+  /**
+   * Open the alert showing the info of 
+   * a group member
+   * 
+   * @access public
+   * @param {GroupUser} member The info of the member
+   */
+  public seeGroupMemberInfo(member:GroupUser){
+    this.prepareAlerts();
+    this.__modalC.create({
+      component: AlertComponent,
+      componentProps:{
+        'mode': AlertMode.GROUPMEMBERINFO,
+        'title': `Información de ${member.userName}`,
+        "object": member
       }
     }).then(modal => modal.present());
     this.__modalOpened = true;
