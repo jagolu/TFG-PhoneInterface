@@ -55,3 +55,4 @@ export { NotificationMessage } from  './Notifications/NotificationMessage';
 export { LoginNotification } from  './Notifications/LoginNotification';
 export { GroupTab } from  './GroupManage/GroupTab';
 export { GroupLocate } from  './GroupManage/GroupLocate';
+export { ManageWeeklyPay } from './GroupManage/ManageWeeklyPay';

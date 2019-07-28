@@ -231,6 +231,19 @@ export class GroupService extends Rest{
     );
   }
 
+  /**
+   * Changes the group pay
+   * 
+   * @access public
+   * @param {ManageWeeklyPay} order The order to manage the 
+   * weekly pay
+   */
+  public changeWeekPay(order:ManageWeeklyPay){
+    this.postRequest(order, this.__groupPath+"ManageWeekPay").subscribe(
+      (page:GroupPage) => this.__groupInfoS.updateInfo(page)
+    );
+  }
+
 
   //
   // ────────────────────────────────────────────────────────────────────────────────────
