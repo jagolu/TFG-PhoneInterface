@@ -14,6 +14,7 @@ import { Base64ImagePipe } from 'src/app/pages/shared/pipes/base64-image.pipe';
 import { ChatTimePipe } from 'src/app/pages/shared/pipes/chat-time.pipe';
 import { SeeGroupMembersAdminComponent } from './alerts/see-group-members-admin/see-group-members-admin.component';
 import { SeeUserGroupsAdminComponent } from './alerts/see-user-groups-admin/see-user-groups-admin.component';
+import { NewsViewerComponent } from './news-viewer/news-viewer.component';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { SeeUserGroupsAdminComponent } from './alerts/see-user-groups-admin/see-
     SocialSignPasswordComponent,
     SeeGroupMembersAdminComponent,
     SeeUserGroupsAdminComponent,
+    NewsViewerComponent,
     OnlyDatePipe,
     Base64ImagePipe,
     ChatTimePipe
@@ -47,6 +49,7 @@ import { SeeUserGroupsAdminComponent } from './alerts/see-user-groups-admin/see-
     SocialSignPasswordComponent,
     SeeGroupMembersAdminComponent,
     SeeUserGroupsAdminComponent,
+    NewsViewerComponent,
     OnlyDatePipe,
     Base64ImagePipe,
     ChatTimePipe
@@ -60,6 +63,7 @@ import { SeeUserGroupsAdminComponent } from './alerts/see-user-groups-admin/see-
     DeleteGroupAlertComponent,
     SocialSignPasswordComponent,
     SeeGroupMembersAdminComponent,
+    NewsViewerComponent,
     SeeUserGroupsAdminComponent
   ]
 })
