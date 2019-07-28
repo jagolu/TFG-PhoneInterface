@@ -16,6 +16,7 @@ import { GroupHeaderComponent } from './group-header/group-header.component';
 import { GroupMembersComponent } from './group-members/group-members.component';
 import { GroupPopOverComponent } from './group-pop-over/group-pop-over.component';
 import { PasswordFormComponent } from './group-options/password-form/password-form.component';
+import { WeeklyPayFormComponent } from './group-options/weekly-pay-form/weekly-pay-form.component';
 
 
 @NgModule({
@@ -71,7 +72,8 @@ import { PasswordFormComponent } from './group-options/password-form/password-fo
     GroupHeaderComponent,
     GroupMembersComponent,
     GroupPopOverComponent,
-    PasswordFormComponent
+    PasswordFormComponent,
+    WeeklyPayFormComponent
   ],
   entryComponents:[GroupPopOverComponent]
 })
