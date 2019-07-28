@@ -1,4 +1,38 @@
 <app-group-header></app-group-header>
 <ion-content>
-    ifo
+    <ion-row class="ion-text-center">
+        <ion-col size=12>
+            <ion-text>
+                <h4>{{groupName}}</h4>
+                <i>Aforo: {{actualCapacity}}/{{maxCapacity}}</i>
+                <br>
+                <i>Creado: {{createDate | onlyDatePipe}}</i>
+            </ion-text>
+        </ion-col>
+    </ion-row>
+    <div class="hr"></div>
+
+    <ion-row class="ion-text-center">
+        <ion-col size=12>
+            <ion-text>
+                <h4>Tu</h4>
+                <i>Desde {{dateJoin | onlyDatePipe}}</i>
+                <br>
+                <i>
+                <app-icon [Icon]="icon_crown" *ngIf="role=='GROUP_MAKER'"></app-icon>
+                <app-icon [Icon]="icon_wizard" *ngIf="role=='GROUP_ADMIN'"></app-icon>
+                <app-icon [Icon]="icon_user" *ngIf="role=='GROUP_NORMAL'"></app-icon>
+                desde {{dateRole | onlyDatePipe}}
+                </i>
+            </ion-text>
+        </ion-col>
+    </ion-row>
+    <div class="hr"></div>
+
+    <ion-row class="ion-text-center">
+        <ion-col size=12>
+            <ion-button style="margin-top:10px" color="danger" expand="block" 
+                (click)="leaveGroup()">Abandonar</ion-button>
+        </ion-col>
+    </ion-row>
 </ion-content>
