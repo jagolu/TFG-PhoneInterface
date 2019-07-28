@@ -49,7 +49,7 @@ export class JoinPasswordGroupComponent {
   
   /**
    * @constructor
-   * @param {AlertService} _alertS To get the alert info
+   * @param {AlertService} _alertS To hide the alert
    * @param {UserService} _userS To do the user requests
    */
   constructor(private _alertS:AlertService, private _groupS:GroupService) { 
