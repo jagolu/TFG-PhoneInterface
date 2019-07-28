@@ -1,0 +1,27 @@
+<ion-row>
+  <ion-col size=12>
+      <ion-button style="margin-top:5px" color="primary" expand="block" (click)="manage(true)"
+                *ngIf="memberInfo.user.role != 'GROUP_ADMIN' && user_role == 'GROUP_MAKER' && !memberInfo.user.blocked"
+              >Dar admin</ion-button>
+      <ion-button style="margin-top:5px" color="primary" expand="block" fill="outline" (click)="manage(false)"
+               *ngIf="memberInfo.user.role == 'GROUP_ADMIN' && user_role == 'GROUP_MAKER' && !memberInfo.user.blocked"
+              >Quitar admin</ion-button>
+  </ion-col>
+</ion-row>
+<ion-row>
+  <ion-col size=12>
+      <ion-button style="margin-top:5px" color="danger" expand="block"  (click)="kick()"
+                  *ngIf="user_role == 'GROUP_MAKER' || user_role == 'GROUP_ADMIN'"
+              >Echar</ion-button>
+  </ion-col>
+</ion-row>
+<ion-row>
+  <ion-col size=12>
+      <ion-button style="margin-top:5px" color="danger" expand="block" (click)="block(true)"
+            *ngIf="(user_role == 'GROUP_MAKER' || user_role == 'GROUP_ADMIN') && !memberInfo.user.blocked"
+          >Bloquear</ion-button>
+      <ion-button style="margin-top:5px" color="danger" expand="block" fill="outline" (click)="block(false)"
+          *ngIf="(user_role == 'GROUP_MAKER' || user_role == 'GROUP_ADMIN') && memberInfo.user.blocked"
+          >Desbloquear</ion-button>
+  </ion-col>
+</ion-row>

@@ -22,6 +22,7 @@ export { GroupPage } from './GroupManage/GroupPage';
 export { KickUser } from './GroupManage/KickUser';
 export { ManagePassword } from './GroupManage/ManagePassword';
 export { RemoveGroup } from './GroupManage/RemoveGroup';
+export { GroupMemberOptions } from './GroupManage/GroupMemberOptions';
 export { ResetPassword } from './Identity/ResetPassword';
 export { FootballMatch } from  './Bets/FootballMatch';
 export { AvailableBet } from  './Bets/AvailableBet';

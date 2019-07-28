@@ -15,6 +15,7 @@ import { ChatTimePipe } from 'src/app/pages/shared/pipes/chat-time.pipe';
 import { SeeGroupMembersAdminComponent } from './alerts/see-group-members-admin/see-group-members-admin.component';
 import { SeeUserGroupsAdminComponent } from './alerts/see-user-groups-admin/see-user-groups-admin.component';
 import { NewsViewerComponent } from './news-viewer/news-viewer.component';
+import { GroupMemberOptionsComponent } from './alerts/group-member-options/group-member-options.component';
 
 @NgModule({
   imports: [
@@ -36,7 +37,8 @@ import { NewsViewerComponent } from './news-viewer/news-viewer.component';
     NewsViewerComponent,
     OnlyDatePipe,
     Base64ImagePipe,
-    ChatTimePipe
+    ChatTimePipe,
+    GroupMemberOptionsComponent
   ],
   exports: 
   [
@@ -52,7 +54,8 @@ import { NewsViewerComponent } from './news-viewer/news-viewer.component';
     NewsViewerComponent,
     OnlyDatePipe,
     Base64ImagePipe,
-    ChatTimePipe
+    ChatTimePipe,
+    GroupMemberOptionsComponent
   ],
   entryComponents: 
   [
@@ -64,7 +67,8 @@ import { NewsViewerComponent } from './news-viewer/news-viewer.component';
     SocialSignPasswordComponent,
     SeeGroupMembersAdminComponent,
     NewsViewerComponent,
-    SeeUserGroupsAdminComponent
+    SeeUserGroupsAdminComponent,
+    GroupMemberOptionsComponent
   ]
 })
 export class SharedModule { }

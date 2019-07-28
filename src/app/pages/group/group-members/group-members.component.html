@@ -1,4 +1,31 @@
 <app-group-header></app-group-header>
 <ion-content>
-    members
+    <ion-list>
+
+
+        <ion-item *ngFor="let member of members; let i = index">
+            <ion-label class="ion-text-center" [ngClass]="{'block': member.blocked }">
+                    <span style="float:left" *ngIf="i != (members.length-1)">
+                        {{member.coins}} <app-icon [Icon]="icon_coin"></app-icon>
+                    </span>
+                    
+                    {{member.userName}}
+                    
+                    <app-icon [Icon]="icon_user" *ngIf="i == (members.length-1)"></app-icon>
+                    <app-icon [Icon]="icon_crown" *ngIf="member.role=='GROUP_MAKER'"></app-icon>
+                    <app-icon [Icon]="icon_wizard" *ngIf="member.role=='GROUP_ADMIN'"></app-icon>
+
+                    <app-icon [Icon]="icon_info" style="margin-left:4px" class="float-right" 
+                                    *ngIf="i != (members.length-1)" 
+                                ></app-icon>
+                    <app-icon [Icon]="icon_cog" class="float-right" (click)="openOptions(member)" 
+                            *ngIf="((user_role!='GROUP_NORMAL' && member.role!='GROUP_MAKER' && user_role!=member.role && !member.blocked) || 
+                                    (member.blocked && (user_role == 'GROUP_MAKER' || user_role == member.blockedBy))) &&  i != (members.length-1)"
+                                    ></app-icon>       
+            </ion-label>   
+
+        </ion-item>
+
+
+    </ion-list>
 </ion-content>
