@@ -11,7 +11,10 @@
       <ion-button color="primary" (click)="popOver()" expand="block" fill="outline">{{boton_name}}</ion-button>
   </ion-col>
   <ion-col size=4>
-    <ion-text class="ion-text-right">
+    <ion-text class="ion-text-right" color=danger *ngIf="coins<=0">
+      <h5 class="ion-padding-end">{{coins}} <app-icon [Icon]="icon_coin"></app-icon></h5>
+    </ion-text>
+    <ion-text class="ion-text-right" *ngIf="coins>0">
       <h5 class="ion-padding-end">{{coins}} <app-icon [Icon]="icon_coin"></app-icon></h5>
     </ion-text>
   </ion-col>
