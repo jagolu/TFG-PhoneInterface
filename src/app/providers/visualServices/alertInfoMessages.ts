@@ -5,7 +5,7 @@ export function getMessage(type:AlertInfoType){
 
     switch(type){
       case AlertInfoType.LOSTCONNECTIONERROR:{
-        msg = "Se ha perdido la conexión con el servidor.\n"+
+        msg = "Se ha perdido la conexión con el servidor.<br>"+
           "Por favor, revisa tu conexión a internet.";
         break;
       }
@@ -22,12 +22,12 @@ export function getMessage(type:AlertInfoType){
         break;
       }
       case AlertInfoType.YOUREBANNED:{
-        msg = "No puedes utilizar la plataforma porque estás baneado.\n"+
+        msg = "No puedes utilizar la plataforma porque estás baneado.<br>"+
           "Deberías tener una notificación en tu correo.";
         break;
       }
       case AlertInfoType.GROUPBANNED:{
-        msg = "No puedes utilizar las funciones de este grupo, ha sido bloqueado.\n"+ 
+        msg = "No puedes utilizar las funciones de este grupo, ha sido bloqueado.<br>"+ 
           "Si crees que es un error con contacta con los administradores de la plataforma.";
         break;
       }
@@ -36,22 +36,22 @@ export function getMessage(type:AlertInfoType){
         break;
       }
       case AlertInfoType.VERIFICATIONSENT:{
-        msg = "Su registro se ha casi completado, solo es necesario un paso más.\n"+
+        msg = "Su registro se ha casi completado, solo es necesario un paso más.<br>"+
           "Verifique su correo mediante el enlace que se le ha enviado al mismo.";
         break;
       }
       case AlertInfoType.SOCIALERROR:{
-        msg = "Ha habido un error con la red social con la que intentabas iniciar sesión\n"+  
+        msg = "Ha habido un error con la red social con la que intentabas iniciar sesión<br>"+  
           "Vuelva a intentarlo más tarde.";
         break;
       }
       case AlertInfoType.WRONGEMAILORPASSWORD:{
-        msg = "El correo o contraseña introducidos no son correctos.\n"+ 
+        msg = "El correo o contraseña introducidos no son correctos.<br>"+ 
           "Vuelva a intentarlo";
         break;
       }
       case AlertInfoType.NOTSOCIALSIGNYET:{
-        msg = "El email con el que intentas loguearte no está registrado\n"+ 
+        msg = "El email con el que intentas loguearte no está registrado<br>"+ 
           "Registrate primero.";
         break;
       }
@@ -60,28 +60,28 @@ export function getMessage(type:AlertInfoType){
         break;
       }
       case AlertInfoType.CANTDELETEACCOUNT:{
-        msg = "No se pudo eliminar tu cuenta de usuario.\n"+ 
+        msg = "No se pudo eliminar tu cuenta de usuario.<br>"+ 
             "Vuelva a intentarlo más tarde.";
         break;
       }
       case AlertInfoType.DELETEDACCOUNT:{
-        msg = "Sentimos que te vayas.\n"+
+        msg = "Sentimos que te vayas.<br>"+
           "Ojalá vuelvas pronto.";
         break;
       }
       case AlertInfoType.SESSIONEXPIRED:{
-        msg = "Tu sesión ha expirado.\n"+ 
+        msg = "Tu sesión ha expirado.<br>"+ 
           "Vuelva a registrarte";
         break;
       }
       case AlertInfoType.LIMITATIONSPECIFICCREATEGROUP:{
-        msg = "No puedes crear más grupos de este tipo.\n"+ 
-          "Si deseas crear más grupos de este tipo dirigete a la tienda.\n";
+        msg = "No puedes crear más grupos de este tipo.<br>"+ 
+          "Si deseas crear más grupos de este tipo dirigete a la tienda.<br>";
         break;
       }
       case AlertInfoType.LIMITATIONCREATEGROUP:{
-        msg = "No puedes crear más grupos de ningún tipo.\n"+ 
-          "Si deseas crear más grupos dirigete a la tienda.\n";
+        msg = "No puedes crear más grupos de ningún tipo.<br>"+ 
+          "Si deseas crear más grupos dirigete a la tienda.<br>";
         break;
       }
       case AlertInfoType.INCORRECTOLDPASSWORD:{
@@ -97,12 +97,12 @@ export function getMessage(type:AlertInfoType){
         break;
       }
       case AlertInfoType.ERRORBUY:{
-        msg = "Hubo un error en tu compra.\n"+
+        msg = "Hubo un error en tu compra.<br>"+
           "IMPLEMNTAR QUE PASA AQUI.";
         break;
       }
       case AlertInfoType.ENABLEDGROUPPASSWORD:{
-        msg = "Ya puedes poner una contraseña al grupo.\n"+ 
+        msg = "Ya puedes poner una contraseña al grupo.<br>"+ 
           "Dirigete tu o el administrador del grupo a la sección de información del grupo para escribir la nueva contraseña.";
         break;
       }
@@ -111,17 +111,17 @@ export function getMessage(type:AlertInfoType){
         break;
       }
       case AlertInfoType.SUCCESFULLJOINGROUP:{
-        msg = "Enhorabuena, ya formas parte del grupo\n"+
+        msg = "Enhorabuena, ya formas parte del grupo<br>"+
           "Disfruta y sé respetuoso";
         break;
       }
       case AlertInfoType.SUCCESFULLCREATEDGROUP:{
-        msg = "Enhorabuena, has creado tu propio grupo.\n"+
+        msg = "Enhorabuena, has creado tu propio grupo.<br>"+
           "Disfrutalo!";
         break;
       }
       case AlertInfoType.MAXGROUPJOINREACHED:{
-        msg = "No puedes unirte al grupo. Has alcanzado el máximo número de grupos a los que puedes añadirte.\n"+
+        msg = "No puedes unirte al grupo. Has alcanzado el máximo número de grupos a los que puedes añadirte.<br>"+
           "Salte de alguno de ellos o compra más espacios de grupo a los que unirte.";
         break;
       }
@@ -130,12 +130,12 @@ export function getMessage(type:AlertInfoType){
         break;
       }
       case AlertInfoType.CANTCHANGEPASSTODAY:{
-        msg = "VirtualBet solo permite realizar la accion de recordar contraseña una vez al dia.\n"+
+        msg = "VirtualBet solo permite realizar la accion de recordar contraseña una vez al dia.<br>"+
           "Prueba una vez pasadas 24 desde que hiciste la anterior solicitud.";
         break;
       }
       case AlertInfoType.SUCCESSPASSWORDEMAIL:{
-        msg = "Pronto recibirás un correo para cambiar tu contraseña actual.\n"+
+        msg = "Pronto recibirás un correo para cambiar tu contraseña actual.<br>"+
           "No elimines el correo hasta estar seguro, ya que solo permitimos un cambio de contraseña al día.";
         break;
       }
@@ -152,7 +152,7 @@ export function getMessage(type:AlertInfoType){
         break;
       }
       case AlertInfoType.BETHIGHERTHANYOURCOINS:{
-        msg = "Cuiado, el mínimo de apuesta que has elegido es superior a las monedas que tienes actualmente.\n"+
+        msg = "Cuiado, el mínimo de apuesta que has elegido es superior a las monedas que tienes actualmente.<br>"+
           "Si no consigues más monedas no podrás apostar en esta apuesta.";
         break;
       }
@@ -173,7 +173,7 @@ export function getMessage(type:AlertInfoType){
         break;
       }
       case AlertInfoType.CANCELBETCANCELLED:{
-        msg = "No puedes cancelar tu apuesta, el evento de apuesta ha sido cancelado.\n"+
+        msg = "No puedes cancelar tu apuesta, el evento de apuesta ha sido cancelado.<br>"+
           "Tus monedas deberían haber sido devueltas";
         break;
       }
@@ -186,7 +186,7 @@ export function getMessage(type:AlertInfoType){
         break;
       }
       case AlertInfoType.SUCCESFULLCANCELFOOTBALLBET:{
-        msg = "Tu apuesta se ha cancelado con exito. Puedes volver a apostar en el mismo evento de apuesta si lo deseas.\n"+
+        msg = "Tu apuesta se ha cancelado con exito. Puedes volver a apostar en el mismo evento de apuesta si lo deseas.<br>"+
           "Algunas monedas de las que apostaste se te habrán devuelto.";
         break;
       }
@@ -211,8 +211,8 @@ export function getMessage(type:AlertInfoType){
         break;
       }
       case AlertInfoType.DELETEREQUEST:{
-        msg = "Hace poco nos pediste eliminar la cuenta.\n"+
-          "Como aun no se han borrado los datos completamente, puedes iniciar sesión con normalidad.\n"+ 
+        msg = "Hace poco nos pediste eliminar la cuenta.<br>"+
+          "Como aun no se han borrado los datos completamente, puedes iniciar sesión con normalidad.<br>"+ 
           "Al hacerlo cancelaremos el proceso de eliminación de cuenta.";
         break;
       }
