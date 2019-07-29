@@ -60,7 +60,8 @@
                   passwordForm.controls['newPassword'].errors.pattern"
               >Debe tener almenos una mayúscula, una minúscula y un número.<br></small>
               <small *ngIf=" !passwordForm.controls['newPassword'].pristine && 
-                  !equalPasswords"
+                            !passwordForm.controls['repeatPassword'].pristine && 
+                            !equalPasswords"
               >Las contraseñas no coinciden.<br></small>
           </ion-text> 
           <ion-item>

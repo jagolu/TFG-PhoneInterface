@@ -75,8 +75,9 @@
                         !signUpForm.controls['password'].pristine && 
                         signUpForm.controls['password'].errors.pattern"
             >La contraseña debe tener al menos una mayuscula, una minuscula y un número<br></small>
-            <small *ngIf=" !signUpForm.controls['password'].pristine && 
-                        !passwordsAreEqual"
+            <small *ngIf="!signUpForm.controls['password'].pristine && 
+                          !signUpForm.controls['repeatPassword'].pristine &&
+                          !passwordsAreEqual"
             >Las contraseñas no coinciden</small>
         </ion-text> 
         <ion-item>
