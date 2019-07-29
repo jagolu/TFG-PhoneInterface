@@ -31,7 +31,7 @@
         </ion-text>   
     
         <ion-button style="margin-top:30px" color="dark" expand="block" fill="outline" type="submit"
-                  [disabled]="!nicknameForm.valid || !passwordsAreEqual">Cambiar nombre de usuario</ion-button>
+                  [disabled]="!nicknameForm.valid || nicknameForm.controls['nickname'].pristine">Cambiar nombre de usuario</ion-button>
     </form>    
 
     <div class="hr" style="margin-top: 40px" *ngIf="!isAdmin()"></div>
