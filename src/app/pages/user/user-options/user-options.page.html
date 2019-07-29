@@ -44,7 +44,7 @@
           </ion-item>
           <ion-item>
             <ion-label position="floating">Nueva contraseña</ion-label>
-            <ion-input type="password" formControlName="newPassword" (change)="equalPassword()"></ion-input>
+            <ion-input type="{{passwordType}}" formControlName="newPassword" (change)="equalPassword()"></ion-input>
           </ion-item>
           <ion-text color="danger">
               <small *ngIf="passwordForm.controls['newPassword'].errors && 
@@ -66,10 +66,14 @@
           </ion-text> 
           <ion-item>
             <ion-label position="floating">Repetir contraseña </ion-label>
-            <ion-input type="password" formControlName="repeatPassword" (change)="equalPassword()"></ion-input>
+            <ion-input type="{{passwordType}}" formControlName="repeatPassword" (change)="equalPassword()"></ion-input>
           </ion-item>
+          <ion-text color="secondary">
+            <br>
+            <small>Ver contraseñas <app-icon [Icon]="icon_eye" (click)="watchPassword()"  #changeUserPasswordEye></app-icon></small>
+          </ion-text> 
     
-        <ion-button style="margin-top:30px" color="dark" expand="block" fill="outline" type="submit"
+        <ion-button style="margin-top:50px" color="dark" expand="block" fill="outline" type="submit"
                   [disabled]="!passwordForm.valid || !equalPasswords">Cambiar contraseña</ion-button>
     </form>    
 
