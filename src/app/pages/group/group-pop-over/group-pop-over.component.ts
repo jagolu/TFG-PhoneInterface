@@ -62,6 +62,15 @@ export class GroupPopOverComponent {
     this.__popOC.dismiss().then(_=> this.__popOC.dismiss()).catch(Error);
   }
 
+  /**
+   * Closes the popover
+   * 
+   * @access public
+   */
+  public close(){
+    this.__popOC.dismiss().then(_=> this.__popOC.dismiss()).catch(Error);
+  }
+
 
   //
   // ────────────────────────────────────────────────────────────────────────────────────
