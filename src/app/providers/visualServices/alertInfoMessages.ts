@@ -221,7 +221,8 @@ export function getMessage(type:AlertInfoType){
         break;
       }
       case AlertInfoType.SUCCESSFULLWEEKLYPAYCHANGE:{
-        msg = "Pagos semanales cambiados correctamente.";
+        msg = "Pagos semanales cambiados correctamente.<br>"+
+              "Las monedas de los miembros del grupo se han ajustado al nuevo pago semanal.";
         break;
       }
       case AlertInfoType.SUCCESSFULLMANAGEPASSWORD:{
