@@ -1,4 +1,10 @@
 <app-group-header></app-group-header>
 <ion-content>
-    new bet
+        <ion-card *ngFor="let bet of bets">    
+            <ion-card-header (click)="seeBet(bet)">
+                <ion-card-title>
+                    <h3>{{bet.betName}}</h3> <small class="font-italic">{{bet.competition}}  ({{bet.matchdayDate|onlyDatePipe}})</small>
+                </ion-card-title>
+            </ion-card-header>
+        </ion-card>
 </ion-content>
