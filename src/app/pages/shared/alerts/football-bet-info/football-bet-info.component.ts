@@ -1,14 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { GroupBet } from 'src/app/models/models';
-import { GroupInfoService } from 'src/app/providers/userServices/group-info.service';
 import { AlertService } from 'src/app/providers/visualServices/alert.service';
 
 @Component({
-  selector: 'app-group-new-bet',
-  templateUrl: './group-new-bet.component.html',
+  selector: 'app-football-bet-info',
+  templateUrl: './football-bet-info.component.html',
   styleUrls: [],
 })
-export class GroupNewBetComponent implements OnInit {
+export class FootballBetInfoComponent {
 
   //
   // ──────────────────────────────────────────────────────────────────────
@@ -17,20 +16,28 @@ export class GroupNewBetComponent implements OnInit {
   //
 
   /**
-   * The new bets in the group
+   * The info of the bet
    * 
    * @access public
-   * @var {GroupBet[]} bets
+   * @var {GroupBet} bet
    */
-  public bets:GroupBet[] = [];
+  @Input() bet: GroupBet;
 
   /**
-   * The coins of the actual user
+   * The id of the bet
    * 
    * @access public
-   * @var {number} userCoins
+   * @var {string} betId
    */
-  public userCoins:number = 0;
+  @Input() betId:string = "";
+
+  /**
+   * Says if the bet is ended or not
+   * 
+   * @access public
+   * @var {Boolean} ended
+   */
+  @Input() ended:Boolean = true;
 
 
   //
@@ -41,39 +48,33 @@ export class GroupNewBetComponent implements OnInit {
 
   /**
    * @constructor
-   * @param {GroupInfoService} __groupInfoS To get the info of the group
-   * @param {AlertService} __alertS To launch the alerts
+   * @param {AlertService} __alertS To launch the alert to cancel the bet
    */
-  constructor(private __groupInfoS:GroupInfoService, private __alertS:AlertService) { }
-
-  /**
-   * Gets the bets from the service
-   * 
-   * @OnInit
-   */
-  ngOnInit() {
-    this.__groupInfoS.info.subscribe(page=>{
-      try{
-        this.userCoins =  page.members ? page.members[page.members.length-1].coins : 0;
-        this.bets = page.bets;
-      }catch(Error){}
-    });
-  }
+  constructor(private __alertS:AlertService) { }
 
 
   //
-  // ──────────────────────────────────────────────────────────────────────────────────
+  // ────────────────────────────────────────────────────────────────────────  ──────────
   //   :::::: P U B L I C   F U N C T I O N S : :  :   :    :     :        :          :
   // ──────────────────────────────────────────────────────────────────────────────────
   //
 
   /**
-   * Launchs the alert to see a user football bet
+   * Says if the bet is a jackpot bet
    * 
    * @access public
-   * @param {GroupBet} bet The bet which the user want to see 
-   */  
-  public seeBet(bet:GroupBet){
-    this.__alertS.seeFootballBet(bet, "", true);
+   * @param {Boolean} type The type of the bet
+   */
+  public isJackpotBet(type:string):Boolean{
+    return type.includes("JACKPOT");
+  }
+
+  /**
+   * Launchs the alert to cancel the bet
+   * 
+   * @access public
+   */
+  public cancel(){
+    // this.__alertS.cancelFootballBet(this.betId);
   }
 }

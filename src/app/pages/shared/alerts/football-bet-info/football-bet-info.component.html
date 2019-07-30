@@ -1,0 +1,84 @@
+<ion-row *ngIf="bet.firstHalfHomeGoals!=null">
+  <ion-col size-lg=3 size=5>
+    <ion-row>
+      <ion-col size-lg=7 size-md=7 size-sm=12 size=12 class="form-control"><strong>Primera parte</strong></ion-col>
+      <ion-col size-lg=5 size-md=5 size-sm=12 size=12>
+        <input type="text" readonly value="{{bet.firstHalfHomeGoals}} - {{bet.firstHalfAwayGoals}}">
+      </ion-col>
+    </ion-row>
+  </ion-col>
+  <ion-col size-lg=3 size=5>
+    <ion-row>
+      <ion-col size-lg=7 size-md=7 size-sm=12 size=12 class="form-control"><strong>Segunda parte</strong></ion-col>
+      <ion-col size-lg=5 size-md=5 size-sm=12 size=12>
+        <input type="text" readonly value="{{bet.secondHalfHomeGoals}} - {{bet.secondHalfAwayGoals}}">
+      </ion-col>
+    </ion-row>
+  </ion-col>
+</ion-row>
+<ion-row>
+  <ion-col size=12>
+    <ion-row>
+
+      <ion-col size=6>
+        <ion-row>
+          <ion-col size=12><strong>Máximo dia para apostar</strong></ion-col>
+          <ion-col size=12>
+            <input type="text" readonly value="{{bet.lastBetTime | onlyDatePipe}}">
+          </ion-col>
+        </ion-row>
+      </ion-col>
+
+      <ion-col size=6 *ngIf="!isJackpotBet(bet.typePay.name)">
+        <ion-row>
+          <ion-col size=12><strong>Cuota</strong> </ion-col>
+          <ion-col size=12>
+            <input type="text" readonly value="{{bet.typeBet.winRate + bet.typePay.winRate}}">
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-lg=6 size=12 *ngIf="!isJackpotBet(bet.typePay.name)">
+        <ion-row>
+          <ion-col size=12><strong>Mínimo</strong></ion-col>
+          <ion-col size=12>
+            <input type="text" readonly value="{{bet.minBet}}">
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col size-lg=6 size=12 *ngIf="!isJackpotBet(bet.typePay.name)">
+        <ion-row>
+          <ion-col size=12><strong>Máximo</strong></ion-col>
+          <ion-col size=12>
+            <input type="text" readonly value="{{bet.maxBet==10001 ? 'No Max' : bet.maxBet}}">
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col size=12 *ngIf="isJackpotBet(bet.typePay.name)">
+        <ion-row>
+          <ion-col size=12><strong>Precio de entrada</strong></ion-col>
+          <ion-col size=12>
+            <input type="text" readonly value="{{bet.minBet}}">
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-col>
+  <ion-col size-lg=6 size=12>
+      <ion-card>    
+          <ion-card-header>
+              <ion-card-title style="font-size: 115%">{{bet.typeBet.name}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>{{bet.typeBet.description}}</ion-card-content>
+      </ion-card>
+  </ion-col>
+  <ion-col size-lg=6 size=12>
+      <ion-card>    
+          <ion-card-header>
+              <ion-card-title style="font-size: 115%">{{bet.typePay.name}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>{{bet.typePay.description}}</ion-card-content>
+      </ion-card>
+  </ion-col>
+</ion-row>

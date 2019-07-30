@@ -74,5 +74,11 @@ export enum AlertMode{
      * @summary Alert when the group maker wants to 
      * see the info of a member
      */
-    GROUPMEMBERINFO = "GROUPMEMBERINFO"
+    GROUPMEMBERINFO = "GROUPMEMBERINFO",
+
+    /**
+     * @summary Alert to see the info of a
+     * football bet 
+     */
+    FOOTBALLBETINFO = "FOOTBALLBETINFO"
 }

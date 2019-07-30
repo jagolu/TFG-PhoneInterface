@@ -17,6 +17,7 @@ import { SeeUserGroupsAdminComponent } from './alerts/see-user-groups-admin/see-
 import { NewsViewerComponent } from './news-viewer/news-viewer.component';
 import { GroupMemberOptionsComponent } from './alerts/group-member-options/group-member-options.component';
 import { GroupMemberInfoComponent } from './alerts/group-member-info/group-member-info.component';
+import { FootballBetInfoComponent } from './alerts/football-bet-info/football-bet-info.component';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { GroupMemberInfoComponent } from './alerts/group-member-info/group-membe
     Base64ImagePipe,
     ChatTimePipe,
     GroupMemberOptionsComponent,
-    GroupMemberInfoComponent
+    GroupMemberInfoComponent,
+    FootballBetInfoComponent
   ],
   exports: 
   [
@@ -58,7 +60,8 @@ import { GroupMemberInfoComponent } from './alerts/group-member-info/group-membe
     Base64ImagePipe,
     ChatTimePipe,
     GroupMemberOptionsComponent,
-    GroupMemberInfoComponent
+    GroupMemberInfoComponent,
+    FootballBetInfoComponent
   ],
   entryComponents: 
   [
@@ -72,7 +75,8 @@ import { GroupMemberInfoComponent } from './alerts/group-member-info/group-membe
     NewsViewerComponent,
     SeeUserGroupsAdminComponent,
     GroupMemberOptionsComponent,
-    GroupMemberInfoComponent
+    GroupMemberInfoComponent,
+    FootballBetInfoComponent
   ]
 })
 export class SharedModule { }
