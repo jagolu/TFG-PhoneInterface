@@ -207,6 +207,19 @@ export class AlertService {
    * @param {number} coins The actual coins of the user
    */
   public doAFootballBet(bet:GroupBet, coins:number){
+    this.prepareAlerts();
+    this.__modalC.create({
+      component: AlertComponent,
+      componentProps:{
+        'mode': AlertMode.FOOTBALLBET,
+        'title': bet.betName,
+        'object': {
+          "bet":bet,
+          "userCoins": coins
+        }
+      }
+    }).then(modal => modal.present());
+    this.__modalOpened = true;
   }
 
   /**
