@@ -76,4 +76,14 @@ export class GroupNewBetComponent implements OnInit {
   public seeBet(bet:GroupBet){
     this.__alertS.seeFootballBet(bet, "", true);
   }
+
+  /**
+   * Launchs the alert to do a user football bet
+   * 
+   * @access public
+   * @param {GroupBet} bet The bet which the user want to bet 
+   */  
+  public doBet(bet:GroupBet){
+    this.__alertS.doAFootballBet(bet, this.userCoins);
+  }
 }

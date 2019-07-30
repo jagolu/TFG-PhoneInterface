@@ -206,15 +206,8 @@ export class AlertService {
    * @param {GroupBet} bet The info of the bet 
    * @param {number} coins The actual coins of the user
    */
-  // public doAFootballBet(bet:GroupBet, coins:number){
-  //   this.setTitle(bet.betName);
-  //   // this.changeAlertMode(AlertMode.FOOTBALLBET);
-  //   this.objectInfo.next({
-  //     "bet":bet,
-  //     "userCoins": coins
-  //   });
-  //   this.prepareAlerts();
-  // }
+  public doAFootballBet(bet:GroupBet, coins:number){
+  }
 
   /**
    * Open the alert showing the info and button
