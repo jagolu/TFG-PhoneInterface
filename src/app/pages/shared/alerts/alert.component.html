@@ -28,6 +28,7 @@
             <app-group-member-info *ngIf="mode == 'GROUPMEMBERINFO'" [user]="object"></app-group-member-info>
 
             <app-football-bet-info *ngIf="mode == 'FOOTBALLBETINFO'" [bet]="object" [betId]="target" [ended]="needPassword"></app-football-bet-info>
-
+            <app-user-football-bet-info *ngIf="mode == 'USERFOOTBALLBETINFO'"  [info]="object"></app-user-football-bet-info>
+            
     </ion-card-content>
 </ion-card>

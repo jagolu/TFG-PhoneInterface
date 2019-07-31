@@ -10,7 +10,7 @@
                     <ion-col size=12 *ngIf="isValid(bet.ownBet)">
                         <h3>{{bet.bet.betName}}</h3> <small class="font-italic">{{bet.bet.competition}}  ({{bet.bet.matchdayDate|onlyDatePipe}})</small>
                     </ion-col>
-                    <ion-col size-lg=3 size=12 *ngIf="!isValid(bet.ownBet)"><ion-text color=danger><h2>INVALIDA</h2></ion-text></ion-col>
+                    <ion-col size-lg=3 size=12 *ngIf="!isValid(bet.ownBet)" class="ion-text-right"><ion-text color=danger><h2>INVALIDA</h2></ion-text></ion-col>
                 </ion-row>
             </ion-card-title>
             <ion-card-content>

@@ -84,10 +84,9 @@ export class GroupActiveBetsComponent implements OnInit {
    * Launchs the alert to see the user bets
    * 
    * @access public
-   * @param {GroupBet} bet The bet which the user want to see 
+   * @param {EndedFootballBet} bet The user bets of the logged user
    */  
-  public seeMyBets(bet:GroupBet){
-    // this.__alertS.doAFootballBet(bet, this.userCoins);
-    console.log("ok");
+  public seeMyBets(bet:EndedFootballBet){
+    this.__alertS.seeUserBet(bet.ownBet, bet.bet, false, "Tus apuestas");
   }
 }

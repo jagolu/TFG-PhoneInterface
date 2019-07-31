@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
-import { AlertInfoType, AlertMode, GroupMemberAdmin, UserInGroupSearch, GroupMemberOptions, GroupUser, GroupBet } from 'src/app/models/models';
+import { 
+  AlertInfoType, AlertMode, GroupMemberAdmin, 
+  UserInGroupSearch, GroupMemberOptions, GroupUser, 
+  GroupBet, HistoryUserFootballBet 
+} from 'src/app/models/models';
 import { BehaviorSubject } from 'rxjs';
 import { AlertController, ModalController } from '@ionic/angular';
 import { getMessage } from './alertInfoMessages';
@@ -355,6 +359,33 @@ export class AlertService {
         "object": bet,
         "target": betId,
         "needPassword": ended
+      }
+    }).then(modal => modal.present());
+    this.__modalOpened = true;
+  }
+
+  /**
+   * Launch the alert to see the user bets in a 
+   * football bet
+   * 
+   * @access public
+   * @param {HistoryUserFootballBet[]} userBet The bets of the user
+   * @param {GroupBet} footballBet The football bet 
+   * @param {Boolean} ended True if the football bet has ended, false otherwise
+   * @param {string} name The username of the member of the group who did the bets
+   */
+  public seeUserBet(userBet:HistoryUserFootballBet[], footballBet:GroupBet, ended:Boolean, name:string){
+    this.prepareAlerts();
+    this.__modalC.create({
+      component: AlertComponent,
+      componentProps:{
+        'mode': AlertMode.USERFOOTBALLBETINFO,
+        'title': name,
+        'object':{
+          footballBet : footballBet,
+          userBet: userBet,
+          ended: ended
+        }
       }
     }).then(modal => modal.present());
     this.__modalOpened = true;

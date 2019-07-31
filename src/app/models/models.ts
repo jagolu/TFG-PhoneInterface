@@ -29,6 +29,7 @@ export { AvailableBet } from  './Bets/AvailableBet';
 export { NameWinRate } from  './Bets/NameWinRate';
 export { LaunchFootballBet } from  './Bets/LaunchFootballBet';
 export { DoAFootballBet } from  './Bets/DoAFootballBet';
+export { UserFootballBetInfo } from  './Bets/UserFootballBetInfo';
 export { UserFootballBet } from  './Bets/UserFootballBet';
 export { HistoryUserFootballBet } from  './Bets/HistoryUserFootballBet';
 export { EndedFootballBet } from  './Bets/EndedFootballBet';

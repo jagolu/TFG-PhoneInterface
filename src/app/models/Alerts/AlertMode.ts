@@ -80,5 +80,11 @@ export enum AlertMode{
      * @summary Alert to see the info of a
      * football bet 
      */
-    FOOTBALLBETINFO = "FOOTBALLBETINFO"
+    FOOTBALLBETINFO = "FOOTBALLBETINFO",
+
+    /**
+     * @summary Alert to see the info of a
+     * user bet 
+     */
+    USERFOOTBALLBETINFO = "USERFOOTBALLBETINFO"
 }

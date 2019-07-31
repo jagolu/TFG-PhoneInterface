@@ -1,0 +1,66 @@
+<div style="overflow-y: scroll;" [ngStyle]="{'height.px': 500}">
+
+  <ion-card *ngFor="let bet of userBet">    
+      <ion-card-header>
+          <ion-card-title>
+              <ion-row>
+                <ion-col size=9>
+                  <span *ngIf="isWinnerBet(footballBet.typeBet.name)">Ganador de{{correctPart(footballBet.typeBet.name)}}: {{getWinnerWord(bet.winner)}}</span>
+                  <span *ngIf="!isWinnerBet(footballBet.typeBet.name)">Resultado de{{correctPart(footballBet.typeBet.name)}}: {{bet.homeGoals}}-{{bet.awayGoals}}</span>
+                </ion-col>
+                <ion-col size=3><ion-text *ngIf="!bet.valid" color=danger class="ion-text-right"><h3>INVALID</h3></ion-text ></ion-col>
+              </ion-row>
+          </ion-card-title>
+          <ion-card-content>
+              <ion-row>
+                  <ion-col size=12 class="ion-text-center" size-lg=6 *ngIf="!isJackpotBet(footballBet.typePay.name) && bet.valid && !ended">
+                    Apuesta: {{bet.bet}} <app-icon [Icon]="coin_icon"></app-icon>
+                  </ion-col>
+                  <ion-col size=12 size-lg=6 class="ion-text-center" *ngIf="!isJackpotBet(footballBet.typePay.name) && (!bet.valid || ended)">
+                    Apuesta: {{bet.bet}} <app-icon [Icon]="coin_icon"></app-icon>
+                  </ion-col>
+
+
+                  <ion-col size=12 size-lg=6 class="ion-text-center" *ngIf="!isJackpotBet(footballBet.typePay.name) && bet.valid && !ended">
+                    Ganancias posibles: {{getWinRate(footballBet, bet)}} <app-icon [Icon]="coin_icon"></app-icon>
+                  </ion-col>
+
+
+                  <ion-col size-lg=6 size=12 class="ion-text-center" *ngIf="isJackpotBet(footballBet.typePay.name)">
+                    Bote: {{getJackpot(footballBet)}} <app-icon [Icon]="coin_icon"></app-icon>
+                  </ion-col>
+
+
+                  <ion-col size-lg=6 size=12 class="ion-text-center" *ngIf="ended && bet.valid">
+                    Ganancias: {{bet.earnings}} <app-icon [Icon]="coin_icon"></app-icon>
+                  </ion-col>
+
+
+                  <ion-col size-lg=6 size=12 class="ion-text-center" *ngIf="!bet.valid">
+                    Monedas devueltas: {{howMuchMoneyBack(footballBet.typeBet.cancelRate, footballBet.typePay.cancelRate, bet.bet)}} 
+                      <app-icon [Icon]="coin_icon"></app-icon>
+                  </ion-col>
+
+
+                  <ion-col size=12 class="ion-text-center" *ngIf="bet.valid && !ended && !isJackpotBet(footballBet.typePay.name)">
+                    Realizada: {{bet.dateDone|onlyDatePipe}}
+                  </ion-col>
+                  <ion-col size=12 class="ion-text-center" *ngIf="bet.valid && (ended || isJackpotBet(footballBet.typePay.name))">
+                    Realizada: {{bet.dateDone|onlyDatePipe}}
+                  </ion-col>
+
+
+                  <ion-col size=12 class="ion-text-center" *ngIf="!bet.valid">
+                    Cancelada: {{bet.dateInvalid|onlyDatePipe}}
+                  </ion-col>
+
+                  <ion-col size=12 *ngIf="bet.valid && !ended">                      
+                      <ion-button style="margin-top: 5px" color="danger" expand="block" 
+                      (click)="cancelUserFootballBet(footballBet, bet.bet, bet.userFootballBet)">Cancelar apuesta</ion-button>
+                  </ion-col>
+              </ion-row>
+          </ion-card-content>
+      </ion-card-header>
+  </ion-card>
+
+</div>
