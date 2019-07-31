@@ -351,7 +351,7 @@ export class AlertService {
       component: AlertComponent,
       componentProps:{
         'mode': AlertMode.FOOTBALLBETINFO,
-        'title': `asdf`,
+        'title': bet.betName,
         "object": bet,
         "target": betId,
         "needPassword": ended
