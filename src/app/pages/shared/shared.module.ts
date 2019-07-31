@@ -20,6 +20,7 @@ import { GroupMemberInfoComponent } from './alerts/group-member-info/group-membe
 import { FootballBetInfoComponent } from './alerts/football-bet-info/football-bet-info.component';
 import { DoFootballBetComponent } from './alerts/do-football-bet/do-football-bet.component';
 import { UserFootballBetInfoComponent } from './alerts/user-football-bet-info/user-football-bet-info.component';
+import { CancelUserFootballBetComponent } from './alerts/cancel-user-football-bet/cancel-user-football-bet.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { UserFootballBetInfoComponent } from './alerts/user-football-bet-info/us
     GroupMemberInfoComponent,
     FootballBetInfoComponent,
     DoFootballBetComponent,
-    UserFootballBetInfoComponent
+    UserFootballBetInfoComponent,
+    CancelUserFootballBetComponent
   ],
   exports: 
   [
@@ -68,7 +70,8 @@ import { UserFootballBetInfoComponent } from './alerts/user-football-bet-info/us
     GroupMemberInfoComponent,
     FootballBetInfoComponent,
     DoFootballBetComponent,
-    UserFootballBetInfoComponent
+    UserFootballBetInfoComponent,
+    CancelUserFootballBetComponent
   ],
   entryComponents: 
   [
@@ -85,7 +88,8 @@ import { UserFootballBetInfoComponent } from './alerts/user-football-bet-info/us
     GroupMemberInfoComponent,
     FootballBetInfoComponent,
     DoFootballBetComponent,
-    UserFootballBetInfoComponent
+    UserFootballBetInfoComponent,
+    CancelUserFootballBetComponent
   ]
 })
 export class SharedModule { }

@@ -232,18 +232,24 @@ export class AlertService {
    * 
    * @param {GroupBet} bet The info of the bet
    * @param {number} user_coins The coins bet by the user
-   * @param {string} userFootballBet The id of the userFootballBet
+   * @param {string} userFootballBetId The id of the userFootballBet
    */
-  // public cancelUserFootballBet(bet:GroupBet, user_coins:number, userFootballBet:string){
-  //   this.setTitle("You are going to cancel your bet!");
-  //   // this.changeAlertMode(AlertMode.CANCELUSERFOOTBALLBET);
-  //   this.objectInfo.next({
-  //     "bet":bet,
-  //     "userCoins": user_coins
-  //   });
-  //   this.setTarget(userFootballBet);
-  //   this.prepareAlerts();
-  // }
+  public cancelUserFootballBet(bet:GroupBet, user_coins:number, userFootballBetId:string){
+    this.prepareAlerts();
+    this.__modalC.create({
+      component: AlertComponent,
+      componentProps:{
+        'mode': AlertMode.CANCELUSERFOOTBALLBET,
+        'title': "Vas a cancelar tu apuesta!!",
+        'target': userFootballBetId,
+        'object': {
+          "bet":bet,
+          "userCoins": user_coins
+        }
+      }
+    }).then(modal => modal.present());
+    this.__modalOpened = true;
+  }
 
   /**
    * Open the alert showing the message when a user wants to

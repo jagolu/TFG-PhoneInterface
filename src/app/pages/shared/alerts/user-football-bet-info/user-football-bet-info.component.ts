@@ -184,7 +184,6 @@ export class UserFootballBetInfoComponent implements OnInit{
    * @param {string} userFootballBetId The id of the football bet
    */
   public cancelUserFootballBet(footballBet:GroupBet, coins:number, userFootballBetId:string){
-    // this.__alertS.cancelUserFootballBet(footballBet, coins, userFootballBetId);
-    this.__alertS.deleteAccount("asdf");
+    this.__alertS.cancelUserFootballBet(footballBet, coins, userFootballBetId);
   }
 }
