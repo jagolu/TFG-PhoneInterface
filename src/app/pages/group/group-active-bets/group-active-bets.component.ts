@@ -12,3 +12,5 @@ export class GroupActiveBetsComponent implements OnInit {
   ngOnInit() {}
 
 }
+    // this.__alertS.doAFootballBet(bet, this.userCoins);
+    console.log("ok");

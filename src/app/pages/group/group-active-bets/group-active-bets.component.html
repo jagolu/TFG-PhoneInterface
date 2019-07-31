@@ -1,4 +1,36 @@
 <app-group-header></app-group-header>
 <ion-content>
-    active bets
+    <ion-card *ngFor="let bet of bets">    
+        <ion-card-header>
+            <ion-card-title>
+                <ion-row>
+                    <ion-col size-lg=9 size=12 *ngIf="!isValid(bet.ownBet)">
+                        <h3>{{bet.bet.betName}}</h3> <small class="font-italic">{{bet.bet.competition}}  ({{bet.bet.matchdayDate|onlyDatePipe}})</small>
+                    </ion-col>
+                    <ion-col size=12 *ngIf="isValid(bet.ownBet)">
+                        <h3>{{bet.bet.betName}}</h3> <small class="font-italic">{{bet.bet.competition}}  ({{bet.bet.matchdayDate|onlyDatePipe}})</small>
+                    </ion-col>
+                    <ion-col size-lg=3 size=12 *ngIf="!isValid(bet.ownBet)"><ion-text color=danger><h2>INVALIDA</h2></ion-text></ion-col>
+                </ion-row>
+            </ion-card-title>
+            <ion-card-content>
+                <ion-row>
+                    <ion-col size=12>
+                        <ion-button style="margin-top: 30px" color="dark" expand="block" fill="outline" 
+                        (click)="seeBet(bet.bet)">Información</ion-button></ion-col>
+                    <ion-col size=12>
+                        <ion-button style="margin-top: 5px" color="dark" expand="block" fill="outline" 
+                        *ngIf="bet.ownBet.length>0" (click)="seeMyBets(bet)">Ver mis apuestas</ion-button>
+                        <ion-button style="margin-top: 5px" color="dark" expand="block" 
+                        *ngIf="bet.ownBet.length==0">No has realizado ninguna apuesta</ion-button>
+                    </ion-col>
+                </ion-row>
+            </ion-card-content>
+        </ion-card-header>
+    </ion-card>
+    <ion-card *ngIf="bets.length == 0">    
+        <ion-card-header>
+            <ion-card-title> <ion-text><h3>You don't have active bets</h3></ion-text></ion-card-title>
+        </ion-card-header>
+    </ion-card>
 </ion-content>
