@@ -19,7 +19,8 @@ import { GroupMemberOptionsComponent } from './alerts/group-member-options/group
 import { GroupMemberInfoComponent } from './alerts/group-member-info/group-member-info.component';
 import { FootballBetInfoComponent } from './alerts/football-bet-info/football-bet-info.component';
 import { DoFootballBetComponent } from './alerts/do-football-bet/do-football-bet.component';
-import { UserFootballBetInfoComponent } from './alerts/group/user-football-bet-info/user-football-bet-info.component';
+import { UserFootballBetInfoComponent } from './alerts/user-football-bet-info/user-football-bet-info.component';
+
 
 @NgModule({
   imports: [
