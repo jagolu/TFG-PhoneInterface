@@ -51,14 +51,6 @@ export class GroupHeaderComponent {
    */
   public boton_name:string ="";
 
-  /**
-   * Checks if this is already loading the page
-   * 
-   * @access private
-   * @var {Boolean} _loading
-   */
-  private _loading:Boolean = false;
-
 
   //
   // ──────────────────────────────────────────────────────────────────────────

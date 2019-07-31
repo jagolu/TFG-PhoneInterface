@@ -25,6 +25,22 @@ export class GroupPopOverComponent {
    */
   private _groupName:string = "";
 
+  /**
+   * The role of the current user
+   * 
+   * @access public
+   * @var {string} role
+   */
+  public role:string = "";
+
+  /**
+   * The current location tab 
+   * 
+   * @access private
+   * @var {GroupTab} _location
+   */
+  private _location:GroupTab;
+
 
   //
   // ──────────────────────────────────────────────────────────────────────────
@@ -39,7 +55,14 @@ export class GroupPopOverComponent {
    * @param {PopoverController} __popOC To dismiss the popover
    */
   constructor(private __groupInfoS:GroupInfoService, private __router:Router, private __popOC:PopoverController) { 
-    this.__groupInfoS.locate.subscribe(loc=>this._groupName = loc.name);
+    this.__groupInfoS.locate.subscribe(loc=>{
+      this._groupName = loc.name;
+      this._location = loc.tab;
+    });
+    this.__groupInfoS.info.subscribe(page=>{
+      try{this.role = page.members ? page.members[page.members.length-1].role : "";}
+      catch(Error){}
+    });
   }
 
 
@@ -69,6 +92,17 @@ export class GroupPopOverComponent {
    */
   public close(){
     this.__popOC.dismiss().then(_=> this.__popOC.dismiss()).catch(Error);
+  }
+
+  /**
+   * Says if a button can be shown
+   * 
+   * @access public
+   * @param {string} name The name of the button
+   * @return {Boolean} True if the button can be shown, false otherwise
+   */
+  public show(name:string){
+    return name.toLowerCase() != this._location.toLowerCase();
   }
 
 

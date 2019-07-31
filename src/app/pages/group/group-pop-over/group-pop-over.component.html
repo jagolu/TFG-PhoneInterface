@@ -1,12 +1,44 @@
 <ion-list>
-    <ion-button color="dark" expand="block" fill="outline" (click)="navigate('news')">Noticias</ion-button>
-    
-    <ion-button color="dark" expand="block" fill="outline" (click)="navigate('newBet')">Nuevas apuestas</ion-button>
-    <ion-button color="dark" expand="block" fill="outline" (click)="navigate('activeBets')">Apuestas activas</ion-button>
-    <ion-button color="dark" expand="block" fill="outline" (click)="navigate('manageBets')">Gestionar apuestas</ion-button>
-    <ion-button color="dark" expand="block" fill="outline" (click)="navigate('history')">Historial</ion-button>
-    <ion-button color="dark" expand="block" fill="outline" (click)="navigate('members')">Miembros</ion-button>
-    <ion-button color="dark" expand="block" fill="outline" (click)="navigate('options')">Opciones</ion-button>
-    <ion-button color="dark" expand="block" fill="outline" (click)="navigate('info')">Info</ion-button>
+
+    <ion-button color="dark" expand="block" fill="outline" 
+    (click)="navigate('news')" *ngIf="show('NOTICIAS')">Noticias</ion-button>
+    <ion-button color="dark" expand="block" disabled
+    (click)="navigate('news')" *ngIf="!show('NOTICIAS')">Noticias</ion-button>
+
+    <ion-button color="dark" expand="block" fill="outline" 
+    (click)="navigate('newBet')" *ngIf="show('NUEVAS APUESTAS')">Nuevas apuestas</ion-button>
+    <ion-button color="dark" expand="block" disabled
+    (click)="navigate('newBet')" *ngIf="!show('NUEVAS APUESTAS')">Nuevas apuestas</ion-button>
+
+    <ion-button color="dark" expand="block" fill="outline" 
+    (click)="navigate('activeBets')" *ngIf="show('APUESTAS ACTIVAS')">Apuestas activas</ion-button>
+    <ion-button color="dark" expand="block" disabled
+    (click)="navigate('activeBets')" *ngIf="!show('APUESTAS ACTIVAS')">Apuestas activas</ion-button>
+
+    <ion-button color="dark" expand="block" fill="outline" 
+    (click)="navigate('manageBets')" *ngIf="role == 'GROUP_MAKER' && show('GESTIONAR APUESTAS')">Gestionar apuestas</ion-button>
+    <ion-button color="dark" expand="block" disabled
+    (click)="navigate('manageBets')" *ngIf="role == 'GROUP_MAKER' && !show('GESTIONAR APUESTAS')">Gestionar apuestas</ion-button>
+
+    <ion-button color="dark" expand="block" fill="outline" 
+    (click)="navigate('history')" *ngIf="show('HISTORIAL')">Historial</ion-button>
+    <ion-button color="dark" expand="block" disabled
+    (click)="navigate('history')" *ngIf="!show('HISTORIAL')">Historial</ion-button>
+
+    <ion-button color="dark" expand="block" fill="outline" 
+    (click)="navigate('members')" *ngIf="show('MIEMBROS')">Miembros</ion-button>
+    <ion-button color="dark" expand="block" disabled
+    (click)="navigate('members')" *ngIf="!show('MIEMBROS')">Miembros</ion-button>
+
+    <ion-button color="dark" expand="block" fill="outline" 
+    (click)="navigate('options')" *ngIf="role == 'GROUP_MAKER' && show('OPCIONES')">Opciones</ion-button>
+    <ion-button color="dark" expand="block" disabled
+    (click)="navigate('options')" *ngIf="role == 'GROUP_MAKER' && !show('OPCIONES')">Opciones</ion-button>
+
+    <ion-button color="dark" expand="block" fill="outline" 
+    (click)="navigate('info')" *ngIf="show('INFO')">Info</ion-button>
+    <ion-button color="dark" expand="block" disabled
+    (click)="navigate('info')" *ngIf="!show('INFO')">Info</ion-button>
+
 </ion-list>
 <ion-button expand="block" (click)="close()">Close</ion-button>
