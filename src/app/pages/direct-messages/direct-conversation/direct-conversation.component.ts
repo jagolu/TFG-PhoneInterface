@@ -80,15 +80,6 @@ export class DirectConversationComponent implements AfterViewChecked {
    */
   @ViewChild(IonContent) content:IonContent;
 
-  /**
-   * The margin to see the conversation 
-   * correctly
-   * 
-   * @access public
-   * @var {number} marginBottom
-   */
-  public marginBottom:number = 0;
-
   //
   // ──────────────────────────────────────────────────────────────────────────
   //   :::::: C O N S T R U C T O R S : :  :   :    :     :        :          :
@@ -119,9 +110,6 @@ export class DirectConversationComponent implements AfterViewChecked {
       });
     }
     this._loading = true;
-    
-    let div = (document.querySelector("#sendDMMessageFormId") as HTMLElement);
-    if(div!=null) this.marginBottom = div.scrollHeight; 
   }
 
 
@@ -162,6 +150,18 @@ export class DirectConversationComponent implements AfterViewChecked {
   public openConversation(){
     this.__dmS.openCloseConversation(this.room.id, true).subscribe((dmrRes:DMRoom)=>this.setData(dmrRes));
     this.resetForm();
+  }
+
+  /**
+   * Says if the current user is
+   * an admin
+   * 
+   * @access public
+   * @returns {Boolean} True if the current user
+   * is an admin, false otherwise
+   */
+  public isAdmin():Boolean{
+    return this.__sessionS.isAdmin();
   }
 
 
