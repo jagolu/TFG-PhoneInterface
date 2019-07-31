@@ -1,0 +1,39 @@
+<app-group-header></app-group-header>
+<ion-content>
+    <ion-card *ngFor="let bet of betsM">    
+        <ion-card-header>
+            <ion-card-title>
+                <ion-row>
+                    <ion-col size-lg=9 size=12>
+                        <h3>{{bet.bet.betName}} <small *ngIf="bet.bet.fullTimeHomeGoals != null">{{bet.bet.fullTimeHomeGoals}} - {{bet.bet.fullTimeAwayGoals}}</small></h3> 
+                        <small class="font-italic">{{bet.bet.competition}}  ({{bet.bet.matchdayDate|onlyDatePipe}})</small>
+                    </ion-col>
+                    <ion-col size-lg=3 size=12 class="ion-text-right" *ngIf="!bet.cancelled">
+                        <ion-text color=warning *ngIf="bet.ended"><h2>TERMINADA</h2></ion-text>
+                        <ion-text color=success *ngIf="!bet.ended && !bet.cancelled"><h2>ACTIVA</h2></ion-text>
+                        <ion-text><small>{{bet.dateLaunch|onlyDatePipe}} - {{bet.bet.lastBetTime|onlyDatePipe}}</small></ion-text>
+                    </ion-col>
+                    <ion-col size-lg=3 size=12 class="ion-text-right" *ngIf="bet.cancelled">
+                        <ion-text color=danger><h2>CANCELADA</h2></ion-text>
+                        <ion-text><small>{{bet.dateCancelled|onlyDatePipe}}</small></ion-text>                        
+                    </ion-col>
+                </ion-row>
+            </ion-card-title>
+            <ion-card-content>
+                <ion-row>
+                    <ion-col size=12>
+                        <ion-button style="margin-top: 30px" color="dark" expand="block" fill="outline" 
+                        *ngIf="bet.cancelled" (click)="seeBet(bet.bet, '', true)">Información</ion-button>
+                        <ion-button style="margin-top: 30px" color="dark" expand="block" fill="outline" 
+                        *ngIf="!bet.cancelled" (click)="seeBet(bet.bet, bet.betId, bet.ended)">Información</ion-button>
+                    </ion-col>
+                </ion-row>
+            </ion-card-content>
+        </ion-card-header>
+    </ion-card>
+    <ion-card *ngIf="betsM.length == 0">    
+        <ion-card-header>
+            <ion-card-title> <ion-text><h3>Aun no has lanzado ninguna apuesta, intentalo!</h3></ion-text></ion-card-title>
+        </ion-card-header>
+    </ion-card>
+</ion-content>
