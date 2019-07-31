@@ -1,13 +1,13 @@
 import { Component, Input } from '@angular/core';
-import { GroupBet } from 'src/app/models/models';
 import { AlertService } from 'src/app/providers/visualServices/alert.service';
+import { BetService } from 'src/app/providers/restServices/bet.service';
 
 @Component({
-  selector: 'app-football-bet-info',
-  templateUrl: './football-bet-info.component.html',
+  selector: 'app-cancel-football-bet',
+  templateUrl: './cancel-football-bet.component.html',
   styleUrls: [],
 })
-export class FootballBetInfoComponent {
+export class CancelFootballBetComponent {
 
   //
   // ──────────────────────────────────────────────────────────────────────
@@ -16,28 +16,12 @@ export class FootballBetInfoComponent {
   //
 
   /**
-   * The info of the bet
-   * 
-   * @access public
-   * @var {GroupBet} bet
-   */
-  @Input() bet: GroupBet;
-
-  /**
-   * The id of the bet
+   * The id of the bet to cancel
    * 
    * @access public
    * @var {string} betId
    */
   @Input() betId:string = "";
-
-  /**
-   * Says if the bet is ended or not
-   * 
-   * @access public
-   * @var {Boolean} ended
-   */
-  @Input() ended:Boolean = true;
 
 
   //
@@ -48,33 +32,26 @@ export class FootballBetInfoComponent {
 
   /**
    * @constructor
-   * @param {AlertService} __alertS To launch the alert to cancel the bet
+   * @param {AlertService} __alertS To close the alert
+   * @param {BetService} __betS To do the http request
    */
-  constructor(private __alertS:AlertService) { }
+  constructor(private __alertS:AlertService, private __betS:BetService) { }
 
 
   //
-  // ────────────────────────────────────────────────────────────────────────  ──────────
+  // ──────────────────────────────────────────────────────────────────────────────────
   //   :::::: P U B L I C   F U N C T I O N S : :  :   :    :     :        :          :
   // ──────────────────────────────────────────────────────────────────────────────────
   //
 
-  /**
-   * Says if the bet is a jackpot bet
-   * 
-   * @access public
-   * @param {Boolean} type The type of the bet
-   */
-  public isJackpotBet(type:string):Boolean{
-    return type.includes("JACKPOT");
-  }
 
   /**
-   * Launchs the alert to cancel the bet
+   * Cancels the bet
    * 
    * @access public
    */
   public cancel(){
-    this.__alertS.cancelFootballBet(this.betId);
+    this.__alertS.hideAlert();
+    this.__betS.cancelFootballBet(this.betId);
   }
 }

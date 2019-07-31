@@ -257,12 +257,18 @@ export class AlertService {
    * 
    * @param {string} betId The id of the football bet
    */
-  // public cancelFootballBet(betId:string){
-  //   this.setTitle("Estas a punto de cancelar el evento de apuesta!");
-  //   // this.changeAlertMode(AlertMode.CANCELFOOTBALLBET);
-  //   this.setTarget(betId);
-  //   this.prepareAlerts();
-  // }
+  public cancelFootballBet(betId:string){
+    this.prepareAlerts();
+    this.__modalC.create({
+      component: AlertComponent,
+      componentProps:{
+        'mode': AlertMode.CANCELFOOTBALLBET,
+        'title': `Estas a punto de cancelar el evento de apuesta!`,
+        "target": betId
+      }
+    }).then(modal => modal.present());
+    this.__modalOpened = true;
+  }
 
   /**
    * Open the alert showing the groups of an

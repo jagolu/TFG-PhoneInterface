@@ -21,6 +21,7 @@ import { FootballBetInfoComponent } from './alerts/football-bet-info/football-be
 import { DoFootballBetComponent } from './alerts/do-football-bet/do-football-bet.component';
 import { UserFootballBetInfoComponent } from './alerts/user-football-bet-info/user-football-bet-info.component';
 import { CancelUserFootballBetComponent } from './alerts/cancel-user-football-bet/cancel-user-football-bet.component';
+import { CancelFootballBetComponent } from './alerts/cancel-football-bet/cancel-football-bet.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { CancelUserFootballBetComponent } from './alerts/cancel-user-football-be
     FootballBetInfoComponent,
     DoFootballBetComponent,
     UserFootballBetInfoComponent,
-    CancelUserFootballBetComponent
+    CancelUserFootballBetComponent,
+    CancelFootballBetComponent
   ],
   exports: 
   [
@@ -71,7 +73,8 @@ import { CancelUserFootballBetComponent } from './alerts/cancel-user-football-be
     FootballBetInfoComponent,
     DoFootballBetComponent,
     UserFootballBetInfoComponent,
-    CancelUserFootballBetComponent
+    CancelUserFootballBetComponent,
+    CancelFootballBetComponent
   ],
   entryComponents: 
   [
@@ -89,7 +92,8 @@ import { CancelUserFootballBetComponent } from './alerts/cancel-user-football-be
     FootballBetInfoComponent,
     DoFootballBetComponent,
     UserFootballBetInfoComponent,
-    CancelUserFootballBetComponent
+    CancelUserFootballBetComponent,
+    CancelFootballBetComponent
   ]
 })
 export class SharedModule { }
