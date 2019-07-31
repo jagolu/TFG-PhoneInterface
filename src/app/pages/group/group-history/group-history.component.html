@@ -15,6 +15,7 @@
                             <ion-button style="margin-top: 30px" color="dark" expand="block" fill="outline" 
                             (click)="seeBet(bet.bet)">Información</ion-button>
                         </ion-col>
+                        <ion-col size=12><div class="hr"></div></ion-col>
                         <ion-col size=12>
                             <ion-list style="max-height:300px; overflow-y: scroll;">
                                 <ion-item>
@@ -23,7 +24,7 @@
                                             <ion-col size=10>Tu</ion-col>
                                             <ion-col size=2 class="ion-text-right"><ion-text color=success *ngIf="bet.userWins">GANADOR</ion-text></ion-col>
                                             <ion-col size=12>
-                                                <ion-button style="margin-top:10px" color="dark" expand="block" fill="outline" 
+                                                <ion-button style="margin-top:10px" color="secondary" expand="block" fill="outline" 
                                                 (click)="seeUserBets(bet.bet, bet.ownBet, '')">Ver apuestas</ion-button>
                                             </ion-col>
                                         </ion-row>
@@ -35,7 +36,7 @@
                                             <ion-col size=10>{{otherUser.username}}</ion-col>
                                             <ion-col size=2 class="ion-text-right"><ion-text color=success *ngIf="otherUser.winner">GANADOR</ion-text></ion-col>
                                             <ion-col size=12>
-                                                <ion-button style="margin-top:10px" color="dark" expand="block" fill="outline" 
+                                                <ion-button style="margin-top:10px" color="secondary" expand="block" fill="outline" 
                                                 (click)="seeUserBets(bet.bet, otherUser.bets, otherUser.username)">Ver apuestas</ion-button>
                                             </ion-col>
                                         </ion-row>
