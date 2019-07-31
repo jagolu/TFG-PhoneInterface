@@ -7,11 +7,13 @@ import { IonicModule } from '@ionic/angular';
 
 import { MainUserGroupsPage } from './main-user-groups.page';
 import { SharedModule } from '../shared/shared.module';
+import { AuthGuardService } from 'src/app/providers/canActivate/auth-guard.service';
 
 const routes: Routes = [
   {
     path: '',
-    component: MainUserGroupsPage
+    component: MainUserGroupsPage,
+    canActivate: [AuthGuardService]
   }
 ];
 

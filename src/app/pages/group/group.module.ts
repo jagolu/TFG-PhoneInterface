@@ -17,6 +17,7 @@ import { GroupMembersComponent } from './group-members/group-members.component';
 import { GroupPopOverComponent } from './group-pop-over/group-pop-over.component';
 import { PasswordFormComponent } from './group-options/password-form/password-form.component';
 import { WeeklyPayFormComponent } from './group-options/weekly-pay-form/weekly-pay-form.component';
+import { AuthGuardService } from 'src/app/providers/canActivate/auth-guard.service';
 
 
 @NgModule({
@@ -29,35 +30,43 @@ import { WeeklyPayFormComponent } from './group-options/weekly-pay-form/weekly-p
     RouterModule.forChild([
       {
         path: 'news',
-        component: GroupNewsComponent
+        component: GroupNewsComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: 'newBet',
-        component: GroupNewBetComponent
+        component: GroupNewBetComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: 'activeBets',
-        component: GroupActiveBetsComponent
+        component: GroupActiveBetsComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: 'manageBets',
-        component: GroupManageBetsComponent
+        component: GroupManageBetsComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: 'history',
-        component: GroupHistoryComponent
+        component: GroupHistoryComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: 'members',
-        component: GroupMembersComponent
+        component: GroupMembersComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: 'options',
-        component: GroupOptionsComponent
+        component: GroupOptionsComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: 'info',
-        component: GroupInfoComponent
+        component: GroupInfoComponent,
+        canActivate: [AuthGuardService]
       }
     ])
   ],

@@ -26,6 +26,7 @@ import { DirectMessagesService } from './providers/restServices/direct-messages.
 import { NotificationsService } from './providers/userServices/Hub/notifications.service';
 import { GroupInfoService } from './providers/userServices/group-info.service';
 import { LoadingService } from './providers/visualServices/loading.service';
+import { AuthGuardService } from './providers/canActivate/auth-guard.service';
 
 
 // Interceptors
@@ -85,7 +86,8 @@ import { AppRoutingModule } from './app-routing.module';
     UserInfoService,
     ChatService,
     NotificationsService,
-    LoadingService
+    LoadingService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })
