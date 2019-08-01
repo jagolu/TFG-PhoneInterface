@@ -23,6 +23,7 @@ import { UserFootballBetInfoComponent } from './alerts/user-football-bet-info/us
 import { CancelUserFootballBetComponent } from './alerts/cancel-user-football-bet/cancel-user-football-bet.component';
 import { CancelFootballBetComponent } from './alerts/cancel-football-bet/cancel-football-bet.component';
 import { CreateFootballBetComponent } from './alerts/create-football-bet/create-football-bet.component';
+import { NotificationsHeadComponent } from './notifications/notifications-head/notifications-head.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { CreateFootballBetComponent } from './alerts/create-football-bet/create-
     UserFootballBetInfoComponent,
     CancelUserFootballBetComponent,
     CancelFootballBetComponent,
-    CreateFootballBetComponent
+    CreateFootballBetComponent,
+    NotificationsHeadComponent,
   ],
   exports: 
   [
@@ -77,7 +79,8 @@ import { CreateFootballBetComponent } from './alerts/create-football-bet/create-
     UserFootballBetInfoComponent,
     CancelUserFootballBetComponent,
     CancelFootballBetComponent,
-    CreateFootballBetComponent
+    CreateFootballBetComponent,
+    NotificationsHeadComponent,
   ],
   entryComponents: 
   [
