@@ -13,7 +13,7 @@
   <form [formGroup]="createDMForm" (ngSubmit)="createDMTitle()" >
     <ion-item *ngIf="isAdmin()">
       <ion-label position="floating">Nombre de usuario o correo electrónico</ion-label>
-      <ion-input *ngIf="isAdmin()" type="text" (change)="findDM()" (change)="findDM()" id="findUserDMId"></ion-input>
+      <ion-input *ngIf="isAdmin()" type="text" (ionChange)="findDM()" (ionChange)="findDM()" id="findUserDMId"></ion-input>
     </ion-item>
 
     <ion-item *ngIf="isAdmin()">

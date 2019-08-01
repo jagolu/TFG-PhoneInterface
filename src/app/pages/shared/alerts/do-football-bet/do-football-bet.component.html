@@ -67,7 +67,7 @@
       <ion-item>
         <ion-label position="floating">Tu apuesta</ion-label>
         <ion-input type="number" min={{min}} max={{max_user}} *ngIf="!jackpotBet"
-                    formControlName="coinsBet" (change)="setBetCoins()" (keyup)="setBetCoins()"></ion-input>
+                    formControlName="coinsBet" ionChange)="setBetCoins()" (keyup)="setBetCoins()"></ion-input>
         <ion-input type="number" formControlName="coinsBet" *ngIf="jackpotBet"></ion-input>
       </ion-item>         
     </ion-col>
