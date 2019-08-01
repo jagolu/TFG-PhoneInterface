@@ -48,6 +48,7 @@ import { GroupPageModule } from './pages/group/group.module';
 
 //Routes
 import { AppRoutingModule } from './app-routing.module';
+import { NotificationsPageModule } from './pages/notifications/notifications.module';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { AppRoutingModule } from './app-routing.module';
     SharedModule,
     HomePageModule,
     MainUserGroupsPageModule,
-    GroupPageModule
+    GroupPageModule,
+    NotificationsPageModule
   ],
   providers: [
     StatusBar,
