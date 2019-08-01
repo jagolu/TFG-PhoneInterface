@@ -29,6 +29,7 @@
 
             <app-football-bet-info *ngIf="mode == 'FOOTBALLBETINFO'" [bet]="object" [betId]="target" [ended]="needPassword"></app-football-bet-info>
             <app-user-football-bet-info *ngIf="mode == 'USERFOOTBALLBETINFO'"  [info]="object"></app-user-football-bet-info>
-            
+            <app-create-football-bet *ngIf="mode == 'CREATEFOOTBALLBET'"></app-create-football-bet>
+
     </ion-card-content>
 </ion-card>

@@ -55,4 +55,15 @@ export class GroupManageBetsComponent{
   public seeBet(bet:GroupBet, betId:string, ended:Boolean){
     this.__alertS.seeFootballBet(bet, betId, ended);
   }
+
+  /**
+   * Launchs the alert to see
+   * the form to create a new football
+   * bet
+   * 
+   * @access public
+   */
+  public createFootballBet(){
+    this.__alertS.seeCreateFootballBetForm();
+  }
 }

@@ -1,5 +1,7 @@
 <app-group-header></app-group-header>
 <ion-content>
+    <ion-button style="margin-bottom: 40px" color="dark" expand="block" fill="outline" 
+    (click)="createFootballBet()">Crear evento de apuesta</ion-button>
     <ion-card *ngFor="let bet of betsM">    
         <ion-card-header>
             <ion-card-title>

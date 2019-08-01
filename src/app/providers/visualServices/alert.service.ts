@@ -402,6 +402,24 @@ export class AlertService {
     }).then(modal => modal.present());
     this.__modalOpened = true;
   }
+
+  /**
+   * Launch the alert to see the form to 
+   * create a football bet
+   * 
+   * @access public
+   */
+  public seeCreateFootballBetForm(){
+    this.prepareAlerts();
+    this.__modalC.create({
+      component: AlertComponent,
+      componentProps:{
+        'mode': AlertMode.CREATEFOOTBALLBET,
+        'title': "Crear un evento de apuesta",
+      }
+    }).then(modal => modal.present());
+    this.__modalOpened = true;
+  }
   
   /**
    * Close the alert 
