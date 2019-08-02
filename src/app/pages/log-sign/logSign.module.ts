@@ -11,6 +11,7 @@ import { SocialButtonComponent } from './social-button/social-button.component';
 import { SignUpPage } from './sign-up/sign-up.page';
 import { SharedModule } from '../shared/shared.module';
 import { RememberPasswordPage } from './remember-password/remember-password.page';
+import { LogGuardService } from 'src/app/providers/canActivate/log-guard.service';
 
 
 @NgModule({
@@ -24,15 +25,18 @@ import { RememberPasswordPage } from './remember-password/remember-password.page
     RouterModule.forChild([
       {
         path: 'logIn',
-        component: LogInPage
+        component: LogInPage,
+        canActivate: [LogGuardService]
       },
       {
         path: 'signUp',
-        component: SignUpPage
+        component: SignUpPage,
+        canActivate: [LogGuardService]
       },
       {
         path: 'rememberPassword',
-        component: RememberPasswordPage
+        component: RememberPasswordPage,
+        canActivate: [LogGuardService]
       }
     ])
   ],

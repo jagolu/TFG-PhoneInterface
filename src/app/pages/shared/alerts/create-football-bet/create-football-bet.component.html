@@ -1,0 +1,83 @@
+<div *ngIf="bets.length>0" style="max-height:500px; overflow-y: scroll;">  
+  <ion-list>
+      <ion-item>
+        <ion-select interface="action-sheet" placeholder="Selecciona una competición" #newBet_competitionSelect (ionChange)="selectCompetition()">
+          <ion-select-option *ngFor="let bet of bets; let i = index" value="{{i}}">{{bet.competition}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+  </ion-list>
+
+  <div *ngIf="newBet_competitionMatches_launched">
+    <ion-list>
+        <ion-item>
+          <ion-select interface="action-sheet" placeholder="Selecciona un partido" #newBet_competitionMatches_select (ionChange)="selectMatchDay()">
+            <ion-select-option *ngFor="let match of matches; let i = index" value="{{i}}"><small>{{match.match_name}}&nbsp;&nbsp;&nbsp;&nbsp;({{match.date|onlyDatePipe}})</small></ion-select-option>
+          </ion-select>
+        </ion-item>
+    </ion-list>
+    <ion-list *ngIf="selectedMatch">
+        <ion-item>
+          <ion-select interface="action-sheet" placeholder="Tipo de apuesta" #newBet_betType_select (ionChange)="setBetType()">
+            <ion-select-option *ngFor="let allowedBet of allowedBets; let i = index" value="{{i}}">{{allowedBet.name}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+    </ion-list>
+    <ion-card *ngIf="selectedBet">
+      <ion-card-content>{{explanationBetType}}</ion-card-content>
+    </ion-card>
+    <ion-list *ngIf="selectedBet">
+        <ion-item>
+          <ion-select interface="action-sheet" placeholder="Tipo de pago" #newBet_priceType_select (ionChange)="setPriceType()">
+            <ion-select-option *ngFor="let typePay of allowedPays; let i = index" value="{{i}}">{{typePay.name}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+    </ion-list>
+    <ion-card *ngIf="selectedPrice">
+      <ion-card-content>{{explanationPriceType}}</ion-card-content>
+    </ion-card>
+    
+
+    <ion-list *ngIf="selectedBet && selectedPrice">
+        <ion-item>
+          <ion-select interface="action-sheet" placeholder="Día máximo para apostar" #newBet_allowedDates_select (ionChange)="setDate()">
+            <ion-select-option *ngFor="let date of allowedDates" value="{{date}}">{{date|onlyDatePipe}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+    </ion-list>
+
+    <ion-row *ngIf="!type_jackpot_bet && selectedBet && selectedPrice">
+      <ion-col size=6><strong>Cuota</strong></ion-col>
+      <ion-col size=6><input type="text" value="{{winRate}}" readonly></ion-col>
+    </ion-row>
+
+    <form [formGroup]="betForm" (ngSubmit)="launchBet()" *ngIf="selectedMaxDay">
+        <ion-list *ngIf="!type_jackpot_bet">
+            <ion-item>
+              <ion-select interface="action-sheet" formControlName="minBet" placeholder="Apuesta mínima" #minBet (ionChange)="setMaxBet()">
+                <ion-select-option value="{{min}}" *ngFor="let min of mins">{{min}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+        </ion-list>
+        <ion-list *ngIf="!type_jackpot_bet">
+            <ion-item>
+              <ion-select interface="action-sheet" formControlName="maxBet" placeholder="Apuesta máxima" #maxBet (ionChange)="setMinBet()">
+                <ion-select-option value="{{max}}" *ngFor="let max of maxs">{{max}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+        </ion-list>
+        <ion-list *ngIf="type_jackpot_bet">
+            <ion-item>
+              <ion-select interface="action-sheet" formControlName="exactBet" placeholder="Monedas de entrada" #maxBet (ionChange)="setExactBet()">
+                <ion-select-option value="{{min}}" *ngFor="let min of mins">{{min}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+        </ion-list>
+        <ion-button style="margin-top:30px; margin-bottom:30px" color="dark" expand="block" fill="outline" type="submit"
+        [disabled]="!betForm.valid">Lanzar evento</ion-button>
+      </form>     
+  </div>
+</div>
+<!-- NO AVAILABLE BETS -->
+<div *ngIf="bets.length == 0">
+  <h3>{{ errorMessage }}</h3>
+</div>

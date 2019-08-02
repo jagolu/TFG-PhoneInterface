@@ -62,5 +62,35 @@ export enum AlertMode{
      * @summary Alerts when the admin of a group want
      * to cancell a user bet
      */
-    CANCELFOOTBALLBET = "CANCELFOOTBALLBET"
+    CANCELFOOTBALLBET = "CANCELFOOTBALLBET",
+
+    /**
+     * @summary Alert when the group maker wants to 
+     * see the options of a member
+     */
+    GROUPMEMBEROPTIONS = "GROUPMEMBEROPTIONS",
+
+    /**
+     * @summary Alert when the group maker wants to 
+     * see the info of a member
+     */
+    GROUPMEMBERINFO = "GROUPMEMBERINFO",
+
+    /**
+     * @summary Alert to see the info of a
+     * football bet 
+     */
+    FOOTBALLBETINFO = "FOOTBALLBETINFO",
+
+    /**
+     * @summary Alert to see the info of a
+     * user bet 
+     */
+    USERFOOTBALLBETINFO = "USERFOOTBALLBETINFO",
+
+    /**
+     * @summary Alert to see the form to create
+     * a football bet
+     */
+    CREATEFOOTBALLBET = "CREATEFOOTBALLBET"
 }

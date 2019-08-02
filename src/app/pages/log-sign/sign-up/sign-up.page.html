@@ -60,7 +60,7 @@
             
         <ion-item>
           <ion-label position="floating">Contraseña</ion-label>
-          <ion-input type="{{passwordType}}" (change)="equalPassword()" formControlName="password"></ion-input>
+          <ion-input type="{{passwordType}}" (ionChange)="equalPassword()" formControlName="password"></ion-input>
         </ion-item>
         <ion-text color="danger">
             <small *ngIf="signUpForm.controls['password'].errors && 
@@ -75,13 +75,14 @@
                         !signUpForm.controls['password'].pristine && 
                         signUpForm.controls['password'].errors.pattern"
             >La contraseña debe tener al menos una mayuscula, una minuscula y un número<br></small>
-            <small *ngIf=" !signUpForm.controls['password'].pristine && 
-                        !passwordsAreEqual"
+            <small *ngIf="!signUpForm.controls['password'].pristine && 
+                          !signUpForm.controls['repeatPassword'].pristine &&
+                          !passwordsAreEqual"
             >Las contraseñas no coinciden</small>
         </ion-text> 
         <ion-item>
           <ion-label position="floating">Repetir contraseña </ion-label>
-          <ion-input type="{{passwordType}}" formControlName="repeatPassword" (change)="equalPassword()"></ion-input>
+          <ion-input type="{{passwordType}}" formControlName="repeatPassword" (ionChange)="equalPassword()"></ion-input>
         </ion-item>
         <ion-text color="secondary">
           <br>

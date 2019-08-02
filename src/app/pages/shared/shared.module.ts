@@ -14,12 +14,23 @@ import { Base64ImagePipe } from 'src/app/pages/shared/pipes/base64-image.pipe';
 import { ChatTimePipe } from 'src/app/pages/shared/pipes/chat-time.pipe';
 import { SeeGroupMembersAdminComponent } from './alerts/see-group-members-admin/see-group-members-admin.component';
 import { SeeUserGroupsAdminComponent } from './alerts/see-user-groups-admin/see-user-groups-admin.component';
+import { NewsViewerComponent } from './news-viewer/news-viewer.component';
+import { GroupMemberOptionsComponent } from './alerts/group-member-options/group-member-options.component';
+import { GroupMemberInfoComponent } from './alerts/group-member-info/group-member-info.component';
+import { FootballBetInfoComponent } from './alerts/football-bet-info/football-bet-info.component';
+import { DoFootballBetComponent } from './alerts/do-football-bet/do-football-bet.component';
+import { UserFootballBetInfoComponent } from './alerts/user-football-bet-info/user-football-bet-info.component';
+import { CancelUserFootballBetComponent } from './alerts/cancel-user-football-bet/cancel-user-football-bet.component';
+import { CancelFootballBetComponent } from './alerts/cancel-football-bet/cancel-football-bet.component';
+import { CreateFootballBetComponent } from './alerts/create-football-bet/create-football-bet.component';
+import { NotificationsHeadComponent } from './notifications/notifications-head.component';
+
 
 @NgModule({
   imports: [
     CommonModule,
     IonicModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   declarations: 
   [
@@ -32,9 +43,19 @@ import { SeeUserGroupsAdminComponent } from './alerts/see-user-groups-admin/see-
     SocialSignPasswordComponent,
     SeeGroupMembersAdminComponent,
     SeeUserGroupsAdminComponent,
+    NewsViewerComponent,
     OnlyDatePipe,
     Base64ImagePipe,
-    ChatTimePipe
+    ChatTimePipe,
+    GroupMemberOptionsComponent,
+    GroupMemberInfoComponent,
+    FootballBetInfoComponent,
+    DoFootballBetComponent,
+    UserFootballBetInfoComponent,
+    CancelUserFootballBetComponent,
+    CancelFootballBetComponent,
+    CreateFootballBetComponent,
+    NotificationsHeadComponent
   ],
   exports: 
   [
@@ -47,9 +68,19 @@ import { SeeUserGroupsAdminComponent } from './alerts/see-user-groups-admin/see-
     SocialSignPasswordComponent,
     SeeGroupMembersAdminComponent,
     SeeUserGroupsAdminComponent,
+    NewsViewerComponent,
     OnlyDatePipe,
     Base64ImagePipe,
-    ChatTimePipe
+    ChatTimePipe,
+    GroupMemberOptionsComponent,
+    GroupMemberInfoComponent,
+    FootballBetInfoComponent,
+    DoFootballBetComponent,
+    UserFootballBetInfoComponent,
+    CancelUserFootballBetComponent,
+    CancelFootballBetComponent,
+    CreateFootballBetComponent,
+    NotificationsHeadComponent
   ],
   entryComponents: 
   [
@@ -60,7 +91,16 @@ import { SeeUserGroupsAdminComponent } from './alerts/see-user-groups-admin/see-
     DeleteGroupAlertComponent,
     SocialSignPasswordComponent,
     SeeGroupMembersAdminComponent,
-    SeeUserGroupsAdminComponent
+    NewsViewerComponent,
+    SeeUserGroupsAdminComponent,
+    GroupMemberOptionsComponent,
+    GroupMemberInfoComponent,
+    FootballBetInfoComponent,
+    DoFootballBetComponent,
+    UserFootballBetInfoComponent,
+    CancelUserFootballBetComponent,
+    CancelFootballBetComponent,
+    CreateFootballBetComponent
   ]
 })
 export class SharedModule { }

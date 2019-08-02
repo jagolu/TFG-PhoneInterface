@@ -4,7 +4,11 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      <h2>Opciones de usuario</h2>
+        <ion-row>
+          <ion-col size=10><h2>Opciones de usuario</h2></ion-col>
+          <ion-col size=1></ion-col>
+          <ion-col size=1><app-notifications-head></app-notifications-head></ion-col>
+        </ion-row>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -31,7 +35,7 @@
         </ion-text>   
     
         <ion-button style="margin-top:30px" color="dark" expand="block" fill="outline" type="submit"
-                  [disabled]="!nicknameForm.valid || !passwordsAreEqual">Cambiar nombre de usuario</ion-button>
+                  [disabled]="!nicknameForm.valid || nicknameForm.controls['nickname'].pristine">Cambiar nombre de usuario</ion-button>
     </form>    
 
     <div class="hr" style="margin-top: 40px" *ngIf="!isAdmin()"></div>
@@ -43,8 +47,8 @@
             <ion-input type="password" formControlName="oldPassword"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label position="floating">Nueva contraseña contraseña </ion-label>
-            <ion-input type="password" formControlName="newPassword" (change)="equalPassword()"></ion-input>
+            <ion-label position="floating">Nueva contraseña</ion-label>
+            <ion-input type="{{passwordType}}" formControlName="newPassword" (ionChange)="equalPassword()"></ion-input>
           </ion-item>
           <ion-text color="danger">
               <small *ngIf="passwordForm.controls['newPassword'].errors && 
@@ -60,15 +64,20 @@
                   passwordForm.controls['newPassword'].errors.pattern"
               >Debe tener almenos una mayúscula, una minúscula y un número.<br></small>
               <small *ngIf=" !passwordForm.controls['newPassword'].pristine && 
-                  !equalPasswords"
+                            !passwordForm.controls['repeatPassword'].pristine && 
+                            !equalPasswords"
               >Las contraseñas no coinciden.<br></small>
           </ion-text> 
           <ion-item>
             <ion-label position="floating">Repetir contraseña </ion-label>
-            <ion-input type="password" formControlName="repeatPassword" (change)="equalPassword()"></ion-input>
+            <ion-input type="{{passwordType}}" formControlName="repeatPassword" (ionChange)="equalPassword()"></ion-input>
           </ion-item>
+          <ion-text color="secondary">
+            <br>
+            <small>Ver contraseñas <app-icon [Icon]="icon_eye" (click)="watchPassword()"  #changeUserPasswordEye></app-icon></small>
+          </ion-text> 
     
-        <ion-button style="margin-top:30px" color="dark" expand="block" fill="outline" type="submit"
+        <ion-button style="margin-top:50px" color="dark" expand="block" fill="outline" type="submit"
                   [disabled]="!passwordForm.valid || !equalPasswords">Cambiar contraseña</ion-button>
     </form>    
 
@@ -76,7 +85,7 @@
 
     <form [formGroup]="imageForm" (ngSubmit)="changeImg()" *ngIf="!isAdmin()">
         <ion-item>
-          <ion-input type="file" formControlName="userImage" (change)="loadFile($event)" id="newUserFileInput"></ion-input>
+          <ion-input type="file" formControlName="userImage" (ionChange)="loadFile($event)" id="newUserFileInput"></ion-input>
         </ion-item>
     
         <ion-button style="margin-top:30px" color="dark" expand="block" fill="outline" type="submit"

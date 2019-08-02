@@ -4,15 +4,19 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      <h2>Tus grupos</h2>
+        <ion-row>
+          <ion-col size=10><h2>Tus grupos</h2></ion-col>
+          <ion-col size=1></ion-col>
+          <ion-col size=1><app-notifications-head></app-notifications-head></ion-col>
+        </ion-row>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
-    <ion-card *ngFor="let group of groups">
-        <ion-card-header >
+    
+    <ion-card *ngFor="let group of groups" >
+        <ion-card-header (click)="goGroup(group)">
             <ion-card-title class="ion-text-center">
               {{group}} <app-icon [Icon]="icon_ball"></app-icon>
             </ion-card-title>

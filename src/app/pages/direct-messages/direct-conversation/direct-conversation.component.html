@@ -4,13 +4,17 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      <h2>Conversación privada</h2>
+        <ion-row>
+          <ion-col size=10><h2>Conversación privada</h2></ion-col>
+          <ion-col size=1></ion-col>
+          <ion-col size=1><app-notifications-head></app-notifications-head></ion-col>
+        </ion-row>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card *ngIf="room!=null" [style.margin-bottom.px]="126">
+  <ion-card *ngIf="room!=null" style="margin-bottom: 126px">
       <ion-card-header>
           <ion-card-title>
               <ion-row>
@@ -56,7 +60,14 @@
 
 
   <ion-card *ngIf="clusters.length == 0" [style.margin-bottom.px]="126">
-      <ion-row>
+      <ion-row *ngIf="isAdmin()">
+        <ion-col size=12 size-lg=9><h4 class="ion-text-center">No hay mensajes en esta conversación</h4></ion-col>
+        <ion-col size=12 size-lg=3 *ngIf="thisIsAdmin">
+            <ion-button style="margin-top:30px" color="danger" expand="block"
+                        (click)="closeConversation()">Cerrar conversación</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="!isAdmin()">
         <ion-col size=12 size-lg=9><h4 class="ion-text-center">No hay mensajes en esta conversación</h4></ion-col>
         <ion-col size=12 size-lg=3 *ngIf="thisIsAdmin">
             <ion-button style="margin-top:30px" color="danger" expand="block"

@@ -1,0 +1,9 @@
+<ion-text>
+    <p>¿Estás seguro de cancelar tu apuesta?</p>
+    <p>Apostaste {{coins_bet}} <app-icon [Icon]="coin_icon"></app-icon>, 
+        y recibirás {{coins_return}} <app-icon [Icon]="coin_icon"></app-icon></p>
+    <small>En apuestas con bote no se devuelven las monedas apostadas!</small>
+</ion-text>
+
+<ion-button style="margin-top: 5px" color="danger" expand="block" 
+(click)="cancelBet()">Cancelar mi apuesta</ion-button>

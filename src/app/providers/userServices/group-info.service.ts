@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { GroupPage } from 'src/app/models/models';
+import { GroupPage, GroupLocate } from 'src/app/models/models';
 import { BehaviorSubject } from 'rxjs';
+import { GroupTab } from 'src/app/models/models';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,22 @@ export class GroupInfoService {
    * @var {Observable} info
    */
   public info = this.__information.asObservable();
+
+  /**
+   * The behaviour of the group location and name
+   * 
+   * @access private
+   * @var {BehaviorSubject<GroupLocate>} __groupLocate
+   */
+  private __groupLocate = new BehaviorSubject<GroupLocate>({name : "", tab: GroupTab.NEWS});
+
+  /**
+   * The info at which the other components will subscribe at
+   * 
+   * @access public
+   * @var {Observable} locate
+   */
+  public locate = this.__groupLocate.asObservable();
 
 
   //
@@ -76,8 +93,8 @@ export class GroupInfoService {
       "manageBets":[],
       "betsHistory": [],
       "bets":[],
-      "canPutPassword": false,
       "createDate": "",
+      "weeklyPay": 0,
       "dateJoin": "",
       "dateRole": "",
       "hasPassword": false,
@@ -86,5 +103,32 @@ export class GroupInfoService {
       "name": "",
       "news" : []
     });
+
+    this.__groupLocate.next({name:"", tab: GroupTab.NEWS});
+  }
+
+  /**
+   * Set the info locate group to the observable
+   * 
+   * @access public
+   * @param {string} name The name of the group
+   * @param {GroupTab} tab The tab where the user is redirected
+   */
+  public setGroup(name:string, tab:GroupTab = GroupTab.NEWS){
+    this.__groupLocate.next({
+      name: name,
+      tab: tab
+    });
+  }
+
+  /**
+   * Changes the tab location of a group
+   * 
+   * @access public
+   * @param {GroupTab} tab The new tab where the user is
+   */
+  public changeTab(tab:GroupTab){
+    let name = this.__groupLocate.value.name;
+    this.setGroup(name, tab);
   }
 }

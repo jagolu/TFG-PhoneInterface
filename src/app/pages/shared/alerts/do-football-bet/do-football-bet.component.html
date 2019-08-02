@@ -1,0 +1,79 @@
+<form [formGroup]="doAFootballBetForm" (ngSubmit)="doBet()">
+  <!-- 1X2 -->
+  <ion-row class="row" *ngIf="show1X2">
+    <ion-col size=12 class="ion-text-center"><h5>{{timeMessage}}</h5></ion-col>
+    <ion-col size=12>
+      <ion-list>
+          <ion-list-header>
+            <ion-label>Resultado</ion-label>
+          </ion-list-header>
+
+          <ion-item>
+            <ion-label>1</ion-label>
+            <ion-radio value="1" formControlName="winner" id="winner1" (click)="setMessage(1)"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>X</ion-label>
+            <ion-radio value="0" formControlName="winner" id="winner0" (click)="setMessage(0)"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>2</ion-label>
+            <ion-radio value="2" formControlName="winner" id="winner2" (click)="setMessage(2)"></ion-radio>
+          </ion-item>
+      </ion-list>
+    </ion-col>
+    <ion-col size=12><small class="text-center text-info w-100" *ngIf="info_winner_msg.length>0">{{info_winner_msg}}</small></ion-col>
+  </ion-row>
+
+  <!-- Home/Away goals -->
+  <div *ngIf="!show1X2">
+    <ion-col size=12 class="ion-text-center"><h5>{{timeMessage}}</h5></ion-col>
+    <ion-col size=12>
+      <ion-item>
+        <ion-label position="floating">Equipo local</ion-label>
+        <ion-input type="number" placeholder="Goles" formControlName="homeGoals" min=0 max=20></ion-input>
+      </ion-item>      
+    </ion-col>
+    <ion-col size=12>
+      <ion-item>
+        <ion-label position="floating">Equipo visitante</ion-label>
+        <ion-input type="number" placeholder="Goles" formControlName="awayGoals" min=0 max=20></ion-input>
+      </ion-item>      
+    </ion-col>
+  </div>
+
+  <!-- USER COINS & POSSIBLE WIN -->
+  <ion-row>
+    <ion-col size=6 class="ion-text-center">
+        <small>Tendrás: {{user_coins-coins_bet}} <app-icon [Icon]="coin_icon"></app-icon></small>
+    </ion-col>
+    <ion-col size=6 class="ion-text-center">
+      <small *ngIf="!jackpotBet">Ganancia máxima: {{max_win}} <app-icon [Icon]="coin_icon"></app-icon></small>
+      <small *ngIf="jackpotBet">Bote actual: {{jackpot}} <app-icon [Icon]="coin_icon"></app-icon></small>
+    </ion-col>   
+  </ion-row>
+
+  <!-- Max/Min/Fee info -->
+  <ion-row *ngIf="!jackpotBet">
+    <ion-col size=4 class="ion-text-center"><small>Mínimo: {{min}}<app-icon [Icon]="coin_icon"></app-icon></small></ion-col>
+    <ion-col size=4 class="ion-text-center"><small>Máximo: {{max}}<app-icon [Icon]="coin_icon"></app-icon></small></ion-col>
+    <ion-col size=4 class="ion-text-center"><small>Cuota: {{win_rate}}</small></ion-col>
+  </ion-row>
+  <!-- Your bet -->
+  <ion-row>      
+    <ion-col size=12>
+      <ion-item>
+        <ion-label position="floating">Tu apuesta</ion-label>
+        <ion-input type="number" min={{min}} max={{max_user}} *ngIf="!jackpotBet"
+                    formControlName="coinsBet" ionChange)="setBetCoins()" (keyup)="setBetCoins()"></ion-input>
+        <ion-input type="number" formControlName="coinsBet" *ngIf="jackpotBet"></ion-input>
+      </ion-item>         
+    </ion-col>
+  </ion-row>
+
+  <!-- SUBMIT BUTTON -->
+  <ion-button style="margin-top:30px" color="dark" expand="block" fill="outline" type="submit"
+  [disabled]="!doAFootballBetForm.valid">Apostar</ion-button>
+</form>

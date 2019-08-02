@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UserOptionsPage } from '../user-options/user-options.page';
-import { UserGroupsPage } from '../user-groups/user-groups.page';
-import { UserInfoPage } from '../user-info/user-info.page';
 import { SessionService } from 'src/app/providers/userServices/session.service';
 
 @Component({
@@ -16,27 +13,6 @@ export class UserTabComponent implements OnInit{
   //   :::::: C L A S S   V A R S : :  :   :    :     :        :          :
   // ──────────────────────────────────────────────────────────────────────
   //
-
-  /**
-   * The user info tab
-   * 
-   * @access public
-   */
-  public userInfoTab = UserInfoPage;
-
-  /**
-   * The user options tab
-   * 
-   * @access public
-   */
-  public userOptionsTab = UserOptionsPage;
-
-  /**
-   * The user groups tab
-   * 
-   * @access public
-   */
-  public userGroupsTab = UserGroupsPage; 
 
   /**
    * Says if the actual is joined in any

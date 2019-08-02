@@ -4,7 +4,11 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      <h2>Mensajes privados</h2>
+        <ion-row>
+          <ion-col size=10><h2>Mensajes privados</h2></ion-col>
+          <ion-col size=1></ion-col>
+          <ion-col size=1><app-notifications-head></app-notifications-head></ion-col>
+        </ion-row>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,7 +17,7 @@
   <form [formGroup]="createDMForm" (ngSubmit)="createDMTitle()" >
     <ion-item *ngIf="isAdmin()">
       <ion-label position="floating">Nombre de usuario o correo electrónico</ion-label>
-      <ion-input *ngIf="isAdmin()" type="text" (change)="findDM()" (change)="findDM()" id="findUserDMId"></ion-input>
+      <ion-input *ngIf="isAdmin()" type="text" (ionChange)="findDM()" (ionChange)="findDM()" id="findUserDMId"></ion-input>
     </ion-item>
 
     <ion-item *ngIf="isAdmin()">

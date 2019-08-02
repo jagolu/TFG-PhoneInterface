@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
-import { AlertInfoType, AlertMode, GroupMemberAdmin, UserInGroupSearch } from 'src/app/models/models';
+import { 
+  AlertInfoType, AlertMode, GroupMemberAdmin, 
+  UserInGroupSearch, GroupMemberOptions, GroupUser, 
+  GroupBet, HistoryUserFootballBet 
+} from 'src/app/models/models';
 import { BehaviorSubject } from 'rxjs';
 import { AlertController, ModalController } from '@ionic/angular';
 import { getMessage } from './alertInfoMessages';
@@ -206,15 +210,21 @@ export class AlertService {
    * @param {GroupBet} bet The info of the bet 
    * @param {number} coins The actual coins of the user
    */
-  // public doAFootballBet(bet:GroupBet, coins:number){
-  //   this.setTitle(bet.betName);
-  //   // this.changeAlertMode(AlertMode.FOOTBALLBET);
-  //   this.objectInfo.next({
-  //     "bet":bet,
-  //     "userCoins": coins
-  //   });
-  //   this.prepareAlerts();
-  // }
+  public doAFootballBet(bet:GroupBet, coins:number){
+    this.prepareAlerts();
+    this.__modalC.create({
+      component: AlertComponent,
+      componentProps:{
+        'mode': AlertMode.FOOTBALLBET,
+        'title': bet.betName,
+        'object': {
+          "bet":bet,
+          "userCoins": coins
+        }
+      }
+    }).then(modal => modal.present());
+    this.__modalOpened = true;
+  }
 
   /**
    * Open the alert showing the info and button
@@ -222,18 +232,24 @@ export class AlertService {
    * 
    * @param {GroupBet} bet The info of the bet
    * @param {number} user_coins The coins bet by the user
-   * @param {string} userFootballBet The id of the userFootballBet
+   * @param {string} userFootballBetId The id of the userFootballBet
    */
-  // public cancelUserFootballBet(bet:GroupBet, user_coins:number, userFootballBet:string){
-  //   this.setTitle("You are going to cancel your bet!");
-  //   // this.changeAlertMode(AlertMode.CANCELUSERFOOTBALLBET);
-  //   this.objectInfo.next({
-  //     "bet":bet,
-  //     "userCoins": user_coins
-  //   });
-  //   this.setTarget(userFootballBet);
-  //   this.prepareAlerts();
-  // }
+  public cancelUserFootballBet(bet:GroupBet, user_coins:number, userFootballBetId:string){
+    this.prepareAlerts();
+    this.__modalC.create({
+      component: AlertComponent,
+      componentProps:{
+        'mode': AlertMode.CANCELUSERFOOTBALLBET,
+        'title': "Vas a cancelar tu apuesta!!",
+        'target': userFootballBetId,
+        'object': {
+          "bet":bet,
+          "userCoins": user_coins
+        }
+      }
+    }).then(modal => modal.present());
+    this.__modalOpened = true;
+  }
 
   /**
    * Open the alert showing the message when a user wants to
@@ -241,12 +257,18 @@ export class AlertService {
    * 
    * @param {string} betId The id of the football bet
    */
-  // public cancelFootballBet(betId:string){
-  //   this.setTitle("Estas a punto de cancelar el evento de apuesta!");
-  //   // this.changeAlertMode(AlertMode.CANCELFOOTBALLBET);
-  //   this.setTarget(betId);
-  //   this.prepareAlerts();
-  // }
+  public cancelFootballBet(betId:string){
+    this.prepareAlerts();
+    this.__modalC.create({
+      component: AlertComponent,
+      componentProps:{
+        'mode': AlertMode.CANCELFOOTBALLBET,
+        'title': `Estas a punto de cancelar el evento de apuesta!`,
+        "target": betId
+      }
+    }).then(modal => modal.present());
+    this.__modalOpened = true;
+  }
 
   /**
    * Open the alert showing the groups of an
@@ -283,6 +305,117 @@ export class AlertService {
         'mode': AlertMode.SEEGROUPMEMBERS_ADMIN,
         'title': `Miembros de "${groupName}"`,
         "object": members
+      }
+    }).then(modal => modal.present());
+    this.__modalOpened = true;
+  }
+
+  /**
+   * Open the alert showing the button options to 
+   * a group member
+   * 
+   * @access public
+   * @param {GroupMemberOptions} memberInfo The info of the member
+   * @param {string} user_role The role of the actual user
+   */
+  public seeGroupMemberOptions(memberInfo:GroupMemberOptions, user_role:string){
+    this.prepareAlerts();
+    this.__modalC.create({
+      component: AlertComponent,
+      componentProps:{
+        'mode': AlertMode.GROUPMEMBEROPTIONS,
+        'title': `Opciones de ${memberInfo.user.userName}`,
+        'target': user_role,
+        "object": memberInfo
+      }
+    }).then(modal => modal.present());
+    this.__modalOpened = true;
+  }
+
+  /**
+   * Open the alert showing the info of 
+   * a group member
+   * 
+   * @access public
+   * @param {GroupUser} member The info of the member
+   */
+  public seeGroupMemberInfo(member:GroupUser){
+    this.prepareAlerts();
+    this.__modalC.create({
+      component: AlertComponent,
+      componentProps:{
+        'mode': AlertMode.GROUPMEMBERINFO,
+        'title': `Información de ${member.userName}`,
+        "object": member
+      }
+    }).then(modal => modal.present());
+    this.__modalOpened = true;
+  }
+
+  /**
+   * Open the alert showing the info a 
+   * football bet
+   * 
+   * @access public
+   * @param {GroupBet} bet The info of the bet
+   * @param {string} betId THe id of the bet
+   * @param {Boolean} ended True if the bet has ended, false otherwise
+   */
+  public seeFootballBet(bet:GroupBet, betId:string, ended:Boolean){
+    this.prepareAlerts();
+    this.__modalC.create({
+      component: AlertComponent,
+      componentProps:{
+        'mode': AlertMode.FOOTBALLBETINFO,
+        'title': bet.betName,
+        "object": bet,
+        "target": betId,
+        "needPassword": ended
+      }
+    }).then(modal => modal.present());
+    this.__modalOpened = true;
+  }
+
+  /**
+   * Launch the alert to see the user bets in a 
+   * football bet
+   * 
+   * @access public
+   * @param {HistoryUserFootballBet[]} userBet The bets of the user
+   * @param {GroupBet} footballBet The football bet 
+   * @param {Boolean} ended True if the football bet has ended, false otherwise
+   * @param {string} name The username of the member of the group who did the bets
+   */
+  public seeUserBet(userBet:HistoryUserFootballBet[], footballBet:GroupBet, ended:Boolean, name:string){
+    this.prepareAlerts();
+    this.__modalC.create({
+      component: AlertComponent,
+      componentProps:{
+        'mode': AlertMode.USERFOOTBALLBETINFO,
+        'title': name,
+        'object':{
+          footballBet : footballBet,
+          userBet: userBet,
+          ended: ended
+        }
+      }
+    }).then(modal => modal.present());
+    this.__modalOpened = true;
+  }
+
+  /**
+   * Launch the alert to see the form to 
+   * create a football bet
+   * 
+   * @access public
+   */
+  public seeCreateFootballBetForm(){
+    this.prepareAlerts();
+    this.__modalC.create({
+      component: AlertComponent,
+      componentProps:{
+        'mode': AlertMode.CREATEFOOTBALLBET,
+        'title': "Crear un evento de apuesta",
       }
     }).then(modal => modal.present());
     this.__modalOpened = true;

@@ -26,6 +26,7 @@ import { DirectMessagesService } from './providers/restServices/direct-messages.
 import { NotificationsService } from './providers/userServices/Hub/notifications.service';
 import { GroupInfoService } from './providers/userServices/group-info.service';
 import { LoadingService } from './providers/visualServices/loading.service';
+import { AuthGuardService } from './providers/canActivate/auth-guard.service';
 
 
 // Interceptors
@@ -43,10 +44,11 @@ import { LogSignModule } from './pages/log-sign/logSign.module';
 import { SharedModule } from './pages/shared/shared.module';
 import { HomePageModule } from './pages/home/home.module';
 import { MainUserGroupsPageModule } from './pages/main-user-groups/main-user-groups.module';
-
+import { GroupPageModule } from './pages/group/group.module';
 
 //Routes
 import { AppRoutingModule } from './app-routing.module';
+import { NotificationsPageModule } from './pages/notifications/notifications.module';
 
 
 @NgModule({
@@ -60,7 +62,9 @@ import { AppRoutingModule } from './app-routing.module';
     HttpClientModule,
     SharedModule,
     HomePageModule,
-    MainUserGroupsPageModule
+    MainUserGroupsPageModule,
+    GroupPageModule,
+    NotificationsPageModule
   ],
   providers: [
     StatusBar,
@@ -84,7 +88,8 @@ import { AppRoutingModule } from './app-routing.module';
     UserInfoService,
     ChatService,
     NotificationsService,
-    LoadingService
+    LoadingService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })

@@ -10,6 +10,7 @@ import { UserInfoPage } from './user-info/user-info.page';
 import { UserGroupsPage } from './user-groups/user-groups.page';
 import { UserOptionsPage } from './user-options/user-options.page';
 import { SharedModule } from '../shared/shared.module';
+import { AuthGuardService } from 'src/app/providers/canActivate/auth-guard.service';
 
 
 @NgModule({
@@ -26,15 +27,18 @@ import { SharedModule } from '../shared/shared.module';
         children:[
           {
             path: 'info',
-            component: UserInfoPage
+            component: UserInfoPage,
+            canActivate: [AuthGuardService]
           },
           {
             path: 'options',
-            component: UserOptionsPage
+            component: UserOptionsPage,
+            canActivate: [AuthGuardService]
           },
           {
             path: 'groups',
-            component: UserGroupsPage
+            component: UserGroupsPage,
+            canActivate: [AuthGuardService]
           }
         ]
       }

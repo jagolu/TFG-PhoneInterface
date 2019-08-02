@@ -76,7 +76,7 @@ export class SocialSignPasswordComponent {
    * @constructor
    * @param {AuthenticationService} _authenticationS To do the request to set the password 
    * @param {AuthService} _authS To do the request to Google or Facebook
-   * @param {AlertService} _alertS To get the data to rightly do the alert
+   * @param {AlertService} _alertS To hide the alert
    */
   constructor(private _authenticationS:AuthenticationService, private _authS:AuthService, private _alertS:AlertService) { 
     this.initializeForm();

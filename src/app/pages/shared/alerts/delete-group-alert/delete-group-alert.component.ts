@@ -41,7 +41,7 @@ export class DeleteGroupAlertComponent{
   
   /**
    * @constructor
-   * @param {AlertService} _alertS To close the alert
+   * @param {AlertService} _alertS To hide the alert
    * @param {UserService} _userS To do the user requests
    */
   constructor(private _alertS:AlertService, private groupS:GroupService) { 

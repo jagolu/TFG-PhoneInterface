@@ -165,10 +165,10 @@ export class SignUpPage{
   /**
    * Resets the form
    * 
-   * @param {Boolean} full True to also resets the
-   * email and username, false to don't reset them
    * 
    * @access private
+   * @param {Boolean} full True to also resets the
+   * email and username, false to don't reset them
    */
   private resetForm(full:Boolean){
     this.signUpForm.reset({

@@ -1,0 +1,21 @@
+<app-group-header></app-group-header>
+<ion-content>
+        <ion-card *ngFor="let bet of bets">    
+            <ion-card-header>
+                <ion-card-title>
+                    <h3>{{bet.betName}}</h3> <small class="font-italic">{{bet.competition}}  ({{bet.matchdayDate|onlyDatePipe}})</small>
+                </ion-card-title>
+                <ion-card-content>
+                    <ion-row>
+                        <ion-col size=12>
+                            <ion-button style="margin-top: 30px" color="dark" expand="block" fill="outline" 
+                            (click)="seeBet(bet)">Información</ion-button></ion-col>
+                        <ion-col size=12>
+                            <ion-button style="margin-top: 5px" color="success" expand="block" fill="outline" 
+                            [disabled]="userCoins<bet.minBet" (click)="doBet(bet)">Apostar</ion-button>
+                        </ion-col>
+                    </ion-row>
+                </ion-card-content>
+            </ion-card-header>
+        </ion-card>
+</ion-content>

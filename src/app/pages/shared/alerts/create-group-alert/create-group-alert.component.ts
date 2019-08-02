@@ -40,7 +40,7 @@ export class CreateGroupAlertComponent{
   /**
    * @constructor
    * @param {GroupService} groupS To do the group requests 
-   * @param {AlertService} _alertS To get the alert info
+   * @param {AlertService} _alertS To hide the alert
    */
   constructor(private groupS:GroupService, private _alertS:AlertService) { 
     this.initializeForm();
@@ -50,7 +50,7 @@ export class CreateGroupAlertComponent{
   }
 
 
-  // q
+  // 
   // ──────────────────────────────────────────────────────────────────────────────────
   //   :::::: P U B L I C   F U N C T I O N S : :  :   :    :     :        :          :
   // ──────────────────────────────────────────────────────────────────────────────────

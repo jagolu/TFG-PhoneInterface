@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { AllConversationsComponent } from './all-conversations/all-conversations.component';
 import { SharedModule } from '../shared/shared.module';
 import { DirectConversationComponent } from './direct-conversation/direct-conversation.component';
+import { AuthGuardService } from 'src/app/providers/canActivate/auth-guard.service';
 
 
 
@@ -20,11 +21,13 @@ import { DirectConversationComponent } from './direct-conversation/direct-conver
     RouterModule.forChild([
       {
         path: 'allConversations',
-        component: AllConversationsComponent
+        component: AllConversationsComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: 'directConversation/:id',
-        component: DirectConversationComponent
+        component: DirectConversationComponent,
+        canActivate: [AuthGuardService]
       }
     ])
   ],
