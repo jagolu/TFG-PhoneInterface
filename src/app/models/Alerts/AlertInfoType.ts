@@ -72,11 +72,11 @@ export enum AlertInfoType{
    */
   SESSIONEXPIRED = "SESSIONEXPIRED",
 
-  /**
-   * @summary Error when the user tries to create a new group and
-   * he can't create more groups of these type
-   */
-  LIMITATIONSPECIFICCREATEGROUP = "LIMITATIONSPECIFICCREATEGROUP",
+    /**
+     * @summary Error when the user tries to create a new group and
+     * he can't create more groups this week
+     */
+    LIMITATIONTIMECREATEGROUP = "LIMITATIONTIMECREATEGROUP",
 
   /**
    * @summary Error message when the user tries to create a new group
@@ -287,5 +287,17 @@ export enum AlertInfoType{
    * @summary Info message when the maker changes the password
    * of the group
    */
-  SUCCESSFULLMANAGEPASSWORD = "SUCCESSFULLMANAGEPASSWORD"
+  SUCCESSFULLMANAGEPASSWORD = "SUCCESSFULLMANAGEPASSWORD",
+
+  /**
+   * @summary Info message when someone who was kicked from a 
+   * group tries to access in a week
+   */
+  YOUWEREKICKEDGROUP = "YOUWEREKICKEDGROUP",
+
+  /**
+   * @summary Info message when someone who left a group tries
+   * to access in a week
+   */
+  YOUHASLEAVEGROUP = "YOUHASLEAVEGROUP"
 }

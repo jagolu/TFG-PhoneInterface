@@ -74,14 +74,14 @@ export function getMessage(type:AlertInfoType){
           "Vuelva a registrarte";
         break;
       }
-      case AlertInfoType.LIMITATIONSPECIFICCREATEGROUP:{
-        msg = "No puedes crear más grupos de este tipo.<br>"+ 
-          "Si deseas crear más grupos de este tipo dirigete a la tienda.<br>";
+      case AlertInfoType.LIMITATIONTIMECREATEGROUP:{
+        msg = "No puedes crear más grupos esta semana.<br>"+
+        "Si deseas crear más grupos deberás esperar al menos 7 dias.";
         break;
       }
       case AlertInfoType.LIMITATIONCREATEGROUP:{
-        msg = "No puedes crear más grupos de ningún tipo.<br>"+ 
-          "Si deseas crear más grupos dirigete a la tienda.<br>";
+        msg = "No puedes crear más grupos.<br>"+ 
+        "Solo permitimos que cada jugador este en un máximo de 10 grupos."; 
         break;
       }
       case AlertInfoType.INCORRECTOLDPASSWORD:{
@@ -227,6 +227,16 @@ export function getMessage(type:AlertInfoType){
       }
       case AlertInfoType.SUCCESSFULLMANAGEPASSWORD:{
         msg = "Contraseña del grupo cambiada correctamente";
+        break;
+      }
+      case AlertInfoType.YOUWEREKICKEDGROUP:{
+        msg = "Fuiste expulsado del grupo al que intentas acceder.<br>"+
+              "No podrás volver a unirte a el hasta pasados 7 dias";
+        break;
+      }
+      case AlertInfoType.YOUHASLEAVEGROUP:{
+        msg = "Dejaste el grupo al que intentas unirte.<br>"+
+              "No podrás volver a unirte a el hasta pasados 7 dias";
         break;
       }
       default:{
