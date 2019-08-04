@@ -64,7 +64,6 @@ export class SearchUserPage  {
    * @
    */
   public search(toFind:string){
-    console.log("-->",toFind);
     this.__lastFind = toFind;
     if(toFind.length == 0 || toFind == null) this.getAllUsers();
     else this.getUsersBy(toFind);
