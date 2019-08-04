@@ -102,6 +102,15 @@ export class NotificationsService extends hubConnection{
     this._publicUserId = "";
   }
 
+  /**
+   * Remove all the notifications from the array of the notifications
+   * 
+   * @access public
+   */
+  public readAllNotifications(){
+    this._notifications.next([]);
+  }
+
 
   //
   // ──────────────────────────────────────────────────────────────────────────────────────────────────────────────

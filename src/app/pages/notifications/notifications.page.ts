@@ -38,7 +38,7 @@ export class NotificationsPage {
    * @param {AliveService} __aliveS To mark as read the notifications
    */
   constructor(private __notS:NotificationsService, private __aliveS:AliveService){
-      this.__notS.notifications.subscribe(msgs=>this.notifications = msgs);
+      this.__notS.notifications.subscribe(msgs=> this.notifications = msgs );
   }
 
   //
@@ -57,5 +57,13 @@ export class NotificationsPage {
     let index = this.notifications.indexOf(not, 0);
     if(index>-1) this.notifications.splice(index, 1);
     this.__aliveS.readNotification(not.id);
+  }
+
+  /**
+   * Reads all the notifications
+   */
+  public readThemAll(){
+      this.__aliveS.readAllNotifications();
+      this.__notS.readAllNotifications();
   }
 }

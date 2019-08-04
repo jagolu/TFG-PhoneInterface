@@ -48,6 +48,6 @@ export class NotificationsHeadComponent{
     this.__aliveS.getNotifications().subscribe((n:LoginNotification)=>
         this.__notS.initialize(n.publicUserid, n.messages));
 
-    this.__notS.notifications.subscribe(msgs=>this.notifications = msgs);
+    this.__notS.notifications.subscribe(msgs=> this.notifications = msgs );
   }
 }
