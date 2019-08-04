@@ -275,8 +275,6 @@ export class DoFootballBetComponent implements OnInit{
    * @access private
    */
   private initializeForm(){
-    let coinsBetValue = this.jackpot ? {value: this.min, disabled: this.jackpotBet} : {value: ''};
-    
     this.doAFootballBetForm = new FormGroup({
       'winner': new FormControl(
         '',
@@ -287,7 +285,7 @@ export class DoFootballBetComponent implements OnInit{
       "homeGoals": new FormControl(
         '',
         [
-          !this.show1X2 ? this.requiredNumber : Validators.nullValidator,
+          !this.show1X2 ? this.requiredNumberForGoals : Validators.nullValidator,
           Validators.min(0),
           Validators.max(20)
         ]
@@ -295,15 +293,15 @@ export class DoFootballBetComponent implements OnInit{
       "awayGoals": new FormControl(
         '',
         [
-          !this.show1X2 ? this.requiredNumber : Validators.nullValidator,
+          !this.show1X2 ? this.requiredNumberForGoals : Validators.nullValidator,
           Validators.min(0),
           Validators.max(20)
         ]
       ),
       "coinsBet": new FormControl(
-        coinsBetValue,
+        !this.jackpot ? this.min : '',
         [
-          this.requiredNumber,
+          !this.jackpot ? Validators.nullValidator : this.requiredNumber,
           Validators.min(this.min),
           Validators.max(this.max_user)
         ]
@@ -338,6 +336,7 @@ export class DoFootballBetComponent implements OnInit{
 
   /**
    * Custom validator to do a required for input type number
+   * on the coins bet input
    * 
    * @access private
    * @param {FormControl} control The value of the input
@@ -346,8 +345,24 @@ export class DoFootballBetComponent implements OnInit{
    */
   private requiredNumber(control:FormControl):{[ret:string]:Boolean}{
     let num = control.value;
-    if(num == null || isNaN(num) || num%1 !== 0 || control.pristine) {
+    if(num == null || isNaN(num) || num%1 !== 0) {
       return {"requiredNumber":true}
+    }
+    return null;
+  }
+
+  /**
+   * Custom validator to do a required for input type number on the goals input
+   * 
+   * @access private
+   * @param {FormControl} control The value of the input
+   * @returns {[string]:boolean} The id of the error and the result if
+   * the input is empty, null otherwise
+   */
+  private requiredNumberForGoals(control:FormControl):{[ret:string]:Boolean}{
+    let num = control.value;
+    if(num == null || isNaN(num) || num%1 !== 0 || control.pristine) {
+      return {"requiredNumberGoals":true}
     }
     return null;
   }
