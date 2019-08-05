@@ -7,5 +7,12 @@
       </ion-row>
     </ion-card-title>
   </ion-card-header>
-  <ion-card-content>{{new.body}}</ion-card-content>
+  <ion-card-content>
+    <ion-row>
+      <ion-col size-lg=10 size=12 class="ion-margin-top">{{new.body}}</ion-col>
+      <ion-col size-lg=2 size=12 class="ion-margin-top" *ngIf="new.id!=null">
+          <ion-button color="danger" expand="block" (click)="removeNew(new.id)">Eliminar</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
 </ion-card>
