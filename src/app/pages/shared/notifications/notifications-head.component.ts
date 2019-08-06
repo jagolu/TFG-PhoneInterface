@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NotificationMessage, IconModel, Icons, LoginNotification } from 'src/app/models/models';
+import { NotificationMessage, LoginNotification } from 'src/app/models/models';
 import { NotificationsService } from 'src/app/providers/userServices/Hub/notifications.service';
 import { AliveService } from 'src/app/providers/restServices/alive.service';
 
@@ -23,14 +23,6 @@ export class NotificationsHeadComponent{
    * @var {NotificationMessage[]} notifications
    */
   public notifications:NotificationMessage[] = [];
-
-  /**
-   * The icon of a bell
-   * 
-   * @access public
-   * @var {IconModel} icon_bell
-   */
-  public icon_bell:IconModel = Icons.BELL;
 
 
   //
