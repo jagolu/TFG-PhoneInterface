@@ -323,7 +323,8 @@ export class UserOptionsPage implements OnInit {
         [
           Validators.required,
           Validators.minLength(4),
-          Validators.maxLength(20)
+          Validators.maxLength(20),
+          Validators.pattern('^[A-Za-z0-9_-]*$')
         ]
       )
     })

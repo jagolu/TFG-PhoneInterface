@@ -32,6 +32,10 @@
                   !nicknameForm.controls['nickname'].pristine && 
                   nicknameForm.controls['nickname'].errors.maxlength"
               >Máximo de 20 caracteres.</small>
+              <small *ngIf="nicknameForm.controls['nickname'].errors && 
+                          !nicknameForm.controls['nickname'].pristine && 
+                          nicknameForm.controls['nickname'].errors.pattern"
+              >El nombre de usuario solo permite letras, números, barra baja y guión.<br></small>
         </ion-text>   
     
         <ion-button style="margin-top:30px" color="dark" expand="block" fill="outline" type="submit"
