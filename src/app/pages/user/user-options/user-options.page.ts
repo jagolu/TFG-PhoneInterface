@@ -129,8 +129,12 @@ export class UserOptionsPage implements OnInit {
    * @param {UserInfoService} __userInfoS To get the user info
    * @param {SessionService} __sessionS To get the session info
    */
-  constructor(private __alertS:AlertService, private __userS:UserService,
-              private  __userInfoS:UserInfoService, private __sessionS:SessionService) { }
+  constructor(
+    private __alertS:AlertService, 
+    private __userS:UserService,
+    private  __userInfoS:UserInfoService, 
+    private __sessionS:SessionService
+  ) { }
 
   /**
    * Get the user info and initializes all
@@ -170,13 +174,10 @@ export class UserOptionsPage implements OnInit {
       "oldPassword": null,
       "newPassword":null,
       "image": null
-    }).subscribe(
-      _=>{
-        this.__sessionS.updateUsername(this.nicknameForm.controls['nickname'].value);
-        this.reload();
-      },
-      _=>this.resetForm()
-    );
+    }).subscribe((res:any)=>{
+      this.reload(res.info);
+      this.resetForm();
+    },_=>this.resetForm());
   }
 
   /**
@@ -191,9 +192,7 @@ export class UserOptionsPage implements OnInit {
       "oldPassword": this.passwordForm.controls['oldPassword'].value,
       "newPassword":this.passwordForm.controls['newPassword'].value,
       "image": null
-    }).subscribe(
-      _=> this.reload()
-    );
+    }).subscribe((res:any)=> this.reload(res.info));
     this.resetForm();
   }
   
@@ -213,9 +212,7 @@ export class UserOptionsPage implements OnInit {
         "oldPassword": null,
         "newPassword":null,
         "image": fr.result.toString()
-      }).subscribe(
-        _=> this.reload()
-      );
+      }).subscribe((res:any)=> this.reload(res.info));
       this.resetForm();
     }
     fr.readAsDataURL(this._selectedFile);
@@ -334,16 +331,14 @@ export class UserOptionsPage implements OnInit {
    * Reloads the view after the user info changes
    * 
    * @access private
+   * @param {any} res The response with the updated user info
    */
-  private reload() { 
-    this.__userS.getUserOptions().subscribe(
-      (user:any)=>{
-        this.__userInfoS.updateInfo({
-          "email": user.email,
-          "image": user.img
-        })
-      }
-    );
+  private reload(res:any) { 
+    this.__userInfoS.updateInfo({
+      "email": res.email,
+      "image": res.img
+    });
+    this.__sessionS.updateUsername(res.nickname);
   }
   
   /**
