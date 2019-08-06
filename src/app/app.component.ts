@@ -26,8 +26,8 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(){
-    this._sessioS.User.subscribe(u=>{
-      try{this.username = u.username}
+    this._sessioS.User.subscribe(user=>{
+      try{this.username = user.username;}
       catch(Exception){this.username = ""}
     });
   }
