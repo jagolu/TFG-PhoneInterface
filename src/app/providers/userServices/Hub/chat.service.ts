@@ -274,6 +274,29 @@ export class ChatService extends hubConnection{
   }
 
   /**
+   * Get the last message in a chat room
+   * 
+   * @access public
+   * @param {string} name The name of the group
+   * @returns {string} The last message of the chat room
+   */
+  public getLastChatMessage(name:string):string{
+    if(!this.alreadyLogged(name)) return "";
+
+    let lastMsg = "";
+    this._allRooms.forEach(room=>{
+      if(room.group == name){
+        let uMsgs = room.userMessages;
+        if(uMsgs.length > 0) {
+          let cluster = uMsgs[uMsgs.length-1].messages;
+          lastMsg = cluster[cluster.length -1].message;
+        }
+      }
+    });
+    return lastMsg;
+  }
+
+  /**
    * Resets all the class vars
    * 
    * @access public
