@@ -48,12 +48,13 @@ export class HomePage {
    * @param {AdminService} __sessionS To know if the user is an admin
    * @param {SessionService} __adminS To launch news
    */
-  constructor(private __homeS:HomeService, private __authS:AuthenticationService, 
-              private __sessionS:SessionService, private __adminS: AdminService) {
-    let isAuth = this.__authS.IsAuthenticated();
-    let isAdmin = this.__sessionS.isAdmin();
-    this.__homeS.getNews(isAuth && !isAdmin).subscribe((news:any)=> this.news = news);
-    this.initializeForm();
+  constructor(
+    private __homeS:HomeService, 
+    private __authS:AuthenticationService, 
+    private __sessionS:SessionService, 
+    private __adminS: AdminService
+  ) { 
+    this.getNews(null, false);
   }
 
 
@@ -87,6 +88,15 @@ export class HomePage {
     return this.__sessionS.isAdmin();
   }
 
+  public getNews(event:any, stopEvent:Boolean){
+    let isAuth = this.__authS.IsAuthenticated();
+    let isAdmin = this.__sessionS.isAdmin();
+    this.__homeS.getNews(isAuth && !isAdmin).subscribe((news:any)=>{
+      this.news = news;
+      if(stopEvent) event.target.complete();
+    });
+    this.initializeForm();
+  }
 
   //
   // ────────────────────────────────────────────────────────────────────────────────────
