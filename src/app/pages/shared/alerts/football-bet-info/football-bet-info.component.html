@@ -3,7 +3,7 @@
     <ion-row>
       <ion-col size=12><strong>Primera parte</strong></ion-col>
       <ion-col size=12>
-        <input type="text" readonly value="{{bet.firstHalfHomeGoals}} - {{bet.firstHalfAwayGoals}}">
+        <input type="text" class="w-100" readonly value="{{bet.firstHalfHomeGoals}} - {{bet.firstHalfAwayGoals}}">
       </ion-col>
     </ion-row>
   </ion-col>
@@ -11,7 +11,7 @@
     <ion-row>
       <ion-col size=12><strong>Segunda parte</strong></ion-col>
       <ion-col size=12>
-        <input type="text" readonly value="{{bet.secondHalfHomeGoals}} - {{bet.secondHalfAwayGoals}}">
+        <input type="text" class="w-100" readonly value="{{bet.secondHalfHomeGoals}} - {{bet.secondHalfAwayGoals}}">
       </ion-col>
     </ion-row>
   </ion-col>
@@ -24,7 +24,7 @@
         <ion-row>
           <ion-col size=12><strong>Máximo dia para apostar</strong></ion-col>
           <ion-col size=12>
-            <input type="text" readonly value="{{bet.lastBetTime | onlyDatePipe}}">
+            <input type="text" class="w-100" readonly value="{{bet.lastBetTime | onlyDatePipe}}">
           </ion-col>
         </ion-row>
       </ion-col>
@@ -33,7 +33,7 @@
         <ion-row>
           <ion-col size=12><strong>Cuota</strong> </ion-col>
           <ion-col size=12>
-            <input type="text" readonly value="{{bet.typeBet.winRate + bet.typePay.winRate}}">
+            <input type="text" class="w-100" readonly value="{{bet.typeBet.winRate + bet.typePay.winRate}}">
           </ion-col>
         </ion-row>
       </ion-col>
@@ -43,7 +43,7 @@
         <ion-row>
           <ion-col size=12><strong>Mínimo</strong></ion-col>
           <ion-col size=12>
-            <input type="text" readonly value="{{bet.minBet}}">
+            <input type="text" class="w-100" readonly value="{{bet.minBet}}">
           </ion-col>
         </ion-row>
       </ion-col>
@@ -51,7 +51,7 @@
         <ion-row>
           <ion-col size=12><strong>Máximo</strong></ion-col>
           <ion-col size=12>
-            <input type="text" readonly value="{{bet.maxBet==10001 ? 'No Max' : bet.maxBet}}">
+            <input type="text" class="w-100" readonly value="{{bet.maxBet==10001 ? 'No Max' : bet.maxBet}}">
           </ion-col>
         </ion-row>
       </ion-col>
@@ -59,7 +59,7 @@
         <ion-row>
           <ion-col size=12><strong>Precio de entrada</strong></ion-col>
           <ion-col size=12>
-            <input type="text" readonly value="{{bet.minBet}}">
+            <input type="text" class="w-100" readonly value="{{bet.minBet}}">
           </ion-col>
         </ion-row>
       </ion-col>
