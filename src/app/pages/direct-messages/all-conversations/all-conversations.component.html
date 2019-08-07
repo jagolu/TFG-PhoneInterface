@@ -14,6 +14,12 @@
 </ion-header>
 
 <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="loadDMs($event, true)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+
+
   <form [formGroup]="createDMForm" (ngSubmit)="createDMTitle()" >
     <ion-item *ngIf="isAdmin()">
       <ion-label position="floating">Nombre de usuario o correo electrónico</ion-label>

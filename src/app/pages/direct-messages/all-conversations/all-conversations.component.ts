@@ -69,9 +69,13 @@ export class AllConversationsComponent  {
    * @param {AdminService} __adminS To search the users
    * @param {Router} __router To redirect the user after creating a new DM
    */
-  constructor(private __dmS:DirectMessagesService, private __sessionS:SessionService, 
-              private __adminS:AdminService, private __router:Router) { 
-    this.__dmS.loadDMTitles().subscribe((dmS:DMTitle[])=> this.dmTitles = dmS);
+  constructor(
+    private __dmS:DirectMessagesService, 
+    private __sessionS:SessionService, 
+    private __adminS:AdminService, 
+    private __router:Router
+  ) { 
+    this.loadDMs(null, false);
     this.initializeForm();
     this.validSelect = this.isAdmin() ? false : true;
   }
@@ -128,6 +132,22 @@ export class AllConversationsComponent  {
     this.changeInputSelect();
     let find = (document.querySelector("#findUserDMId") as HTMLInputElement).value;
     this.__adminS.searchUserDM(find).subscribe((suggs:SearchUserDM[])=>this.suggestions = suggs);
+  }
+
+  /**
+   * Load the page
+   * 
+   * @access public
+   * @param {any} event The event of refresh
+   * @param {Boolean} stopEvent True if this function is
+   * called from a refresh event, false if the function is called
+   * from the constructor
+   */
+  public loadDMs(event:any, stopEvent:Boolean){
+    this.__dmS.loadDMTitles().subscribe((dmS:DMTitle[])=>{
+      this.dmTitles = dmS;
+      if(stopEvent) event.target.complete();
+    });
   }
 
 
