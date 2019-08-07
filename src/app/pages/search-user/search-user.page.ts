@@ -91,6 +91,17 @@ export class SearchUserPage  {
     }).subscribe(_=> this.search(this.__lastFind));
   }
 
+  /**
+   * Refresh the page
+   * 
+   * @access public
+   * @param {any} event The refresh event
+   */
+  public refresh(event: any){
+    this.getAllUsers();
+    event.target.complete();
+  }
+
 
   //
   // ────────────────────────────────────────────────────────────────────────────────────
