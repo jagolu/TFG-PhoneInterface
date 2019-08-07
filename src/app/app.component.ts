@@ -150,17 +150,6 @@ export class AppComponent implements OnInit{
     this._notificationsStarted = false;
   }
 
-  /**
-   * Send event to reload the home page
-   * 
-   * @access public
-   */
-  public reloadHome(){
-    if(this._actualUrl.includes("/home") || this._actualUrl == "/"){
-      this.__reloadS.reloadHome();
-    }
-  }
-
 
   //
   // ────────────────────────────────────────────────────────────────────────────────────
@@ -191,6 +180,17 @@ export class AppComponent implements OnInit{
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  /**
+   * Send event to reload the home page
+   * 
+   * @access private
+   */
+  private reloadHome(){
+    if(this._actualUrl.includes("/home") || this._actualUrl == "/"){
+      this.__reloadS.reloadHome();
+    }
   }
 
   /**
