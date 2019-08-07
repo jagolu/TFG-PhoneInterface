@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { GroupInfo, IconModel, Icons, GroupMemberAdmin } from 'src/app/models/models';
 import { GroupService } from 'src/app/providers/restServices/group.service';
 import { AlertService } from 'src/app/providers/visualServices/alert.service';
@@ -168,6 +168,17 @@ export class SearchGroupPage {
    */
   public isAdmin():Boolean{
     return this.__sessionS.isAdmin();
+  }
+
+  /**
+   * Refresh the page
+   * 
+   * @access public
+   * @param {any} event The refresh event
+   */
+  public refresh(event: any){
+    this.getAllGroups();
+    event.target.complete();
   }
 
 
