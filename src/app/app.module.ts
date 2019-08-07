@@ -27,6 +27,7 @@ import { NotificationsService } from './providers/userServices/Hub/notifications
 import { GroupInfoService } from './providers/userServices/group-info.service';
 import { LoadingService } from './providers/visualServices/loading.service';
 import { AuthGuardService } from './providers/canActivate/auth-guard.service';
+import { ReloadService } from './providers/userServices/reload.service';
 
 
 // Interceptors
@@ -45,10 +46,11 @@ import { SharedModule } from './pages/shared/shared.module';
 import { HomePageModule } from './pages/home/home.module';
 import { MainUserGroupsPageModule } from './pages/main-user-groups/main-user-groups.module';
 import { GroupPageModule } from './pages/group/group.module';
+import { NotificationsPageModule } from './pages/notifications/notifications.module';
+
 
 //Routes
 import { AppRoutingModule } from './app-routing.module';
-import { NotificationsPageModule } from './pages/notifications/notifications.module';
 
 
 @NgModule({
@@ -89,7 +91,8 @@ import { NotificationsPageModule } from './pages/notifications/notifications.mod
     ChatService,
     NotificationsService,
     LoadingService,
-    AuthGuardService
+    AuthGuardService,
+    ReloadService
   ],
   bootstrap: [AppComponent]
 })

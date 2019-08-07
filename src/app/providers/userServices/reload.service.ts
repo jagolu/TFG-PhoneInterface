@@ -31,4 +31,39 @@ export class ReloadService {
   constructor() { 
     this.reloadComponent.emit(ComponentID.NONE);
   }
+
+
+  //
+  // ──────────────────────────────────────────────────────────────────────────────────
+  //   :::::: P U B L I C   F U N C T I O N S : :  :   :    :     :        :          :
+  // ──────────────────────────────────────────────────────────────────────────────────
+  //
+
+  /**
+   * Send the event to reload the home page
+   * 
+   * @access public
+   */
+  public reloadHome(){
+    this.sendReload(ComponentID.HOME);
+  }
+
+
+  //
+  // ────────────────────────────────────────────────────────────────────────────────────
+  //   :::::: P R I V A T E   F U N C T I O N S : :  :   :    :     :        :          :
+  // ────────────────────────────────────────────────────────────────────────────────────
+  //
+
+  /**
+   * Send a specific reload event to a
+   * specific component
+   * 
+   * @access private
+   * @param {ComponentID} id The id of the component
+   */
+  private sendReload(id:ComponentID){
+    this.reloadComponent.emit(id);
+    setTimeout(_=> this.reloadComponent.emit(ComponentID.NONE), 10);
+  }
 }

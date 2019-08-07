@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { NewMessage } from 'src/app/models/models';
+import { NewMessage, ComponentID } from 'src/app/models/models';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HomeService } from 'src/app/providers/restServices/home.service';
 import { AuthenticationService } from 'src/app/providers/restServices/authentication.service';
 import { SessionService } from 'src/app/providers/userServices/session.service';
 import { AdminService } from 'src/app/providers/restServices/admin.service';
+import { ReloadService } from 'src/app/providers/userServices/reload.service';
 
 @Component({
   selector: 'app-home',
@@ -47,13 +48,18 @@ export class HomePage {
    * @param {AuthenticationService} __authS To know if the user is authenticated
    * @param {AdminService} __sessionS To know if the user is an admin
    * @param {SessionService} __adminS To launch news
+   * @param {ReloadService} __reloadS To get the event to reload the page
    */
   constructor(
     private __homeS:HomeService, 
     private __authS:AuthenticationService, 
     private __sessionS:SessionService, 
-    private __adminS: AdminService
+    private __adminS: AdminService, 
+    private __reloadS:ReloadService
   ) { 
+    this.__reloadS.reloadComponent.subscribe(r =>{
+      if(r === ComponentID.HOME) this.getNews(null, false);
+    });
     this.getNews(null, false);
   }
 
