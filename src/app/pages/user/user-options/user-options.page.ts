@@ -271,6 +271,17 @@ export class UserOptionsPage implements OnInit {
     this.passwordType = this.passwordType=="text" ? "password": "text";
   }
 
+  /**
+   * Refresh the page reseting the forms
+   * 
+   * @access public
+   * @param {any} event The refresh event
+   */
+  public refresh(event:any){
+    this.resetForm();
+    event.target.complete();
+  }
+
   //
   // ────────────────────────────────────────────────────────────────────────────────────
   //   :::::: P R I V A T E   F U N C T I O N S : :  :   :    :     :        :          :
