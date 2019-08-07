@@ -3,6 +3,7 @@ import { IconModel, Icons } from 'src/app/models/models';
 import { SessionService } from 'src/app/providers/userServices/session.service';
 import { Router } from '@angular/router';
 import { GroupInfoService } from 'src/app/providers/userServices/group-info.service';
+import { GroupService } from 'src/app/providers/restServices/group.service';
 
 @Component({
   selector: 'app-main-user-groups',
@@ -45,8 +46,14 @@ export class MainUserGroupsPage {
    * @param {SessionService} __sessionS To get the groups of the user 
    * @param {GroupInfoService} __groupInfoS To set the group info
    * @param {Router} __router To redirect the user
+   * @param {GroupService} __groupS To reload the user groups
    */
-  constructor(private __sessionS:SessionService, private __groupInfoS:GroupInfoService, private __router:Router) { 
+  constructor(
+    private __sessionS:SessionService, 
+    private __groupInfoS:GroupInfoService, 
+    private __router:Router,
+    private __groupS:GroupService
+  ) { 
     this.__sessionS.User.subscribe(u=>{
       try{ this.groups = u.groups; }
       catch(Exception){this.groups = [];}
@@ -70,5 +77,18 @@ export class MainUserGroupsPage {
   public goGroup(name:string){
     this.__groupInfoS.setGroup(name);
     this.__router.navigate(['group', name, 'news']);
+  }
+
+  /**
+   * Do the refresh request
+   * 
+   * @access public
+   * @param {any} event The refresh event
+   */
+  public reload(event: any){
+    this.__groupS.reloadUserGroups(false).subscribe((groups:string[])=>{
+      this.__sessionS.updateGroups(groups);
+      event.target.complete();
+    });
   }
 }
