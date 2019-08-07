@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -7,10 +6,11 @@ import { AuthenticationService } from './providers/restServices/authentication.s
 import { SessionService } from './providers/userServices/session.service';
 import { AlertService } from './providers/visualServices/alert.service';
 import { ReloadService } from './providers/userServices/reload.service';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router } from '@angular/router';
 import { AliveService } from './providers/restServices/alive.service';
-import { LoginNotification } from './models/models';
+import { LoginNotification, ChatRoomInfo } from './models/models';
 import { NotificationsService } from './providers/userServices/Hub/notifications.service';
+import { ChatService } from './providers/userServices/Hub/chat.service';
 
 @Component({
   selector: 'app-root',
@@ -68,6 +68,7 @@ export class AppComponent implements OnInit{
    * @param {ReloadService} __reloadS To send the reload-home event
    * @param {AliveService} __aliveS To log the notifications
    * @param {NotificationsService} __notS To set the notifications
+   * @param {ChatService} __chatS To set the chats
    */
   constructor(
     private platform: Platform,
@@ -79,7 +80,8 @@ export class AppComponent implements OnInit{
     private __router:Router,
     private __reloadS:ReloadService,
     private __aliveS:AliveService,
-    private __notS:NotificationsService
+    private __notS:NotificationsService,
+    private __chatS:ChatService
   ) {
     this.initializeApp();
   }
@@ -93,6 +95,7 @@ export class AppComponent implements OnInit{
     this.__sessionS.User.subscribe(user=>{
       try{
         this.username = user.username;
+        this.startChats();
         if(!this._notificationsStarted && this.__authS.IsAuthenticated()) this.startNotifications();
       }
       catch(Exception){this.username = ""}
@@ -202,5 +205,24 @@ export class AppComponent implements OnInit{
     this.__aliveS.getNotifications().subscribe((n:LoginNotification)=>
         this.__notS.initialize(n.publicUserid, n.messages));
     this._notificationsStarted = true;
+  }
+
+  /**
+   * Log the user in his group chats
+   * 
+   * @access private
+   */
+  private startChats(){
+    this.__sessionS.User.subscribe(user=> {
+      try{
+        user.groups.forEach(group=>{
+          if(!this.__chatS.alreadyLogged(group)){
+            this.__chatS.startLoading(group);
+            this.__aliveS.logChat(group).subscribe((info:ChatRoomInfo)=> this.__chatS.addNewGroup(info, user.username));            
+          }
+        });
+      }catch(Error){}
+    });
+    this.__chatS.groupKicked.subscribe(group=> this.__sessionS.removeOneGroup(group));
   }
 }

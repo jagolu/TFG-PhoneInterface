@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import { AliveService } from 'src/app/providers/restServices/alive.service';
 import { ChatService } from 'src/app/providers/userServices/Hub/chat.service';
-import { SessionService } from 'src/app/providers/userServices/session.service';
-import { ChatRoomInfo } from 'src/app/models/models';
 
 @Component({
   selector: 'app-chat-head',
@@ -24,15 +21,6 @@ export class ChatHeadComponent{
    * @var {number} totalNewMessages
    */
   public totalNewMessages:number = 0;
-  
-  /**
-   * Checks if the user is logged in any 
-   * chat room
-   * 
-   * @access public
-   * @var {Boolean} thereIsAnyChat
-   */
-  public thereIsAnyChat:Boolean = false;
 
 
   //
@@ -48,33 +36,13 @@ export class ChatHeadComponent{
    * 
    * @constructor
    * @param {ChatService} __chatS To get the unread messages
-   * @param {SessionService} __sessionS To get the user groups
-   * @param {AliveService} __aliveS To do the log chat request 
    */
-  constructor(
-    private __chatS:ChatService, 
-    private __sessionS:SessionService, 
-    private __aliveS:AliveService
-  ) { 
+  constructor(private __chatS:ChatService) { 
     this.__chatS.newMsgs.subscribe(allGroupNotReadMsgs=>{
       setTimeout(_=>{
         this.totalNewMessages = 0;
         allGroupNotReadMsgs.forEach(c=>this.totalNewMessages += c[1]);
       }, 1000);
-    });
-    this.__sessionS.User.subscribe(user=> {
-      try{
-        this.thereIsAnyChat = user.groups.length > 0;
-        user.groups.forEach(group=>{
-          if(!this.__chatS.alreadyLogged(group)){
-            this.__chatS.startLoading(group);
-            this.__aliveS.logChat(group).subscribe((info:ChatRoomInfo)=>this.__chatS.addNewGroup(info, user.username));            
-          }
-        });
-      }catch(Error){this.thereIsAnyChat = false}
-    });
-    this.__chatS.groupKicked.subscribe(group=>{
-      this.__sessionS.removeOneGroup(group);
     });
   }
 }
