@@ -58,3 +58,4 @@ export { LoginNotification } from  './Notifications/LoginNotification';
 export { GroupTab } from  './GroupManage/GroupTab';
 export { GroupLocate } from  './GroupManage/GroupLocate';
 export { ManageWeeklyPay } from './GroupManage/ManageWeeklyPay';
+export { ComponentID } from './Reload/ComponentID';
