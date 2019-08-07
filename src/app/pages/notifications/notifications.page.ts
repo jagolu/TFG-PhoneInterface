@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NotificationMessage } from 'src/app/models/models';
+import { NotificationMessage, LoginNotification } from 'src/app/models/models';
 import { NotificationsService } from 'src/app/providers/userServices/Hub/notifications.service';
 import { AliveService } from 'src/app/providers/restServices/alive.service';
 
@@ -65,5 +65,18 @@ export class NotificationsPage {
   public readThemAll(){
       this.__aliveS.readAllNotifications();
       this.__notS.readAllNotifications();
+  }
+
+  /**
+   * Reinitilizes the notifications
+   * 
+   * @param {any} event The refresh event
+   */
+  public reload(event: any){
+    this.__notS.reset();
+    this.__aliveS.getNotifications().subscribe((n:LoginNotification)=>{
+      this.__notS.initialize(n.publicUserid, n.messages);
+      event.target.complete();
+    });
   }
 }
