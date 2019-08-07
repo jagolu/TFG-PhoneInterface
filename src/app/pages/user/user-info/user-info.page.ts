@@ -65,15 +65,12 @@ export class UserInfoPage implements OnInit {
    * @param {SessionService} __sessionS To get get the username and know if 
    * he is an admin
    */
-  constructor(private __userS:UserService, private __userInfoS:UserInfoService, private __sessionS:SessionService){ 
-    this.__userS.getUserOptions().subscribe((u:any)=>{
-        this.email = u.email;
-        this.joinTime = u.timeSignUp;      
-        this.__userInfoS.updateInfo({
-          "email": u.email,
-          "image": u.img
-        });
-    });
+  constructor(
+    private __userS:UserService, 
+    private __userInfoS:UserInfoService, 
+    private __sessionS:SessionService
+  ){ 
+    this.loadPage(null, false);
   }
 
   /**
@@ -86,6 +83,29 @@ export class UserInfoPage implements OnInit {
     });
 
     this.__userInfoS.info.subscribe(info => this.user = info);
+  }
+
+  /**
+   * Load the use info
+   * 
+   * @access public
+   * @param {any} event The event of refresh
+   * @param {Boolean} stopEvent True if this function is
+   * called from a refresh event, false if the function is called
+   * from the constructor
+   */
+  public loadPage(event:any, stopEvent:Boolean){
+    this.__userS.getUserOptions().subscribe((u:any)=>{
+      this.__sessionS.updateGroups(u.groups);
+      this.__sessionS.updateUsername(u.nickname);
+      this.email = u.email;
+      this.joinTime = u.timeSignUp;      
+      this.__userInfoS.updateInfo({
+        "email": u.email,
+        "image": u.img
+      });
+      if(stopEvent) event.target.complete();
+    });
   }
 
 
