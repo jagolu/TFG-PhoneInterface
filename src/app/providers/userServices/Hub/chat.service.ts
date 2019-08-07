@@ -1,6 +1,13 @@
 import { Injectable, EventEmitter, Output } from '@angular/core';
 import { hubConnection } from './hubConnection';
-import { ChatRoomInfo, ChatUserMessages, ChatMessage, newChatUserMessages, newSingleUserChatMessage, SingleUserChatMessage } from 'src/app/models/models';
+import { 
+  ChatRoomInfo, 
+  ChatUserMessages, 
+  ChatMessage, 
+  newChatUserMessages, 
+  newSingleUserChatMessage, 
+  SingleUserChatMessage 
+} from 'src/app/models/models';
 import { BehaviorSubject } from 'rxjs';
 import { GROUP_SOCKET_ID, NOTIFICATION_KICK_CHAT } from 'src/environments/secret';
 
@@ -441,8 +448,8 @@ export class ChatService extends hubConnection{
 
     if(msg.message == NOTIFICATION_KICK_CHAT){
       if(msg.publicUserId == this._publicUserId){
-        this.exitChat(groupName);
         this.groupKicked.emit(groupName);
+        setTimeout(_=>this.exitChat(groupName), 300);
       }
       return;
     }

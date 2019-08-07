@@ -73,5 +73,8 @@ export class ChatHeadComponent{
         });
       }catch(Error){this.thereIsAnyChat = false}
     });
+    this.__chatS.groupKicked.subscribe(group=>{
+      this.__sessionS.removeOneGroup(group);
+    });
   }
 }

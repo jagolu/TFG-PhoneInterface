@@ -5,6 +5,7 @@ import { ChatUserMessages, IconModel, Icons } from 'src/app/models/models';
 import { ChatTimePipe } from '../../shared/pipes/chat-time.pipe';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { IonContent } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-chat-room',
@@ -97,7 +98,7 @@ export class ChatRoomComponent implements OnInit {
    * @param {SessionService} __sessionS To know the actual user groups
    * @param {ChatService} __chatS To know the unread messages
    */
-  constructor(private __sessionS:SessionService, private __chatS:ChatService) { 
+  constructor(private __sessionS:SessionService, private __chatS:ChatService, private __router:Router) { 
     this.__chatS.name.subscribe(name => this.groupName = name );
     this.__sessionS.User.subscribe(u =>{
       try{this._username = u.username}
@@ -105,6 +106,12 @@ export class ChatRoomComponent implements OnInit {
     })
     this.userChatSub();
     this.initializeForm();
+    this.__chatS.groupKicked.subscribe(name=>{
+      console.log(this.groupName, name);
+      if(name == this.groupName){
+        this.__router.navigate(['/chat']);
+      }
+    });
   }
 
   ngOnInit() {
