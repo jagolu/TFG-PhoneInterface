@@ -8,6 +8,9 @@ import { SessionService } from './providers/userServices/session.service';
 import { AlertService } from './providers/visualServices/alert.service';
 import { ReloadService } from './providers/userServices/reload.service';
 import { Router, NavigationEnd } from '@angular/router';
+import { AliveService } from './providers/restServices/alive.service';
+import { LoginNotification } from './models/models';
+import { NotificationsService } from './providers/userServices/Hub/notifications.service';
 
 @Component({
   selector: 'app-root',
@@ -35,8 +38,15 @@ export class AppComponent implements OnInit{
    * @access private
    * @var {any} actualUrl
    */
-  private actualUrl:any = null;
-
+  private _actualUrl:any = null;
+  
+  /**
+   * Says if the notifications has logged yet
+   * 
+   * @access private
+   * @var {Boolean} _notificationsStarted
+   */
+  private _notificationsStarted:Boolean = false;
 
   //
   // ──────────────────────────────────────────────────────────────────────────
@@ -56,6 +66,9 @@ export class AppComponent implements OnInit{
    * @param {AlertService} __alertS To launch the create group alert
    * @param {Router} __router To know the actual url
    * @param {ReloadService} __reloadS To send the reload-home event
+   * @param {AliveService} __aliveS To log the notifications
+   * @param {NotificationsService} __notS To set the notifications
+   */
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -64,18 +77,24 @@ export class AppComponent implements OnInit{
     private __sessionS:SessionService,
     private __alertS:AlertService,
     private __router:Router,
-    private __reloadS:ReloadService
+    private __reloadS:ReloadService,
+    private __aliveS:AliveService,
+    private __notS:NotificationsService
   ) {
     this.initializeApp();
   }
 
+  /**
    * Get the user nickname
    * 
    * @OnInit
    */
   ngOnInit(){
     this.__sessionS.User.subscribe(user=>{
-      try{this.username = user.username;}
+      try{
+        this.username = user.username;
+        if(!this._notificationsStarted && this.__authS.IsAuthenticated()) this.startNotifications();
+      }
       catch(Exception){this.username = ""}
     });
     this.manageUrl();
@@ -128,6 +147,7 @@ export class AppComponent implements OnInit{
     this.__authS.logOut();
     this.reloadHome();
     this.__router.navigate(['home']);
+    this._notificationsStarted = false;
   }
 
   /**
@@ -136,7 +156,7 @@ export class AppComponent implements OnInit{
    * @access public
    */
   public reloadHome(){
-    if(this.actualUrl.includes("/home") || this.actualUrl == "/"){
+    if(this._actualUrl.includes("/home") || this._actualUrl == "/"){
       this.__reloadS.reloadHome();
     }
   }
@@ -155,8 +175,8 @@ export class AppComponent implements OnInit{
    */
   private manageUrl(){
     this.__router.events.subscribe( (activeRoute:any)=>{
-      if(activeRoute.urlAfterRedirects && activeRoute.urlAfterRedirects != this.actualUrl) {
-        this.actualUrl = activeRoute.urlAfterRedirects;
+      if(activeRoute.urlAfterRedirects && activeRoute.urlAfterRedirects != this._actualUrl) {
+        this._actualUrl = activeRoute.urlAfterRedirects;
       }
     });
   }
@@ -173,4 +193,14 @@ export class AppComponent implements OnInit{
     });
   }
 
+  /**
+   * Logs in the notifications
+   * 
+   * @access private
+   */
+  private startNotifications(){
+    this.__aliveS.getNotifications().subscribe((n:LoginNotification)=>
+        this.__notS.initialize(n.publicUserid, n.messages));
+    this._notificationsStarted = true;
+  }
 }

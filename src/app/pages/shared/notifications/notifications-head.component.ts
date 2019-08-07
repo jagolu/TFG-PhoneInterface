@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { NotificationMessage, LoginNotification } from 'src/app/models/models';
+import { NotificationMessage } from 'src/app/models/models';
 import { NotificationsService } from 'src/app/providers/userServices/Hub/notifications.service';
-import { AliveService } from 'src/app/providers/restServices/alive.service';
 
 @Component({
   selector: 'app-notifications-head',
@@ -33,13 +32,9 @@ export class NotificationsHeadComponent{
   
   /**
    * @constructor
-   * @param {AliveService} __aliveS To get the unread notifications of the user
    * @param {NotificationsService} __notS To get the new incoming notifications
    */
-  constructor(private __aliveS:AliveService, private __notS:NotificationsService){
-    this.__aliveS.getNotifications().subscribe((n:LoginNotification)=>
-        this.__notS.initialize(n.publicUserid, n.messages));
-
+  constructor(private __notS:NotificationsService){
     this.__notS.notifications.subscribe(msgs=> this.notifications = msgs );
   }
 }
