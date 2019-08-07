@@ -1,13 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { IconModel, Icons, GroupUser } from 'src/app/models/models';
-import { GroupService } from 'src/app/providers/restServices/group.service';
 import { GroupInfoService } from 'src/app/providers/userServices/group-info.service';
 import { AlertService } from 'src/app/providers/visualServices/alert.service';
 
 @Component({
   selector: 'app-group-members',
   templateUrl: './group-members.component.html',
-  styleUrls: [],
+  styles: [`
+    .blockedUser{
+      margin-top: 0; 
+      margin-bottom: 0; 
+      padding-top: 11px; 
+      padding-bottom: 10px;
+      background-color: #CFCECE;
+    }
+  `]
 })
 export class GroupMembersComponent implements OnInit {
 

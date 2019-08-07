@@ -4,7 +4,7 @@
 
 
         <ion-item *ngFor="let member of members; let i = index">
-            <ion-label class="ion-text-center" [ngClass]="{'block': member.blocked }">
+            <ion-label class="ion-text-center" [ngClass]="{'blockedUser': member.blocked }">
                     <span style="float:left" *ngIf="i != (members.length-1)">
                         {{member.coins}} <app-icon [Icon]="icon_coin"></app-icon>
                     </span>
