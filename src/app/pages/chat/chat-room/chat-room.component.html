@@ -1,0 +1,74 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+          <ion-row>
+            <ion-col size=10><h2>{{groupName}}</h2></ion-col>
+            <ion-col size=1><app-chat-head></app-chat-head></ion-col>
+            <ion-col size=1><app-notifications-head></app-notifications-head></ion-col>
+          </ion-row>
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+  
+    <ion-list>
+      <ion-item *ngFor="let userMessage of messages; let i = index" lines="none">
+        <ion-card class="mb-2 " *ngIf="userMessage.username!=''"
+              [ngClass]="{
+                'w-75': userMessage.username!='', 
+                'ion-text-right m-auto': userMessage.publicUserId == getPublicUserid() && userMessage.username!='',
+                'ion-text-left': userMessage.publicUserId != getPublicUserid() && userMessage.username!='',
+                'ion-text-center w-100': userMessage.username=='' && userMessage.publicUserId!=getPublicUserid(),
+                'd-none': userMessage.username=='' && userMessage.publicUserId==getPublicUserid()
+              }"
+        >
+                <ion-card-header >
+                        <div>
+                            <app-icon [Icon]="icon_crown" *ngIf="userMessage.role=='GROUP_MAKER' && userMessage.publicUserId != getPublicUserid()"></app-icon>
+                            <app-icon [Icon]="icon_wizard" *ngIf="userMessage.role=='GROUP_ADMIN' && userMessage.publicUserId != getPublicUserid()"></app-icon>
+                            <ion-text *ngIf="getPublicUserid() != userMessage.publicUserId">&nbsp;&nbsp;&nbsp;</ion-text>
+                            <ion-badge color="primary" *ngIf="getPublicUserid() == userMessage.publicUserId">{{userMessage.username}}</ion-badge>
+                            <ion-badge color="success" *ngIf="getPublicUserid() != userMessage.publicUserId">{{userMessage.username}}</ion-badge>
+                            <ion-text *ngIf="getPublicUserid() == userMessage.publicUserId">&nbsp;&nbsp;&nbsp;</ion-text>
+                            <app-icon [Icon]="icon_crown" *ngIf="userMessage.role=='GROUP_MAKER' && userMessage.publicUserId == getPublicUserid()"></app-icon>
+                            <app-icon [Icon]="icon_wizard" *ngIf="userMessage.role=='GROUP_ADMIN' && userMessage.publicUserId == getPublicUserid()"></app-icon>
+                        </div>
+                </ion-card-header>
+              
+                <ion-card-content [ngClass]="{'ion-text-right': userMessage.publicUserId == getPublicUserid()}">
+                    <ion-row *ngFor="let mssg of userMessage.messages; let j = index">
+                      <ion-col size=4 class="ion-text-left" *ngIf="userMessage.publicUserId == getPublicUserid()">
+                        <small style="font-size:10px;">{{showTime(userMessage, j)}}</small>
+                      </ion-col>
+                      <ion-col size=8>{{mssg.message}}</ion-col>              
+                      <ion-col size=4 class="ion-text-right" *ngIf="userMessage.publicUserId != getPublicUserid()">
+                        <small style="font-size:10px;">{{showTime(userMessage, j)}}</small>
+                      </ion-col>                  
+                    </ion-row>
+                </ion-card-content>
+        </ion-card>   
+
+
+        
+        <ion-row *ngIf="userMessage.username==''" class="w-100">
+          <ion-col size=12 class="ion-text-center">
+            <small><i>{{userMessage.messages[0].message}}</i></small>
+          </ion-col>
+        </ion-row>  
+       
+      </ion-item>
+  
+    </ion-list>
+
+    <form [formGroup]="sendChatMessageForm" class="sticky-bottom form-group" (ngSubmit)="send()">
+      <ion-item>
+        <ion-label position="floating">Mensaje</ion-label>
+        <ion-input type="text" formControlName="message" (focus)="startReseting()" (focusout)="stopReseting()"></ion-input>
+      </ion-item>
+    </form>
+  
+  </ion-content>

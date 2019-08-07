@@ -21,6 +21,10 @@ import { ChatRoomComponent } from './chat-room/chat-room.component';
       {
         path: '',
         component: ChatPage
+      },
+      {
+        path: 'chatRoom',
+        component: ChatRoomComponent
       }
     ])
   ],

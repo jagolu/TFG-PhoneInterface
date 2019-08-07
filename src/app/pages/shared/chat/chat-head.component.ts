@@ -57,8 +57,10 @@ export class ChatHeadComponent{
     private __aliveS:AliveService
   ) { 
     this.__chatS.newMsgs.subscribe(allGroupNotReadMsgs=>{
-      this.totalNewMessages = 0;
-      allGroupNotReadMsgs.forEach(c=>this.totalNewMessages += c[1]);
+      setTimeout(_=>{
+        this.totalNewMessages = 0;
+        allGroupNotReadMsgs.forEach(c=>this.totalNewMessages += c[1]);
+      }, 1000);
     });
     this.__sessionS.User.subscribe(user=> {
       try{
