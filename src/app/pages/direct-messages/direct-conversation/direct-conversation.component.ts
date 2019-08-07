@@ -103,12 +103,7 @@ export class DirectConversationComponent implements AfterViewChecked {
    * @AfterViewInit
    */
   ngAfterViewChecked() {
-    if(!this._loading){
-      this.__dmS.loadDMMessages(this._id).subscribe((dmrRes:DMRoom)=>{
-        this.setData(dmrRes);
-        if(!this.room.closed) this.initializeForm();
-      });
-    }
+    if(!this._loading) this.loadConversation(null, false);
     this._loading = true;
   }
 
@@ -162,6 +157,23 @@ export class DirectConversationComponent implements AfterViewChecked {
    */
   public isAdmin():Boolean{
     return this.__sessionS.isAdmin();
+  }
+
+  /**
+   * Load the page
+   * 
+   * @access public
+   * @param {any} event The event of refresh
+   * @param {Boolean} stopEvent True if this function is
+   * called from a refresh event, false if the function is called
+   * from the constructor
+   */  
+  public loadConversation(event:any, stopEvent:Boolean){
+    this.__dmS.loadDMMessages(this._id).subscribe((dmrRes:DMRoom)=>{
+      this.setData(dmrRes);
+      if(!this.room.closed) this.initializeForm();
+      if(stopEvent) event.target.complete();
+    });
   }
 
 
