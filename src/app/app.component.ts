@@ -44,13 +44,24 @@ export class AppComponent implements OnInit{
   // ──────────────────────────────────────────────────────────────────────────
   //
 
-  
+  /**
+   * Initializes the app
+   * 
+   * @constructor
+   * @param {Platform} platform Needed when the project was created
+   * @param {SplashScreen} splashScreen Needed when the project was created
+   * @param {StatusBar} statusBar Needed when the project was created
+   * @param {AuthenticationService} __authS To know if the current is authenticated or not
+   * @param {SessionService} __sessionS To get the username and check if is an admin
+   * @param {AlertService} __alertS To launch the create group alert
+   * @param {Router} __router To know the actual url
+   * @param {ReloadService} __reloadS To send the reload-home event
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private _authS:AuthenticationService,
-    private _sessioS:SessionService,
+    private __authS:AuthenticationService,
+    private __sessionS:SessionService,
     private __alertS:AlertService,
     private __router:Router,
     private __reloadS:ReloadService
@@ -58,8 +69,12 @@ export class AppComponent implements OnInit{
     this.initializeApp();
   }
 
+   * Get the user nickname
+   * 
+   * @OnInit
+   */
   ngOnInit(){
-    this._sessioS.User.subscribe(user=>{
+    this.__sessionS.User.subscribe(user=>{
       try{this.username = user.username;}
       catch(Exception){this.username = ""}
     });
@@ -90,7 +105,7 @@ export class AppComponent implements OnInit{
    * is authenticated, false otherwise
    */
   public isAuthenticated():Boolean{
-    return this._authS.IsAuthenticated();
+    return this.__authS.IsAuthenticated();
   }
 
   /**
@@ -101,7 +116,7 @@ export class AppComponent implements OnInit{
    * an admin, false otherwise
    */
   public isAdmin():Boolean{
-    return this._sessioS.isAdmin();
+    return this.__sessionS.isAdmin();
   }
 
   /**
@@ -110,7 +125,7 @@ export class AppComponent implements OnInit{
    * @access public
    */
   public logOut(){
-    this._authS.logOut();
+    this.__authS.logOut();
     this.reloadHome();
     this.__router.navigate(['home']);
   }
