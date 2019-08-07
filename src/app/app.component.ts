@@ -14,7 +14,21 @@ import { Router, NavigationEnd } from '@angular/router';
   templateUrl: 'app.component.html'
 })
 export class AppComponent implements OnInit{
+
+  //
+  // ──────────────────────────────────────────────────────────────────────
+  //   :::::: C L A S S   V A R S : :  :   :    :     :        :          :
+  // ──────────────────────────────────────────────────────────────────────
+  //
+
+  /**
+   * The nickname of the logged user
+   * 
+   * @access public
+   * @var {string} username
+   */
   public username = "";
+
   /**
    * The actual url
    * 
@@ -23,6 +37,14 @@ export class AppComponent implements OnInit{
    */
   private actualUrl:any = null;
 
+
+  //
+  // ──────────────────────────────────────────────────────────────────────────
+  //   :::::: C O N S T R U C T O R S : :  :   :    :     :        :          :
+  // ──────────────────────────────────────────────────────────────────────────
+  //
+
+  
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -44,25 +66,49 @@ export class AppComponent implements OnInit{
     this.manageUrl();
   }
 
-  initializeApp() {
-    this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
-    });
-  }
 
+  //
+  // ──────────────────────────────────────────────────────────────────────────────────
+  //   :::::: P U B L I C   F U N C T I O N S : :  :   :    :     :        :          :
+  // ──────────────────────────────────────────────────────────────────────────────────
+  //
+
+  /**
+   * Launchs the alert to create a new group
+   * 
+   * @access public
+   */
   public createGroup(){
     this.__alertS.openCreateGroup();
   }
 
-  public isAuthenticated(){
+  /**
+   * Says if the actual user is authenticated
+   * 
+   * @access public
+   * @returns {Boolean} True if the actual user
+   * is authenticated, false otherwise
+   */
+  public isAuthenticated():Boolean{
     return this._authS.IsAuthenticated();
   }
 
-  public isAdmin(){
+  /**
+   * Says if the current user is an admin or not
+   * 
+   * @access public
+   * @returns {Boolean} True if the current is
+   * an admin, false otherwise
+   */
+  public isAdmin():Boolean{
     return this._sessioS.isAdmin();
   }
 
+  /**
+   * Logs the user out
+   * 
+   * @access public
+   */
   public logOut(){
     this._authS.logOut();
     this.reloadHome();
@@ -79,8 +125,6 @@ export class AppComponent implements OnInit{
       this.__reloadS.reloadHome();
     }
   }
-
-
 
 
   //
@@ -101,4 +145,17 @@ export class AppComponent implements OnInit{
       }
     });
   }
+  
+  /**
+   * Starts the application
+   * 
+   * @access private
+   */
+  private initializeApp() {
+    this.platform.ready().then(() => {
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
+    });
+  }
+
 }
