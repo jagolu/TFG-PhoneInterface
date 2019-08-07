@@ -88,6 +88,15 @@ export class HomePage {
     return this.__sessionS.isAdmin();
   }
 
+  /**
+   * Reload the news
+   * 
+   * @access public
+   * @param {any} event The event of refresh
+   * @param {Boolean} stopEvent True if this function is
+   * called from a refresh event, false if the function is called
+   * from the constructor
+   */
   public getNews(event:any, stopEvent:Boolean){
     let isAuth = this.__authS.IsAuthenticated();
     let isAdmin = this.__sessionS.isAdmin();
