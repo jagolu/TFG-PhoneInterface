@@ -8,7 +8,7 @@
                   <span *ngIf="isWinnerBet(footballBet.typeBet.name)">Ganador de{{correctPart(footballBet.typeBet.name)}}: {{getWinnerWord(bet.winner)}}</span>
                   <span *ngIf="!isWinnerBet(footballBet.typeBet.name)">Resultado de{{correctPart(footballBet.typeBet.name)}}: {{bet.homeGoals}}-{{bet.awayGoals}}</span>
                 </ion-col>
-                <ion-col size=3><ion-text *ngIf="!bet.valid" color=danger class="ion-text-right"><h3>INVALID</h3></ion-text ></ion-col>
+                <ion-col size=3><ion-text *ngIf="!bet.valid" color=danger class="ion-text-right"><h3>INVALIDA</h3></ion-text ></ion-col>
               </ion-row>
           </ion-card-title>
           <ion-card-content>
