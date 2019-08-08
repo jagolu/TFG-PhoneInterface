@@ -47,7 +47,7 @@
 
     <ion-row *ngIf="!type_jackpot_bet && selectedBet && selectedPrice">
       <ion-col size=6><strong>Cuota</strong></ion-col>
-      <ion-col size=6><input type="text" value="{{winRate}}" readonly></ion-col>
+      <ion-col size=6><input type="text" class="w-100" value="{{winRate}}" readonly></ion-col>
     </ion-row>
 
     <form [formGroup]="betForm" (ngSubmit)="launchBet()" *ngIf="selectedMaxDay">
