@@ -3,7 +3,7 @@
         <ion-card *ngFor="let bet of bets">    
             <ion-card-header>
                 <ion-card-title>
-                    <h3>{{bet.betName}}</h3> <small class="font-italic">{{bet.competition}}  ({{bet.matchdayDate|onlyDatePipe}})</small>
+                    <h3>{{bet.betName}}</h3> <small class="font-italic">{{bet.competition}}  ({{bet.matchdayDate|chatTime}})</small>
                 </ion-card-title>
                 <ion-card-content>
                     <ion-row>
