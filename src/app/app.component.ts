@@ -36,9 +36,17 @@ export class AppComponent implements OnInit{
    * The actual url
    * 
    * @access private
-   * @var {any} actualUrl
+   * @var {string} _nextUrl
    */
-  private _actualUrl:any = null;
+  private _nextUrl:string = "";
+
+  /**
+   * The previous url
+   * 
+   * @access private
+   * @var {string} _actualUrl
+   */
+  private _actualUrl:string = "";
   
   /**
    * Says if the notifications has logged yet
@@ -153,6 +161,18 @@ export class AppComponent implements OnInit{
     this._notificationsStarted = false;
   }
 
+  /**
+   * Send event to reload the all 
+   * conversations page
+   * 
+   * @access public
+   */
+  public reloadAllDM(){
+    if(this._actualUrl.includes("/direct-messages/directConversation/")){
+      this.__reloadS.reloadAllDM();
+    }
+  }
+
 
   //
   // ────────────────────────────────────────────────────────────────────────────────────
@@ -167,8 +187,9 @@ export class AppComponent implements OnInit{
    */
   private manageUrl(){
     this.__router.events.subscribe( (activeRoute:any)=>{
-      if(activeRoute.urlAfterRedirects && activeRoute.urlAfterRedirects != this._actualUrl) {
-        this._actualUrl = activeRoute.urlAfterRedirects;
+      if(activeRoute.urlAfterRedirects && activeRoute.urlAfterRedirects != this._nextUrl) {
+        this._nextUrl = activeRoute.urlAfterRedirects;
+        setTimeout(_=> this._actualUrl = this._nextUrl, 300);
       }
     });
   }
@@ -191,7 +212,7 @@ export class AppComponent implements OnInit{
    * @access private
    */
   private reloadHome(){
-    if(this._actualUrl.includes("/home") || this._actualUrl == "/"){
+    if(this._nextUrl.includes("/home") || this._nextUrl == "/"){
       this.__reloadS.reloadHome();
     }
   }

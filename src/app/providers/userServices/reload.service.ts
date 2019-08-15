@@ -48,6 +48,16 @@ export class ReloadService {
     this.sendReload(ComponentID.HOME);
   }
 
+  /**
+   * Send the event to reload the all
+   * conversations page
+   * 
+   * @access public
+   */
+  public reloadAllDM(){
+    this.sendReload(ComponentID.ALLDM);
+  }
+
 
   //
   // ────────────────────────────────────────────────────────────────────────────────────

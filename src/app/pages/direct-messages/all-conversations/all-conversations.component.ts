@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { DMTitle, SearchUserDM } from 'src/app/models/models';
+import { DMTitle, SearchUserDM, ComponentID } from 'src/app/models/models';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { DirectMessagesService } from 'src/app/providers/restServices/direct-messages.service';
 import { SessionService } from 'src/app/providers/userServices/session.service';
 import { AdminService } from 'src/app/providers/restServices/admin.service';
 import { Router } from '@angular/router';
+import { ReloadService } from 'src/app/providers/userServices/reload.service';
 
 @Component({
   selector: 'app-all-conversations',
@@ -67,17 +68,22 @@ export class AllConversationsComponent  {
    * @param {DirectMessagesService} __dmS To do the direct messages requests
    * @param {SessionService} __sessionS To know if the current user is an admin or not
    * @param {AdminService} __adminS To search the users
+   * @param {ReloadService} __reloadS To get the event to reload the page
    * @param {Router} __router To redirect the user after creating a new DM
    */
   constructor(
     private __dmS:DirectMessagesService, 
     private __sessionS:SessionService, 
-    private __adminS:AdminService, 
-    private __router:Router
+    private __adminS:AdminService,
+    private __reloadS:ReloadService, 
+    private __router:Router,
   ) { 
     this.loadDMs(null, false);
     this.initializeForm();
     this.validSelect = this.isAdmin() ? false : true;
+    this.__reloadS.reloadComponent.subscribe(r =>{
+      if(r === ComponentID.ALLDM) this.loadDMs(null, false);
+    });
   }
 
 
