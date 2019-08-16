@@ -24,15 +24,15 @@
           <ion-card-title>
               <ion-row>
                 <ion-col size=12><h3>Conversación <i>"{{room.title}}"</i></h3></ion-col>
-                <ion-col size=12 size-lg=9>
+                <ion-col size=12 size-lg=8>
                   <h5 style="display:inline-block">Con <i>"{{room.receiver}}"</i></h5>
                   &nbsp;&nbsp;<small *ngIf="room.emailReceiver!=null"><i>({{room.emailReceiver}})</i></small>  
                 </ion-col>
-                <ion-col size=12 size-lg=3 *ngIf="!room.closed && thisIsAdmin">
+                <ion-col size=12 size-lg=4 *ngIf="!room.closed && thisIsAdmin">
                     <ion-button style="margin-top:30px" color="danger" expand="block" fill="outline" 
                               (click)="closeConversation()">Cerrar conversación</ion-button>
                 </ion-col>
-                <ion-col size=12 size-lg=3 *ngIf="room.closed && thisIsAdmin">
+                <ion-col size=12 size-lg=4 *ngIf="room.closed && thisIsAdmin">
                     <ion-button style="margin-top:30px" color="danger" expand="block"
                               (click)="openConversation()">Abrir conversación</ion-button>
                 </ion-col>
@@ -63,19 +63,6 @@
       </ion-card-content>
   </ion-card>
 
-
-  <ion-card *ngIf="clusters.length == 0" [style.margin-bottom.px]="126">
-      <ion-row *ngIf="isAdmin()">
-        <ion-col size=12 size-lg=9><h4 class="ion-text-center">No hay mensajes en esta conversación</h4></ion-col>
-        <ion-col size=12 size-lg=3 *ngIf="thisIsAdmin">
-            <ion-button style="margin-top:30px" color="danger" expand="block"
-                        (click)="closeConversation()">Cerrar conversación</ion-button>
-        </ion-col>
-      </ion-row>
-      <ion-row *ngIf="!isAdmin()">
-        <ion-col size=12 ><h4 class="ion-text-center">No hay mensajes en esta conversación</h4></ion-col>
-      </ion-row>
-  </ion-card>
 
   <form [formGroup]="sendDMMessageForm" *ngIf="room!=null && !room.closed" 
           (ngSubmit)="sendMessage()" class="fixed-bottom" id="sendDMMessageFormId">
