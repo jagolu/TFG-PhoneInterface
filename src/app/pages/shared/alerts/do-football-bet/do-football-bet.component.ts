@@ -202,6 +202,7 @@ export class DoFootballBetComponent implements OnInit{
     //The message to correct time
     this.timeMessage = this.correctPart(this.info.bet.typeBet.name);
     this.initializeForm();        
+    this.setBetCoins();
 
     this.groupInfo.info.subscribe(group=>this._groupName = group.name);
     this._alertS.reset.subscribe(
