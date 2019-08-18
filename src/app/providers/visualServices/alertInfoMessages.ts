@@ -239,6 +239,11 @@ export function getMessage(type:AlertInfoType){
               "No podrás volver a unirte a el hasta pasados 7 dias";
         break;
       }
+      case AlertInfoType.CANTCANCELTHEFOOTBALLBET:{
+        msg = "El evento de apuesta que intentas cancelar está asociado a un partido que está en juego o que ya ha terminado.<br>"+
+              "Por lo que no podrás cancelar el evento de apuesta";
+        break;
+      }
       default:{
         msg = "";
         break;

@@ -56,6 +56,14 @@ export class AlertComponent{
   @Input() needPassword:Boolean;
 
   /**
+   * Extra bool var
+   * 
+   * @access public
+   * @var {Boolean} extraBool
+   */
+  @Input() extraBool:Boolean;
+
+  /**
    * Other object that we could need
    * 
    * @access public

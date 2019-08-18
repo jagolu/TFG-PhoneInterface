@@ -51,9 +51,10 @@ export class GroupManageBetsComponent{
    * @param {GroupBet} bet The bet which the user want to see 
    * @param {string} betId The id of the bet
    * @param {Boolean} ended True if the bet has ended, false otherwise
+   * @param {Boolean} canBetCancelled True if the bet can be cancelled, false otherwise
    */  
-  public seeBet(bet:GroupBet, betId:string, ended:Boolean){
-    this.__alertS.seeFootballBet(bet, betId, ended);
+  public seeBet(bet:GroupBet, betId:string, ended:Boolean, canBetCancelled:Boolean){
+    this.__alertS.seeFootballBet(bet, betId, ended, canBetCancelled);
   }
 
   /**

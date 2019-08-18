@@ -25,9 +25,9 @@
                 <ion-row>
                     <ion-col size=12>
                         <ion-button style="margin-top: 30px" color="dark" expand="block" fill="outline" 
-                        *ngIf="bet.cancelled" (click)="seeBet(bet.bet, '', true)">Información</ion-button>
+                        *ngIf="bet.cancelled" (click)="seeBet(bet.bet, '', true, bet.canBeCancelled)">Información</ion-button>
                         <ion-button style="margin-top: 30px" color="dark" expand="block" fill="outline" 
-                        *ngIf="!bet.cancelled" (click)="seeBet(bet.bet, bet.betId, bet.ended)">Información</ion-button>
+                        *ngIf="!bet.cancelled" (click)="seeBet(bet.bet, bet.betId, bet.ended, bet.canBeCancelled)">Información</ion-button>
                     </ion-col>
                 </ion-row>
             </ion-card-content>

@@ -360,8 +360,9 @@ export class AlertService {
    * @param {GroupBet} bet The info of the bet
    * @param {string} betId THe id of the bet
    * @param {Boolean} ended True if the bet has ended, false otherwise
+   * @param {Boolean} canBeCancelled True if the bet can be cancelled, false otherwise
    */
-  public seeFootballBet(bet:GroupBet, betId:string, ended:Boolean){
+  public seeFootballBet(bet:GroupBet, betId:string, ended:Boolean, canBeCancelled:Boolean){
     this.prepareAlerts();
     this.__modalC.create({
       component: AlertComponent,
@@ -370,7 +371,8 @@ export class AlertService {
         'title': bet.betName,
         "object": bet,
         "target": betId,
-        "needPassword": ended
+        "needPassword": ended,
+        "extraBool": canBeCancelled
       }
     }).then(modal => modal.present());
     this.__modalOpened = true;

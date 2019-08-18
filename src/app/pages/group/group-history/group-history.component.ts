@@ -62,7 +62,7 @@ export class GroupHistoryComponent implements OnInit {
    * @param {GroupBet} bet The bet which the user want to see 
    */  
   public seeBet(bet:GroupBet){
-    this.__alertS.seeFootballBet(bet, "", true);
+    this.__alertS.seeFootballBet(bet, "", true, false);
   }
   
   /**

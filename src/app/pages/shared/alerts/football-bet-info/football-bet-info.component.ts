@@ -38,6 +38,15 @@ export class FootballBetInfoComponent {
    * @var {Boolean} ended
    */
   @Input() ended:Boolean = true;
+  
+  /**
+   * Says if the actual bet can be
+   * cancelled or not
+   * 
+   * @access public
+   * @var {Boolean} canBeCancelled
+   */
+  @Input() canBeCancelled:Boolean  = false;
 
 
   //

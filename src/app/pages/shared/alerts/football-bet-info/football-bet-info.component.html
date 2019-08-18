@@ -71,7 +71,7 @@
       </ion-card>
   </ion-col>
 </ion-row>
-<ion-row *ngIf="betId!='' && !ended">
+<ion-row *ngIf="betId!='' && !ended && canBeCancelled">
   <ion-col size=12>
     <ion-button style="margin-top: 30px" color="danger" expand="block"
     (click)="cancel()">Cancelar</ion-button>    
