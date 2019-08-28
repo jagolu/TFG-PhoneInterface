@@ -5,6 +5,7 @@ import { GroupInfoService } from 'src/app/providers/userServices/group-info.serv
 import { BetService } from 'src/app/providers/restServices/bet.service';
 import { AlertService } from 'src/app/providers/visualServices/alert.service';
 import { IonSelect } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-football-bet',
@@ -319,8 +320,14 @@ export class CreateFootballBetComponent{
    * @param {BetService} __betS For launch de bet
    * @param {AlertService} __alertS For show the alert when a user tries to launch
    * a bet with higher minimum bet than his coins & close this modal
+   * @param {Router} __router To readirect the user to the manage bets page
    */
-  constructor(private __groupInfoS:GroupInfoService, private __betS:BetService, private __alertS:AlertService) { 
+  constructor(
+    private __groupInfoS:GroupInfoService, 
+    private __betS:BetService, 
+    private __alertS:AlertService,
+    private __router: Router
+  ) { 
     this.initializeForm();  
     this.__groupInfoS.info.subscribe(page=>{
       try{
@@ -362,6 +369,7 @@ export class CreateFootballBetComponent{
     }).subscribe((page:GroupPage)=> {
       this.__groupInfoS.updateInfo(page);
       this.__alertS.hideAlert();
+      this.__router.navigate(['group', this._groupName, 'manageBets']);
     });
   }
 
