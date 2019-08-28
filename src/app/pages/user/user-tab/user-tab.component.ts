@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { SessionService } from 'src/app/providers/userServices/session.service';
 
 @Component({
@@ -6,23 +6,7 @@ import { SessionService } from 'src/app/providers/userServices/session.service';
   templateUrl: './user-tab.component.html',
   styleUrls: [],
 })
-export class UserTabComponent implements OnInit{
-
-  //
-  // ──────────────────────────────────────────────────────────────────────
-  //   :::::: C L A S S   V A R S : :  :   :    :     :        :          :
-  // ──────────────────────────────────────────────────────────────────────
-  //
-
-  /**
-   * Says if the actual is joined in any
-   * group
-   * 
-   * @access public
-   * @var {Boolean} hasGroups
-   */
-  public hasGroups:Boolean = false;
-
+export class UserTabComponent {
 
   //
   // ──────────────────────────────────────────────────────────────────────────
@@ -36,16 +20,6 @@ export class UserTabComponent implements OnInit{
    * or is an admin
    */
   constructor(private __sessionS:SessionService) { }
-
-  /**
-   * @OnInit
-   */
-  ngOnInit(){
-    this.__sessionS.User.subscribe(u=>{
-      try{this.hasGroups = u.groups.length > 0}
-      catch(Exception){this.hasGroups = false}
-    });
-  }
 
 
   //

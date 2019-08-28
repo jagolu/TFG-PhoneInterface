@@ -25,6 +25,11 @@
             </ion-card-title>
         </ion-card-header>
     </ion-card>
-
+    
+    <ion-text class="ion-text-center" *ngIf="groups.length==0">
+      <h1>Aun no estás en ningún grupo.</h1>
+      <h3>Crea uno por ti mismo o unete a uno ya hecho!</h3>
+      <ion-icon name="sad" style="font-size:1500%; width:100%"></ion-icon>
+    </ion-text>
 </ion-content>
         

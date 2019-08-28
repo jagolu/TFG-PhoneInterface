@@ -32,5 +32,15 @@
       <ion-icon name="sad" style="font-size:1500%; width:100%"></ion-icon>
     </ion-text>
 
+    <ion-item class="fixed-bottom w-100">
+      <ion-card class="w-100">
+        <ion-card-header (click)="reloadGroups()">
+            <ion-card-title class="ion-text-center">
+              <app-icon [Icon]="sync_icon"></app-icon>
+            </ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-item>
+
 </ion-content>
         

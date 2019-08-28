@@ -33,6 +33,14 @@ export class MainUserGroupsPage {
    * @var {IconModel} icon_ball
    */
   public icon_ball:IconModel = Icons.BALL;
+
+  /**
+   * A sync icon
+   * 
+   * @access public
+   * @var {IconModel} sync_icon
+   */
+  public sync_icon:IconModel = Icons.SYNC;
   
 
   //
@@ -90,5 +98,14 @@ export class MainUserGroupsPage {
       this.__sessionS.updateGroups(groups);
       event.target.complete();
     });
+  }
+
+  /**
+   * Reload the user groups
+   * 
+   * @access public
+   */
+  public reloadGroups(){
+    this.__groupS.reloadGroups();
   }
 }
