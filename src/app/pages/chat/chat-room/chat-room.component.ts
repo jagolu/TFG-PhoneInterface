@@ -195,7 +195,7 @@ export class ChatRoomComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(1),
-          Validators.maxLength(150)
+          Validators.maxLength(120)
         ]
       )
     })

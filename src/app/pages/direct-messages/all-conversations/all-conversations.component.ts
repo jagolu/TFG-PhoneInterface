@@ -176,7 +176,7 @@ export class AllConversationsComponent  {
         [
           Validators.required,
           Validators.minLength(3),
-          Validators.maxLength(64)
+          Validators.maxLength(60)
         ]
       )
     });

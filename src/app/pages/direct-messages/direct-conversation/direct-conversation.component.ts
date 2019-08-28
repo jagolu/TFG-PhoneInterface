@@ -177,7 +177,7 @@ export class DirectConversationComponent {
         [
           Validators.required,
           Validators.minLength(2),
-          Validators.maxLength(256)
+          Validators.maxLength(510)
         ]
       )
     })
