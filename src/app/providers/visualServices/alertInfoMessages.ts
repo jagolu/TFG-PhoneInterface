@@ -244,6 +244,11 @@ export function getMessage(type:AlertInfoType){
               "Por lo que no podrás cancelar el evento de apuesta";
         break;
       }
+      case AlertInfoType.NOTFULLYREGISTER:{
+        msg = "Aún no has completado tu registro en la plataforma por lo que no puedes recuperar ninguna contraseña.<br>"+
+              "Revisa tu correo electrónico en busca de dicho correo.";
+        break;
+      }
       default:{
         msg = "";
         break;
