@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GroupBet } from 'src/app/models/models';
 import { GroupInfoService } from 'src/app/providers/userServices/group-info.service';
 import { AlertService } from 'src/app/providers/visualServices/alert.service';
+import { GroupService } from 'src/app/providers/restServices/group.service';
 
 @Component({
   selector: 'app-group-new-bet',
@@ -32,6 +33,14 @@ export class GroupNewBetComponent implements OnInit {
    */
   public userCoins:number = 0;
 
+  /**
+   * The name of the actual group
+   * 
+   * @access private
+   * @var {string} _groupName
+   */
+  private _groupName:string = "";
+
 
   //
   // ──────────────────────────────────────────────────────────────────────────
@@ -43,8 +52,13 @@ export class GroupNewBetComponent implements OnInit {
    * @constructor
    * @param {GroupInfoService} __groupInfoS To get the info of the group
    * @param {AlertService} __alertS To launch the alerts
+   * @param {GroupService} __groupS To reload the group page
    */
-  constructor(private __groupInfoS:GroupInfoService, private __alertS:AlertService) { }
+  constructor(
+    private __groupInfoS:GroupInfoService, 
+    private __alertS:AlertService,
+    private __groupS:GroupService
+  ) { }
 
   /**
    * Gets the bets from the service
@@ -56,6 +70,7 @@ export class GroupNewBetComponent implements OnInit {
       try{
         this.userCoins =  page.members ? page.members[page.members.length-1].coins : 0;
         this.bets = page.bets;
+        this._groupName = page.name;
       }catch(Error){}
     });
   }
@@ -85,5 +100,16 @@ export class GroupNewBetComponent implements OnInit {
    */  
   public doBet(bet:GroupBet){
     this.__alertS.doAFootballBet(bet, this.userCoins);
+  }
+
+  /**
+   * Reload the group page
+   * 
+   * @access public
+   * @param {any} event The reload event 
+   */
+  public reloadGroup(event:any){
+    this.__groupS.getPageGroup(this._groupName);
+    event.target.complete();
   }
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BetsManager, GroupBet } from 'src/app/models/models';
 import { GroupInfoService } from 'src/app/providers/userServices/group-info.service';
 import { AlertService } from 'src/app/providers/visualServices/alert.service';
+import { GroupService } from 'src/app/providers/restServices/group.service';
 
 @Component({
   selector: 'app-group-manage-bets',
@@ -24,6 +25,14 @@ export class GroupManageBetsComponent{
    */
   public betsM:BetsManager[];
 
+  /**
+   * The name of the actual group
+   * 
+   * @access private
+   * @var {string} _groupName 
+   */
+  private _groupName:string = "";
+
 
   //
   // ──────────────────────────────────────────────────────────────────────────
@@ -35,10 +44,18 @@ export class GroupManageBetsComponent{
    * @constructor
    * @param {GroupInfoService} __groupInfoS To get the bets launched
    * @param {AlertSerice} __alertS To launch the alerts
+   * @param {GroupService} __groupS To reload the group page
    */
-  constructor(private __groupInfoS:GroupInfoService, private __alertS:AlertService) { 
+  constructor(
+    private __groupInfoS:GroupInfoService, 
+    private __alertS:AlertService,
+    private __groupS:GroupService
+  ) { 
     this.__groupInfoS.info.subscribe(page=>{
-      try{this.betsM = page.manageBets}
+      try{
+        this.betsM = page.manageBets;
+        this._groupName = page.name;
+      }
       catch(Error){this.betsM = []}
     });
   }
@@ -66,5 +83,16 @@ export class GroupManageBetsComponent{
    */
   public createFootballBet(){
     this.__alertS.seeCreateFootballBetForm();
+  }
+
+  /**
+   * Reload the group page
+   * 
+   * @access public
+   * @param {any} event The reload event 
+   */
+  public reloadGroup(event:any){
+    this.__groupS.getPageGroup(this._groupName);
+    event.target.complete();
   }
 }

@@ -1,8 +1,10 @@
 <app-group-header></app-group-header>
 <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="reloadGroup($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
     <ion-list>
-
-
         <ion-item *ngFor="let member of members; let i = index">
             <ion-label class="ion-text-center" [ngClass]="{'blockedUser': member.blocked }">
                     <span style="float:left" *ngIf="i != (members.length-1)">
@@ -17,15 +19,13 @@
 
                     <app-icon [Icon]="icon_info" style="margin-left:4px" class="float-right" (click)="openInfo(member)"
                                     *ngIf="i != (members.length-1)" 
-                                ></app-icon>
+                    ></app-icon>
                     <app-icon [Icon]="icon_cog" class="float-right" (click)="openOptions(member)" 
                             *ngIf="((user_role!='GROUP_NORMAL' && member.role!='GROUP_MAKER' && user_role!=member.role && !member.blocked) || 
                                     (member.blocked && (user_role == 'GROUP_MAKER' || user_role == member.blockedBy))) &&  i != (members.length-1)"
-                                    ></app-icon>       
+                    ></app-icon>       
             </ion-label>   
 
         </ion-item>
-
-
     </ion-list>
 </ion-content>

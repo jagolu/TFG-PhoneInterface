@@ -1,5 +1,9 @@
 <app-group-header></app-group-header>
 <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="reloadGroup($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
     <ion-row class="ion-text-center">
         <ion-col size=12>
             <ion-text>

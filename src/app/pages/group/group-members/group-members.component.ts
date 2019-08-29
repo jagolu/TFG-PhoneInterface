@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IconModel, Icons, GroupUser } from 'src/app/models/models';
 import { GroupInfoService } from 'src/app/providers/userServices/group-info.service';
 import { AlertService } from 'src/app/providers/visualServices/alert.service';
+import { GroupService } from 'src/app/providers/restServices/group.service';
 
 @Component({
   selector: 'app-group-members',
@@ -107,8 +108,13 @@ export class GroupMembersComponent implements OnInit {
    * @constructor
    * @param {AlertService} __alertS To launch the alerts
    * @param {GroupInfoService} __groupPage To get the members of the group
+   * @param {GroupService} __groupS To reload the page
    */
-  constructor(private __alertS:AlertService, private __groupPage:GroupInfoService) { }
+  constructor(
+    private __alertS:AlertService, 
+    private __groupPage:GroupInfoService,
+    private __groupS:GroupService
+  ) { }
 
   /**
    * Get the info of the group
@@ -154,5 +160,16 @@ export class GroupMembersComponent implements OnInit {
    */
   public openInfo(user:GroupUser){
     this.__alertS.seeGroupMemberInfo(user);
+  }
+
+  /**
+   * Reload the group page
+   * 
+   * @access public
+   * @param {any} event The reload event 
+   */
+  public reloadGroup(event:any){
+    this.__groupS.getPageGroup(this._groupName);
+    event.target.complete();
   }
 }

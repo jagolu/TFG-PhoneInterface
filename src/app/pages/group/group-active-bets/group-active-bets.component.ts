@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EndedFootballBet, HistoryUserFootballBet, GroupBet } from 'src/app/models/models';
 import { GroupInfoService } from 'src/app/providers/userServices/group-info.service';
 import { AlertService } from 'src/app/providers/visualServices/alert.service';
+import { GroupService } from 'src/app/providers/restServices/group.service';
 
 @Component({
   selector: 'app-group-active-bets',
@@ -24,6 +25,14 @@ export class GroupActiveBetsComponent implements OnInit {
    */
   public bets:EndedFootballBet[];  
 
+  /**
+   * The name of the actual group in the page
+   * 
+   * @access private
+   * @param {string} _groupName
+   */
+  private _groupName:string = "";
+
   
   //
   // ──────────────────────────────────────────────────────────────────────────
@@ -36,8 +45,13 @@ export class GroupActiveBetsComponent implements OnInit {
    * @param {GroupInfoService} __groupInfoS To get the group active bets 
    * @param {AlertService} __alertS To launch the alerts to see the bet info
    * and the user bets
+   * @param {GroupService} __groupS To reload the group page
    */
-  constructor(private __groupInfoS:GroupInfoService, private __alertS:AlertService) { }
+  constructor(
+    private __groupInfoS:GroupInfoService, 
+    private __alertS:AlertService,
+    private __groupS:GroupService
+  ) { }
 
   /**
    * Get the bets
@@ -46,7 +60,10 @@ export class GroupActiveBetsComponent implements OnInit {
    */
   ngOnInit() {
     this.__groupInfoS.info.subscribe(page=>{
-      try{this.bets = page.myBets;}
+      try{
+        this.bets = page.myBets;
+        this._groupName = page.name;
+      }
       catch(Error){this.bets = []}
     });
   }
@@ -88,5 +105,16 @@ export class GroupActiveBetsComponent implements OnInit {
    */  
   public seeMyBets(bet:EndedFootballBet){
     this.__alertS.seeUserBet(bet.ownBet, bet.bet, false, "Tus apuestas");
+  }
+
+  /**
+   * Reload the group page
+   * 
+   * @access public
+   * @param {any} event The reload event 
+   */
+  public reloadGroup(event:any){
+    this.__groupS.getPageGroup(this._groupName);
+    event.target.complete();
   }
 }

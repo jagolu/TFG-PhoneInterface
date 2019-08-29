@@ -1,5 +1,9 @@
 <app-group-header></app-group-header>
 <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="reloadGroup($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    
     <ion-card *ngFor="let bet of bets">    
         <ion-card-header>
             <ion-card-title>

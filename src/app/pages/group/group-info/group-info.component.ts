@@ -162,4 +162,15 @@ export class GroupInfoComponent implements OnInit {
   public leaveGroup(){
     this.__groupS.leaveGroup(this.groupName);
   }
+
+  /**
+   * Reload the group page
+   * 
+   * @access public
+   * @param {any} event The reload event 
+   */
+  public reloadGroup(event:any){
+    this.__groupS.getPageGroup(this.groupName);
+    event.target.complete();
+  }
 }
