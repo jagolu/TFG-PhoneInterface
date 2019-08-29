@@ -95,15 +95,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
         <ion-menu-toggle auto-hide="false">
           <ion-item [routerDirection]="'root'" [routerLink]="'/logSign/logIn'" *ngIf="!isAuthenticated()">
             <ion-icon slot="start" [name]="'person'"></ion-icon>
@@ -117,6 +108,14 @@
             <ion-label>Registrarse</ion-label>
           </ion-item>
         </ion-menu-toggle>
+
+        
+        <ion-menu-toggle auto-hide="false" *ngIf="!isAdmin()">
+            <ion-item [routerDirection]="'root'" [routerLink]="'/help'">
+              <ion-icon slot="start" [name]="'help'"></ion-icon>
+              <ion-label>Ayuda</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
 
       </ion-content>
 
