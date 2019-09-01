@@ -6,6 +6,7 @@ import { ChatTimePipe } from '../../shared/pipes/chat-time.pipe';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { IonContent } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { GroupService } from 'src/app/providers/restServices/group.service';
 
 @Component({
   selector: 'app-chat-room',
@@ -97,8 +98,15 @@ export class ChatRoomComponent implements OnInit {
    * @constructor
    * @param {SessionService} __sessionS To know the actual user groups
    * @param {ChatService} __chatS To know the unread messages
+   * @param {Router} __router To redirect the user to the all chats page
+   * @param {GroupService} __groupS To reload all the group chats
    */
-  constructor(private __sessionS:SessionService, private __chatS:ChatService, private __router:Router) { 
+  constructor(
+    private __sessionS:SessionService,
+    private __chatS:ChatService, 
+    private __router:Router,
+    private __groupS:GroupService
+  ) { 
     this.__chatS.name.subscribe(name => this.groupName = name );
     this.__sessionS.User.subscribe(u =>{
       try{this._username = u.username}
@@ -107,7 +115,6 @@ export class ChatRoomComponent implements OnInit {
     this.userChatSub();
     this.initializeForm();
     this.__chatS.groupKicked.subscribe(name=>{
-      console.log(this.groupName, name);
       if(name == this.groupName){
         this.__router.navigate(['/chat']);
       }
@@ -226,5 +233,22 @@ export class ChatRoomComponent implements OnInit {
         this.scrollDown();
       }
     });
+  }
+  
+  /**
+   * Reload all the group chats and redirect the
+   * user to the all chats page
+   * 
+   * @param {any} event The refresh event 
+   */
+  public reloadChats(event:any){
+    this.__sessionS.updateGroups([]);
+    this.__groupS.reloadUserGroups(false).subscribe(
+      (groups:string[])=>{
+        this.__sessionS.updateGroups(groups);
+        event.target.complete();
+        this.__router.navigate(["/chat"])
+      }
+    );
   }
 }

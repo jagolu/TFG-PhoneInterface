@@ -3,6 +3,7 @@ import { SessionService } from 'src/app/providers/userServices/session.service';
 import { ChatService } from 'src/app/providers/userServices/Hub/chat.service';
 import { Router } from '@angular/router';
 import { IconModel, Icons } from 'src/app/models/models';
+import { GroupService } from 'src/app/providers/restServices/group.service';
 
 @Component({
   selector: 'app-chat',
@@ -60,8 +61,15 @@ export class ChatPage {
    * @constructor
    * @param {SessionService} __sessionS To know the actual user groups
    * @param {ChatService} __chatS To know the unread messages
+   * @param {Router} __router To naviate the user to the chat room
+   * @param {GroupService} __groupS To reload the user groups
    */
-  constructor(private __sessionS:SessionService, private __chatS:ChatService, private __router:Router) { 
+  constructor(
+    private __sessionS:SessionService, 
+    private __chatS:ChatService, 
+    private __router:Router,
+    private __groupS:GroupService
+  ) { 
     this.__chatS.newMsgs.subscribe(allGroupNotReadMsgs=>{
       this.totalNewMessages = 0;
       allGroupNotReadMsgs.forEach(c=>this.totalNewMessages += c[1]);
@@ -118,5 +126,20 @@ export class ChatPage {
    */
   public lastChatMessage(name:string):string{
     return this.__chatS.getLastChatMessage(name);
+  }
+
+  /**
+   * Reload all the group chats
+   * 
+   * @param {any} event The refresh event 
+   */
+  public reloadChats(event:any){
+    this.__sessionS.updateGroups([]);
+    this.__groupS.reloadUserGroups(false).subscribe(
+      (groups:string[])=>{
+        this.__sessionS.updateGroups(groups);
+        event.target.complete();
+      }
+    );
   }
 }

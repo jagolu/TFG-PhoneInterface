@@ -14,6 +14,9 @@
 </ion-header>
 
 <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="reloadChats($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
 
     <ion-card *ngFor="let group of groups" (click)="changeGroupChat(group)">
         <ion-card-header>
