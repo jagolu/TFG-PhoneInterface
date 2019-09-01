@@ -17,55 +17,60 @@
     <ion-refresher slot="fixed" (ionRefresh)="reloadChats($event)">
       <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
-  
-    <ion-list>
-      <ion-item *ngFor="let userMessage of messages; let i = index" lines="none">
-        <ion-card class="mb-2 " *ngIf="userMessage.username!=''"
-              [ngClass]="{
-                'w-75': userMessage.username!='', 
-                'ion-text-right m-auto': userMessage.publicUserId == getPublicUserid() && userMessage.username!='',
-                'ion-text-left': userMessage.publicUserId != getPublicUserid() && userMessage.username!='',
-                'ion-text-center w-100': userMessage.username=='' && userMessage.publicUserId!=getPublicUserid(),
-                'd-none': userMessage.username=='' && userMessage.publicUserId==getPublicUserid()
-              }"
-        >
-                <ion-card-header >
-                        <div>
-                            <app-icon [Icon]="icon_crown" *ngIf="userMessage.role=='GROUP_MAKER' && userMessage.publicUserId != getPublicUserid()"></app-icon>
-                            <app-icon [Icon]="icon_wizard" *ngIf="userMessage.role=='GROUP_ADMIN' && userMessage.publicUserId != getPublicUserid()"></app-icon>
-                            <ion-text *ngIf="getPublicUserid() != userMessage.publicUserId">&nbsp;&nbsp;&nbsp;</ion-text>
-                            <ion-badge color="primary" *ngIf="getPublicUserid() == userMessage.publicUserId">{{userMessage.username}}</ion-badge>
-                            <ion-badge color="success" *ngIf="getPublicUserid() != userMessage.publicUserId">{{userMessage.username}}</ion-badge>
-                            <ion-text *ngIf="getPublicUserid() == userMessage.publicUserId">&nbsp;&nbsp;&nbsp;</ion-text>
-                            <app-icon [Icon]="icon_crown" *ngIf="userMessage.role=='GROUP_MAKER' && userMessage.publicUserId == getPublicUserid()"></app-icon>
-                            <app-icon [Icon]="icon_wizard" *ngIf="userMessage.role=='GROUP_ADMIN' && userMessage.publicUserId == getPublicUserid()"></app-icon>
-                        </div>
-                </ion-card-header>
-              
-                <ion-card-content [ngClass]="{'ion-text-right': userMessage.publicUserId == getPublicUserid()}">
-                    <ion-row *ngFor="let mssg of userMessage.messages; let j = index">
-                      <ion-col size=4 class="ion-text-left" *ngIf="userMessage.publicUserId == getPublicUserid()">
-                        <small style="font-size:10px;">{{showTime(userMessage, j)}}</small>
-                      </ion-col>
-                      <ion-col size=8>{{mssg.message}}</ion-col>              
-                      <ion-col size=4 class="ion-text-right" *ngIf="userMessage.publicUserId != getPublicUserid()">
-                        <small style="font-size:10px;">{{showTime(userMessage, j)}}</small>
-                      </ion-col>                  
-                    </ion-row>
-                </ion-card-content>
-        </ion-card>   
+    
+    <ion-card style="margin-bottom: 70px"> 
+      <ion-card-content>
+        <ion-list>
+          <ion-item *ngFor="let userMessage of messages; let i = index" lines="none">
+            <ion-card class="mb-2 " *ngIf="userMessage.username!=''"
+                  [ngClass]="{
+                    'w-75': userMessage.username!='', 
+                    'ion-text-right m-auto': userMessage.publicUserId == getPublicUserid() && userMessage.username!='',
+                    'ion-text-left': userMessage.publicUserId != getPublicUserid() && userMessage.username!='',
+                    'ion-text-center w-100': userMessage.username=='' && userMessage.publicUserId!=getPublicUserid(),
+                    'd-none': userMessage.username=='' && userMessage.publicUserId==getPublicUserid()
+                  }"
+            >
+                    <ion-card-header >
+                            <div>
+                                <app-icon [Icon]="icon_crown" *ngIf="userMessage.role=='GROUP_MAKER' && userMessage.publicUserId != getPublicUserid()"></app-icon>
+                                <app-icon [Icon]="icon_wizard" *ngIf="userMessage.role=='GROUP_ADMIN' && userMessage.publicUserId != getPublicUserid()"></app-icon>
+                                <ion-text *ngIf="getPublicUserid() != userMessage.publicUserId">&nbsp;&nbsp;&nbsp;</ion-text>
+                                <ion-badge color="primary" *ngIf="getPublicUserid() == userMessage.publicUserId">{{userMessage.username}}</ion-badge>
+                                <ion-badge color="success" *ngIf="getPublicUserid() != userMessage.publicUserId">{{userMessage.username}}</ion-badge>
+                                <ion-text *ngIf="getPublicUserid() == userMessage.publicUserId">&nbsp;&nbsp;&nbsp;</ion-text>
+                                <app-icon [Icon]="icon_crown" *ngIf="userMessage.role=='GROUP_MAKER' && userMessage.publicUserId == getPublicUserid()"></app-icon>
+                                <app-icon [Icon]="icon_wizard" *ngIf="userMessage.role=='GROUP_ADMIN' && userMessage.publicUserId == getPublicUserid()"></app-icon>
+                            </div>
+                    </ion-card-header>
+                  
+                    <ion-card-content [ngClass]="{'ion-text-right': userMessage.publicUserId == getPublicUserid()}">
+                        <ion-row *ngFor="let mssg of userMessage.messages; let j = index">
+                          <ion-col size=4 class="ion-text-left" *ngIf="userMessage.publicUserId == getPublicUserid()">
+                            <small style="font-size:10px;">{{showTime(userMessage, j)}}</small>
+                          </ion-col>
+                          <ion-col size=8>{{mssg.message}}</ion-col>              
+                          <ion-col size=4 class="ion-text-right" *ngIf="userMessage.publicUserId != getPublicUserid()">
+                            <small style="font-size:10px;">{{showTime(userMessage, j)}}</small>
+                          </ion-col>                  
+                        </ion-row>
+                    </ion-card-content>
+            </ion-card>   
 
 
-        
-        <ion-row *ngIf="userMessage.username==''" class="w-100">
-          <ion-col size=12 class="ion-text-center">
-            <small><i>{{userMessage.messages[0].message}}</i></small>
-          </ion-col>
-        </ion-row>  
-       
-      </ion-item>
-  
-    </ion-list>
+            
+            <ion-row *ngIf="userMessage.username==''" class="w-100">
+              <ion-col size=12 class="ion-text-center">
+                <small><i>{{userMessage.messages[0].message}}</i></small>
+              </ion-col>
+            </ion-row>  
+          
+          </ion-item>
+      
+        </ion-list>        
+      </ion-card-content>
+    </ion-card>
+
 
     <form [formGroup]="sendChatMessageForm" class="fixed-bottom" (ngSubmit)="send()">
       <ion-item>
