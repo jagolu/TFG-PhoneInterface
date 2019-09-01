@@ -91,6 +91,7 @@ export class UserGroupsPage {
    * @param {string} name The name of the group 
    */
   public goGroup(name:string){
+    this.__groupInfoS.removeInfo();
     this.__groupInfoS.setGroup(name);
     this.__router.navigate(['group', name, 'news']);
   }

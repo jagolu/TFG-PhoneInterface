@@ -69,7 +69,10 @@ export class GroupHeaderComponent {
               private __popOC:PopoverController, private __groupS:GroupService) {     
     
     this.__groupPageS.info.subscribe(page=>{
-      try{ this.coins = page.members ? page.members[page.members.length-1].coins : 0; }
+      try{ 
+        this.groupName = page.name;
+        this.coins = page.members ? page.members[page.members.length-1].coins : 0; 
+      }
       catch(Error){}
     });
     
