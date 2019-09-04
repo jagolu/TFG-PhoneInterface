@@ -8,7 +8,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteAccountAlertComponent } from './alerts/delete-account-alert/delete-account-alert.component';
 import { JoinPasswordGroupComponent } from './alerts/join-password-group/join-password-group.component';
 import { DeleteGroupAlertComponent } from './alerts/delete-group-alert/delete-group-alert.component';
-import { SocialSignPasswordComponent } from './alerts/social-sign-password/social-sign-password.component';
 import { OnlyDatePipe } from 'src/app/pages/shared/pipes/only-date.pipe';
 import { Base64ImagePipe } from 'src/app/pages/shared/pipes/base64-image.pipe';
 import { ChatTimePipe } from 'src/app/pages/shared/pipes/chat-time.pipe';
@@ -41,7 +40,6 @@ import { ChatHeadComponent } from './chat/chat-head.component';
     DeleteAccountAlertComponent, 
     JoinPasswordGroupComponent,
     DeleteGroupAlertComponent,
-    SocialSignPasswordComponent,
     SeeGroupMembersAdminComponent,
     SeeUserGroupsAdminComponent,
     NewsViewerComponent,
@@ -67,7 +65,6 @@ import { ChatHeadComponent } from './chat/chat-head.component';
     DeleteAccountAlertComponent, 
     JoinPasswordGroupComponent,
     DeleteGroupAlertComponent,
-    SocialSignPasswordComponent,
     SeeGroupMembersAdminComponent,
     SeeUserGroupsAdminComponent,
     NewsViewerComponent,
@@ -92,7 +89,6 @@ import { ChatHeadComponent } from './chat/chat-head.component';
     DeleteAccountAlertComponent, 
     JoinPasswordGroupComponent,
     DeleteGroupAlertComponent,
-    SocialSignPasswordComponent,
     SeeGroupMembersAdminComponent,
     NewsViewerComponent,
     SeeUserGroupsAdminComponent,

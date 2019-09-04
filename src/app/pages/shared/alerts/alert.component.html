@@ -18,7 +18,6 @@
             <app-delete-account-alert *ngIf="mode == 'DELETEACCOUNT'" [email]="target"></app-delete-account-alert>
             <app-join-password-group *ngIf="mode == 'JOINGROUP'" [groupName]="target" [hasPassword]="needPassword"></app-join-password-group>
             <app-delete-group-alert *ngIf="mode == 'DELETEGROUP'" [name]="target"></app-delete-group-alert>
-            <app-social-sign-password *ngIf="mode == 'SOCIALPASSWORD'" [providerId]="target"></app-social-sign-password>
             <app-do-football-bet *ngIf="mode == 'FOOTBALLBET'" [info]="object"></app-do-football-bet >
             <app-cancel-user-football-bet *ngIf="mode == 'CANCELUSERFOOTBALLBET'" [userFootballBetId]="target" [info]="object"></app-cancel-user-football-bet>
             <app-cancel-football-bet *ngIf="mode == 'CANCELFOOTBALLBET'" [betId]="target"></app-cancel-football-bet>

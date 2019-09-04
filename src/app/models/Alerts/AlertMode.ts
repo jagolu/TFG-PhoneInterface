@@ -32,11 +32,6 @@ export enum AlertMode{
     JOINGROUP = "JOINGROUP",
 
     /**
-     * @summary Alerts to set a password from a social sign
-     */
-    SOCIALPASSWORD = "SOCIALPASSWORD",
-
-    /**
      * @summary Alerts to do a football bet
      */
     FOOTBALLBET = "FOOTBALLBET",

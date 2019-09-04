@@ -7,7 +7,6 @@ import { ReactiveFormsModule} from '@angular/forms';
 
 import { LogInPage } from './log-in/log-in.page';
 import { SocialLoginModule } from 'angularx-social-login';
-import { SocialButtonComponent } from './social-button/social-button.component';
 import { SignUpPage } from './sign-up/sign-up.page';
 import { SharedModule } from '../shared/shared.module';
 import { RememberPasswordPage } from './remember-password/remember-password.page';
@@ -40,7 +39,7 @@ import { LogGuardService } from 'src/app/providers/canActivate/log-guard.service
       }
     ])
   ],
-  declarations: [SocialButtonComponent, LogInPage, SignUpPage, RememberPasswordPage],
+  declarations: [LogInPage, SignUpPage, RememberPasswordPage],
   exports: [RouterModule]
 })
 export class LogSignModule {}
